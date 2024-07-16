@@ -32,18 +32,34 @@ public class FetchNewsApi {
             JsonNode jsonResponse = mapper.readTree(json1Response);
             JsonNode newsArray = jsonResponse.path("news");
             for (JsonNode item : newsArray) {
-                if ("story".equals(item.path("type").asText())) {
+
+                boolean isLiveblog = false;
+                JsonNode trackingArray = item.path("tracking");
+                for (JsonNode trackingItem : trackingArray) {
+                    if ("LIVEBLOG".equals(trackingItem.path("ctp").asText())) {
+                        isLiveblog = true;
+                        break;
+                    }
+                }
+                Integer regionId = item.path("regionId").asInt();
+                String sectionName = item.path("ressort").asText();
+
+                if ("story".equals(item.path("type").asText()) && !isLiveblog
+                        && !(regionId == 0 && sectionName.isEmpty())) {
                     FetchResponseData newsData = new FetchResponseData();
 
                     // RegionId
-                    Integer regionId = item.path("regionId").asInt();
                     logger.info("RegionId: {}", regionId);
                     newsData.setRegionId(regionId);
 
                     // Section
-                    String sectionName = item.path("ressort").asText();
-                    logger.info("SectionName: {}", sectionName);
-                    newsData.setSectionName(sectionName);
+                    if (regionId > 0) {
+                        logger.info("SectionName: inland");
+                        newsData.setSectionName("inland");
+                    } else {
+                        logger.info("SectionName: {}", sectionName);
+                        newsData.setSectionName(sectionName);
+                    }
 
                     // Title
                     String title = item.path("title").asText();
@@ -69,7 +85,8 @@ public class FetchNewsApi {
                     // Details URL
                     String detailsUrl = item.path("details").asText();
                     logger.info("DetailsUrl: {}", detailsUrl);
-                    newsData.setContent(detailsUrl);
+                    String content = fetchContentFromDetailsUrl(detailsUrl);
+                    newsData.setContent(content);
 
                     // Save news
                     savedNews.add(newsData);
@@ -80,6 +97,27 @@ public class FetchNewsApi {
         }
 
         return savedNews;
+    }
+
+    private String fetchContentFromDetailsUrl(String detailsUrl) {
+        String content = "";
+        try {
+            String json2Response = restTemplate.getForObject(detailsUrl, String.class);
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode jsonResponse = mapper.readTree(json2Response);
+            JsonNode contentArray = jsonResponse.path("content");
+            StringBuilder contentBuilder = new StringBuilder();
+
+            for (JsonNode contentItem : contentArray) {
+                if (contentItem.has("value")) {
+                    contentBuilder.append(contentItem.path("value").asText()).append(" ");
+                }
+            }
+            content = contentBuilder.toString().trim();
+        } catch (IOException e) {
+            logger.error("Error fetching or processing details URL JSON: {}", e.getMessage());
+        }
+        return content;
     }
 }
 
