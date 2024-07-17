@@ -22,9 +22,9 @@ public class FetchNewsApi {
 
     public List<FetchResponseData> fetchDataFromApi() {
         String url = "https://www.tagesschau.de/api2u/news";
-       // logger.info("Fetching data from URL: {}", url);
+        // logger.info("Fetching data from URL: {}", url);
         String json1Response = restTemplate.getForObject(url, String.class);
-     //   logger.info("Received JSON response: {}", json1Response);
+        //   logger.info("Received JSON response: {}", json1Response);
         ObjectMapper mapper = new ObjectMapper();
         List<FetchResponseData> savedNews = new ArrayList<>();
 
@@ -43,9 +43,18 @@ public class FetchNewsApi {
                 }
                 Integer regionId = item.path("regionId").asInt();
                 String sectionName = item.path("ressort").asText();
+                JsonNode teaserImage = item.path("teaserImage");
+                JsonNode imageVariants = teaserImage.path("imageVariants");
+                String imageUrl = imageVariants.path("1x1-840").asText();
 
-                if ("story".equals(item.path("type").asText()) && !isLiveblog
-                        && !(regionId == 0 && sectionName.isEmpty())) {
+                if ("story".equals(item.path("type").asText())
+                        && !isLiveblog
+                        && !(regionId == 0 && sectionName.isEmpty())
+                        && !(sectionName.equals("investigativ"))
+                        && !teaserImage.isMissingNode()
+                        && imageVariants.has("1x1-840")
+                        && !imageUrl.isEmpty()
+                ) {
                     FetchResponseData newsData = new FetchResponseData();
 
                     // RegionId
@@ -72,15 +81,8 @@ public class FetchNewsApi {
                     newsData.setDate(date);
 
                     // Teaser Image
-                    JsonNode teaserImage = item.path("teaserImage");
-                    if (!teaserImage.isMissingNode()) {
-                        JsonNode imageVariants = teaserImage.path("imageVariants");
-                        if (!imageVariants.isMissingNode() && imageVariants.has("1x1-840")) {
-                            String imageUrl = imageVariants.path("1x1-840").asText();
-                            logger.info("ImageUrl: {}", imageUrl);
-                            newsData.setTitleImage(imageUrl);
-                        }
-                    }
+                    logger.info("ImageUrl: {}", imageUrl);
+                    newsData.setTitleImage(imageUrl);
 
                     // Details URL
                     String detailsUrl = item.path("details").asText();
@@ -110,7 +112,28 @@ public class FetchNewsApi {
 
             for (JsonNode contentItem : contentArray) {
                 if (contentItem.has("value")) {
-                    contentBuilder.append(contentItem.path("value").asText()).append(" ");
+                    String value = contentItem.path("value").asText();
+                    // Perform replacements
+                    value = value.replaceAll("/api2u", "");
+                    value = value.replaceAll("\\.json", ".html");
+                    value = value.replaceAll("type=\"intern\"", "type=\"extern\"");
+
+                    contentBuilder.append("<div className=\"textValueNews\">")
+                            .append(value)
+                            .append("</div>")
+                            .append(" ");
+                }
+                if (contentItem.has("quotation")) {
+                    String quotationText = contentItem.path("quotation").path("text").asText();
+                    // Perform replacements
+                    quotationText = quotationText.replaceAll("/api2u", "");
+                    quotationText = quotationText.replaceAll("\\.json", ".html");
+                    quotationText = quotationText.replaceAll("type=\"intern\"", "type=\"extern\"");
+
+                    contentBuilder.append("<div className=\"quotationNews\">")
+                            .append(quotationText)
+                            .append("</div>")
+                            .append(" ");
                 }
             }
             content = contentBuilder.toString().trim();
@@ -120,4 +143,6 @@ public class FetchNewsApi {
         return content;
     }
 }
+// https://www.tagesschau.de/api2u/inland/gesellschaft/compact-verbot-100.json
+
 
