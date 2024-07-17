@@ -9,10 +9,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FetchResponseData {
     private Integer regionId;
+    private String regionName;
     private String sectionName;
     private String title;
     private String date;
-    private String titleImage;
+    private String titleImageSquare;
+    private String titleImageWide;
     // @Lob
     private String content;
 }

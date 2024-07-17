@@ -11,10 +11,12 @@ public class NewsDataConverter {
         NewsDataResponseDto dto = new NewsDataResponseDto();
         dto.setId(newsDataEntity.getId());
         dto.setRegionId(newsDataEntity.getRegionId());
+        dto.setRegionName(newsDataEntity.getRegionName());
         dto.setSectionName(newsDataEntity.getSectionName());
         dto.setTitle(newsDataEntity.getTitle());
         dto.setDate(newsDataEntity.getDate());
-        dto.setTitleImage(newsDataEntity.getTitleImage());
+        dto.setTitleImageSquare(newsDataEntity.getTitleImageSquare());
+        dto.setTitleImageWide(newsDataEntity.getTitleImageWide());
         dto.setContent(newsDataEntity.getContent());
         return dto;
     }
@@ -22,10 +24,12 @@ public class NewsDataConverter {
     public NewsDataEntity fromFetchApiToEntity(FetchResponseData dto) {
         NewsDataEntity newsDataEntity = new NewsDataEntity();
         newsDataEntity.setRegionId(dto.getRegionId());
+        newsDataEntity.setRegionName(dto.getRegionName());
         newsDataEntity.setSectionName(dto.getSectionName());
         newsDataEntity.setTitle(dto.getTitle());
         newsDataEntity.setDate(dto.getDate());
-        newsDataEntity.setTitleImage(dto.getTitleImage());
+        newsDataEntity.setTitleImageSquare(dto.getTitleImageSquare());
+        newsDataEntity.setTitleImageWide(dto.getTitleImageWide());
         newsDataEntity.setContent(dto.getContent());
         return newsDataEntity;
     }

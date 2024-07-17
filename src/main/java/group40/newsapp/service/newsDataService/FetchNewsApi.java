@@ -45,7 +45,8 @@ public class FetchNewsApi {
                 String sectionName = item.path("ressort").asText();
                 JsonNode teaserImage = item.path("teaserImage");
                 JsonNode imageVariants = teaserImage.path("imageVariants");
-                String imageUrl = imageVariants.path("1x1-840").asText();
+                String imageSquareUrl = imageVariants.path("1x1-840").asText();
+                String imageWideUrl = imageVariants.path("16x9-960").asText();
 
                 if ("story".equals(item.path("type").asText())
                         && !isLiveblog
@@ -53,13 +54,26 @@ public class FetchNewsApi {
                         && !(sectionName.equals("investigativ"))
                         && !teaserImage.isMissingNode()
                         && imageVariants.has("1x1-840")
-                        && !imageUrl.isEmpty()
+                        && !imageSquareUrl.isEmpty()
+                        && imageVariants.has("16x9-960")
+                        && !imageWideUrl.isEmpty()
                 ) {
                     FetchResponseData newsData = new FetchResponseData();
 
                     // RegionId
                     logger.info("RegionId: {}", regionId);
                     newsData.setRegionId(regionId);
+
+                    // RegionName
+                    String[] regions = {"non-region", "Baden-Württemberg", "Bayern", "Berlin", "Brandenburg",
+                            "Bremen", "Hamburg", "Hessen", "Mecklenburg-Vorpommern",
+                            "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz", "Saarland",
+                            "Sachsen", "Sachsen-Anhalt", "Schleswig-Holstein", "Thüringen"};
+                    if (regionId >= 0 && regionId < regions.length) {
+                        newsData.setRegionName(regions[regionId]);
+                    } else {
+                        newsData.setRegionName("non-region");
+                    }
 
                     // Section
                     if (regionId > 0) {
@@ -81,8 +95,11 @@ public class FetchNewsApi {
                     newsData.setDate(date);
 
                     // Teaser Image
-                    logger.info("ImageUrl: {}", imageUrl);
-                    newsData.setTitleImage(imageUrl);
+                    logger.info("ImageSquareUrl: {}", imageSquareUrl);
+                    newsData.setTitleImageSquare(imageSquareUrl);
+
+                    logger.info("ImageWideUrl: {}", imageWideUrl);
+                    newsData.setTitleImageWide(imageWideUrl);
 
                     // Details URL
                     String detailsUrl = item.path("details").asText();
