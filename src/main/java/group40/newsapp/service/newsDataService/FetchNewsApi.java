@@ -22,9 +22,7 @@ public class FetchNewsApi {
 
     public List<FetchResponseData> fetchDataFromApi() {
         String url = "https://www.tagesschau.de/api2u/news";
-        // logger.info("Fetching data from URL: {}", url);
         String json1Response = restTemplate.getForObject(url, String.class);
-        //   logger.info("Received JSON response: {}", json1Response);
         ObjectMapper mapper = new ObjectMapper();
         List<FetchResponseData> savedNews = new ArrayList<>();
 
@@ -41,12 +39,23 @@ public class FetchNewsApi {
                         break;
                     }
                 }
+
                 Integer regionId = item.path("regionId").asInt();
                 String sectionName = item.path("ressort").asText();
                 JsonNode teaserImage = item.path("teaserImage");
                 JsonNode imageVariants = teaserImage.path("imageVariants");
                 String imageSquareUrl = imageVariants.path("1x1-840").asText();
                 String imageWideUrl = imageVariants.path("16x9-960").asText();
+                String detailsUrl = item.path("details").asText();
+
+                // Check if detailsUrl is valid
+                if (detailsUrl == null || detailsUrl.isEmpty()) {
+                    logger.warn("Details URL is missing or empty for item with title: {}", item.path("title").asText());
+                    continue;
+                }
+
+                // Fetch and check content
+                String content = fetchContentFromDetailsUrl(detailsUrl);
 
                 if ("story".equals(item.path("type").asText())
                         && !isLiveblog
@@ -57,23 +66,13 @@ public class FetchNewsApi {
                         && !imageSquareUrl.isEmpty()
                         && imageVariants.has("16x9-960")
                         && !imageWideUrl.isEmpty()
+                        && content != null && !content.isEmpty()
                 ) {
                     FetchResponseData newsData = new FetchResponseData();
 
                     // RegionId
                     logger.info("RegionId: {}", regionId);
                     newsData.setRegionId(regionId);
-
-                    // RegionName
-                    String[] regions = {"non-region", "Baden-Württemberg", "Bayern", "Berlin", "Brandenburg",
-                            "Bremen", "Hamburg", "Hessen", "Mecklenburg-Vorpommern",
-                            "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz", "Saarland",
-                            "Sachsen", "Sachsen-Anhalt", "Schleswig-Holstein", "Thüringen"};
-                    if (regionId >= 0 && regionId < regions.length) {
-                        newsData.setRegionName(regions[regionId]);
-                    } else {
-                        newsData.setRegionName("non-region");
-                    }
 
                     // Section
                     if (regionId > 0) {
@@ -101,10 +100,8 @@ public class FetchNewsApi {
                     logger.info("ImageWideUrl: {}", imageWideUrl);
                     newsData.setTitleImageWide(imageWideUrl);
 
-                    // Details URL
-                    String detailsUrl = item.path("details").asText();
+                    // Set Content
                     logger.info("DetailsUrl: {}", detailsUrl);
-                    String content = fetchContentFromDetailsUrl(detailsUrl);
                     newsData.setContent(content);
 
                     // Save news

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FetchResponseData {
     private Integer regionId;
-    private String regionName;
+   // private String regionName;
     private String sectionName;
     private String title;
     private String date;

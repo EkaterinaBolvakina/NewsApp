@@ -7,6 +7,7 @@ import group40.newsapp.repository.NewsDataRepositoryInterface;
 import group40.newsapp.service.mapping.NewsDataConverter;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,18 +20,19 @@ public class NewsDataAddService {
     private final NewsDataRepositoryInterface newsDataRepository;
     private final NewsDataConverter newsDataConverter;
 
-   public List<NewsDataResponseDto> saveNewsFromFetchApi() throws IOException {
-       List<NewsDataResponseDto> responses= new ArrayList<>();
-       List<FetchResponseData> newsFromFetch = fetchNewsApi.fetchDataFromApi();
+    @Transactional
+    public List<NewsDataResponseDto> saveNewsFromFetchApi() throws IOException {
+        List<NewsDataResponseDto> responses = new ArrayList<>();
+        List<FetchResponseData> newsFromFetch = fetchNewsApi.fetchDataFromApi();
 
-       for (FetchResponseData fetchResponseData : newsFromFetch) {
+        for (FetchResponseData fetchResponseData : newsFromFetch) {
 
-           NewsDataEntity newsDataEntity = newsDataConverter.fromFetchApiToEntity(fetchResponseData);
-           newsDataRepository.save(newsDataEntity);
+            NewsDataEntity newsDataEntity = newsDataConverter.fromFetchApiToEntity(fetchResponseData);
+            newsDataRepository.save(newsDataEntity);
 
-           NewsDataResponseDto responseDto = newsDataConverter.fromEntityToDto(newsDataEntity);
-           responses.add(responseDto);
-       }
+            NewsDataResponseDto responseDto = newsDataConverter.fromEntityToDto(newsDataEntity);
+            responses.add(responseDto);
+        }
         return responses;
     }
 }

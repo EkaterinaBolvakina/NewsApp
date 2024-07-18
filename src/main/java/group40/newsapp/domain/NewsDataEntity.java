@@ -15,10 +15,13 @@ public class NewsDataEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer regionId;
-    private String regionName; // BundesLänder, Ausland, Inland, non-region
-    //private int sectionId;     // 0,            1,       0,      2,     3
-    private String sectionName;// BundesLänder,   Ausland, Inland, Sport, Wissenschaft
+   // private Integer regionId;
+   //private String regionName;
+   @ManyToOne
+   @JoinColumn(name = "region_news_id", referencedColumnName = "regionNewsId")
+   private Region region = new Region();
+
+    private String sectionName;
     private String title;
     private String date;
     private String titleImageSquare;
