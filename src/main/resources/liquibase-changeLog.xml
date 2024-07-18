@@ -129,5 +129,9 @@
             <column name="region_news_id" value="16"/>
             <column name="region_name" value="Thüringen"/>
         </insert>
+        <insert tableName="region">
+            <column name="region_news_id" value="17"/>
+            <column name="region_name" value="Deutschland"/>
+        </insert>
     </changeSet>
 </databaseChangeLog>
