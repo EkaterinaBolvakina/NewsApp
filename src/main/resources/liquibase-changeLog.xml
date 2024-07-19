@@ -8,7 +8,7 @@
     <!-- Create region table -->
     <changeSet id="create-table-region" author="Author1">
         <createTable tableName="region">
-            <column name="id" type="INT" autoIncrement="true">
+            <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="region_news_id" type="INT">
@@ -23,7 +23,7 @@
     <!-- Create news table -->
     <changeSet id="create-table-news" author="Author1">
         <createTable tableName="news">
-            <column name="id" type="INT" autoIncrement="true">
+            <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="region_news_id" type="INT">

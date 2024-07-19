@@ -12,18 +12,8 @@ import java.util.Optional;
 public class RegionFindService {
     private final RegionRepositoryInterface regionRepository;
 
-    public Region findRegionByRegionNewsId(Integer regionNewsId) {
-        Optional<Region> foundedRegionOpt= regionRepository.findByRegionNewsId(regionNewsId);
-
-        if (foundedRegionOpt.isPresent()) {
-            return foundedRegionOpt.get();
-        }else {
-            throw new RuntimeException();
-        }
-    }
-
-    public Region findRegionById(Integer regionId) {
-        Optional<Region> foundedRegionOpt= regionRepository.findById(regionId);
+    public Region findRegionById(Long id) {
+        Optional<Region> foundedRegionOpt= regionRepository.findById(id);
 
         if (foundedRegionOpt.isPresent()) {
             return foundedRegionOpt.get();
@@ -42,4 +32,13 @@ public class RegionFindService {
         }
     }
 
+    public Region findRegionByRegionNewsId(Integer regionNewsId) {
+        Optional<Region> foundedRegionOpt= regionRepository.findByRegionNewsId(regionNewsId);
+
+        if (foundedRegionOpt.isPresent()) {
+            return foundedRegionOpt.get();
+        }else {
+            throw new RuntimeException();
+        }
+    }
 }

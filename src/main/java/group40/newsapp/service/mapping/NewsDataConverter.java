@@ -4,7 +4,6 @@ import group40.newsapp.domain.NewsDataEntity;
 import group40.newsapp.domain.Region;
 import group40.newsapp.dto.NewsDataResponseDto;
 import group40.newsapp.dto.newsJsonModel.FetchResponseData;
-import group40.newsapp.service.regionService.IRegionFindService;
 import group40.newsapp.service.regionService.RegionFindService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

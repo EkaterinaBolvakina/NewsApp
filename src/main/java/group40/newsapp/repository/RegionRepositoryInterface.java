@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface RegionRepositoryInterface extends JpaRepository<Region, Integer> {
+public interface RegionRepositoryInterface extends JpaRepository<Region, Long> {
    Optional<Region> findByRegionName(String name);
-   Optional<Region> findById(Integer id);
+   Optional<Region> findById(Long id);
    Optional<Region> findByRegionNewsId(Integer regionNewsId);
 }
