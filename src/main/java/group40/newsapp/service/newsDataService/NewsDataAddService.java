@@ -1,6 +1,6 @@
 package group40.newsapp.service.newsDataService;
 
-import group40.newsapp.domain.NewsDataEntity;
+import group40.newsapp.models.NewsDataEntity;
 import group40.newsapp.dto.NewsDataResponseDto;
 import group40.newsapp.dto.newsJsonModel.FetchResponseData;
 import group40.newsapp.repository.NewsDataRepositoryInterface;

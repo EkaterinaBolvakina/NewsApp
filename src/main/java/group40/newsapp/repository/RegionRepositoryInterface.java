@@ -1,6 +1,6 @@
 package group40.newsapp.repository;
 
-import group40.newsapp.domain.Region;
+import group40.newsapp.models.Region;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

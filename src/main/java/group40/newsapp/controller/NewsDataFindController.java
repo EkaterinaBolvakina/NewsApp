@@ -1,6 +1,6 @@
 package group40.newsapp.controller;
 
-import group40.newsapp.domain.NewsDataEntity;
+import group40.newsapp.models.NewsDataEntity;
 import group40.newsapp.service.newsDataService.NewsDataFindService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

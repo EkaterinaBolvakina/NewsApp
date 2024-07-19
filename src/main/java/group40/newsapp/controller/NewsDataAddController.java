@@ -1,6 +1,5 @@
 package group40.newsapp.controller;
 
-import group40.newsapp.domain.NewsDataEntity;
 import group40.newsapp.dto.NewsDataResponseDto;
 import group40.newsapp.service.newsDataService.NewsDataAddService;
 import lombok.AllArgsConstructor;

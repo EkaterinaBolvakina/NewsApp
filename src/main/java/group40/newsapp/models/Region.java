@@ -1,4 +1,4 @@
-package group40.newsapp.domain;
+package group40.newsapp.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

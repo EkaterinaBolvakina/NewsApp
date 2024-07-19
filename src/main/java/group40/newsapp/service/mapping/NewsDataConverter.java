@@ -1,7 +1,7 @@
 package group40.newsapp.service.mapping;
 
-import group40.newsapp.domain.NewsDataEntity;
-import group40.newsapp.domain.Region;
+import group40.newsapp.models.NewsDataEntity;
+import group40.newsapp.models.Region;
 import group40.newsapp.dto.NewsDataResponseDto;
 import group40.newsapp.dto.newsJsonModel.FetchResponseData;
 import group40.newsapp.service.regionService.RegionFindService;
