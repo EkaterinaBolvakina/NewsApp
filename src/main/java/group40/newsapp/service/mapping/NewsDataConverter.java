@@ -24,6 +24,8 @@ public class NewsDataConverter {
         dto.setTitleImageSquare(newsDataEntity.getTitleImageSquare());
         dto.setTitleImageWide(newsDataEntity.getTitleImageWide());
         dto.setContent(newsDataEntity.getContent());
+        dto.setLikeCount(newsDataEntity.getLikeCount());
+        dto.setUnlikeCount(newsDataEntity.getUnlikeCount());
         return dto;
     }
 

@@ -29,4 +29,11 @@ public class NewsDataEntity {
     @Column(columnDefinition = "MEDIUMTEXT")
     private String content;
 
+    @Column(nullable = false)
+    private int likeCount = 0;
+
+    @Column(nullable = false)
+    private int unlikeCount = 0;
+
+    //private int comments;
 }
