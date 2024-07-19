@@ -58,6 +58,10 @@
                                  referencedColumnNames="region_news_id"
                                  constraintName="fk_news_region"/>
     </changeSet>
+    <!-- Optional: Add modifyDataType ChangeSet if needed -->
+    <changeSet id="alter-table-news-content-type" author="Author1">
+        <modifyDataType tableName="news" columnName="content" newDataType="MEDIUMTEXT"/>
+    </changeSet>
 
     <!-- Insert initial data into region table -->
     <changeSet id="insert-initial-data-region" author="Author1">

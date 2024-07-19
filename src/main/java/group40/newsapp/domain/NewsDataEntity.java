@@ -15,8 +15,7 @@ public class NewsDataEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-   // private Integer regionId;
-   //private String regionName;
+
    @ManyToOne
    @JoinColumn(name = "region_news_id", referencedColumnName = "regionNewsId")
    private Region region = new Region();
@@ -26,7 +25,8 @@ public class NewsDataEntity {
     private String date;
     private String titleImageSquare;
     private String titleImageWide;
-  //  @Lob
+
+    @Column(columnDefinition = "MEDIUMTEXT")
     private String content;
 
 }

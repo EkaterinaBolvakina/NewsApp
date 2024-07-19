@@ -8,11 +8,10 @@ import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.client.RestTemplate;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
+
 
 @Service
 @AllArgsConstructor
@@ -21,7 +20,20 @@ public class FetchNewsApi {
     private final RestTemplate restTemplate;
 
     public List<FetchResponseData> fetchDataFromApi() {
-        String url = "https://www.tagesschau.de/api2u/news";
+        List<FetchResponseData> generalNews = fetchDataFromUrl("https://www.tagesschau.de/api2u/news", "general");
+        List<FetchResponseData> sportNews = fetchDataFromUrl("https://www.tagesschau.de/api2u/news?ressort=sport", "sport");
+        List<FetchResponseData> wirtschaftNews = fetchDataFromUrl("https://www.tagesschau.de/api2u/news?ressort=wirtschaft", "wirtschaft");
+        List<FetchResponseData> wissenNews = fetchDataFromUrl("https://www.tagesschau.de/api2u/news?ressort=wissen", "wissen");
+
+        List<FetchResponseData> allNews = new ArrayList<>();
+        allNews.addAll(generalNews);
+        allNews.addAll(sportNews);
+        allNews.addAll(wirtschaftNews);
+        allNews.addAll(wissenNews);
+        return allNews;
+    }
+
+    private List<FetchResponseData> fetchDataFromUrl(String url, String apiType) {
         String json1Response = restTemplate.getForObject(url, String.class);
         ObjectMapper mapper = new ObjectMapper();
         List<FetchResponseData> savedNews = new ArrayList<>();
@@ -59,7 +71,6 @@ public class FetchNewsApi {
 
                 if ("story".equals(item.path("type").asText())
                         && !isLiveblog
-                        && !(regionId == 0 && sectionName.isEmpty())
                         && !(sectionName.equals("investigativ"))
                         && !teaserImage.isMissingNode()
                         && imageVariants.has("1x1-840")
@@ -67,6 +78,7 @@ public class FetchNewsApi {
                         && imageVariants.has("16x9-960")
                         && !imageWideUrl.isEmpty()
                         && content != null && !content.isEmpty()
+                        && (!(apiType.equals("general") && regionId == 0 && sectionName.isEmpty()))
                 ) {
                     FetchResponseData newsData = new FetchResponseData();
 
@@ -79,6 +91,13 @@ public class FetchNewsApi {
                         logger.info("SectionName: inland");
                         newsData.setSectionName("inland");
                     } else {
+                        if (apiType.equals("sport") && sectionName.isEmpty()) {
+                            sectionName = "sport";
+                        } else if (apiType.equals("wirtschaft") && sectionName.isEmpty()) {
+                            sectionName = "wirtschaft";
+                        } else if (apiType.equals("wissen") && sectionName.isEmpty()) {
+                            sectionName = "wissen";
+                        }
                         logger.info("SectionName: {}", sectionName);
                         newsData.setSectionName(sectionName);
                     }
@@ -157,6 +176,3 @@ public class FetchNewsApi {
         return content;
     }
 }
-// https://www.tagesschau.de/api2u/inland/gesellschaft/compact-verbot-100.json
-
-
