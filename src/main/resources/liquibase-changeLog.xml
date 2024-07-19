@@ -8,10 +8,10 @@
     <!-- Create region table -->
     <changeSet id="create-table-region" author="Author1">
         <createTable tableName="region">
-            <column name="id" type="BIGINT" autoIncrement="true">
+            <column name="id" type="BIGSERIAL">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="region_news_id" type="INT">
+            <column name="region_news_id" type="INTEGER">
                 <constraints unique="true" nullable="false"/>
             </column>
             <column name="region_name" type="VARCHAR(255)">
@@ -23,11 +23,10 @@
     <!-- Create news table -->
     <changeSet id="create-table-news" author="Author1">
         <createTable tableName="news">
-            <column name="id" type="BIGINT" autoIncrement="true">
+            <column name="id" type="BIGSERIAL">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="region_news_id" type="INT">
-
+            <column name="region_news_id" type="INTEGER">
             </column>
             <column name="section_name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
@@ -44,7 +43,7 @@
             <column name="title_image_wide" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="content" type="MEDIUMTEXT">
+            <column name="content" type="TEXT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -57,10 +56,6 @@
                                  referencedTableName="region"
                                  referencedColumnNames="region_news_id"
                                  constraintName="fk_news_region"/>
-    </changeSet>
-    <!-- Optional: Add modifyDataType ChangeSet if needed -->
-    <changeSet id="alter-table-news-content-type" author="Author1">
-        <modifyDataType tableName="news" columnName="content" newDataType="MEDIUMTEXT"/>
     </changeSet>
 
     <!-- Insert initial data into region table -->
