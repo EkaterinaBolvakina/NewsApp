@@ -6,10 +6,7 @@ import group40.newsapp.service.newsCommentService.AddNewsCommentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/news")
@@ -17,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AddNewsCommentController {
     private final AddNewsCommentService addNewsCommentService;
 
-    @PostMapping("/addComment")
-    public ResponseEntity<NewsCommentResponseDTO> addNewsComment(@Valid @RequestBody NewsCommentRequestDTO newsCommentRequestDTO) {
+    @PostMapping("/{newsId}/addComment")
+    public ResponseEntity<NewsCommentResponseDTO> addNewsComment(@Valid @RequestBody NewsCommentRequestDTO newsCommentRequestDTO, @PathVariable Long newsId) {
         return addNewsCommentService.addNewsComment(newsCommentRequestDTO);
     }
 }
