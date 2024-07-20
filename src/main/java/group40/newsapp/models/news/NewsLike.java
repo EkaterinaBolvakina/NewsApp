@@ -1,4 +1,4 @@
-package group40.newsapp.models;
+package group40.newsapp.models.news;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "news_unlike")
-public class NewsUnlike {
+@Table(name = "news_like")
+public class NewsLike {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

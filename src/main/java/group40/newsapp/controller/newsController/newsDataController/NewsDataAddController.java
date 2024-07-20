@@ -1,6 +1,6 @@
-package group40.newsapp.controller;
+package group40.newsapp.controller.newsController.newsDataController;
 
-import group40.newsapp.dto.NewsDataResponseDto;
+import group40.newsapp.DTO.newsDTO.NewsDataResponseDto;
 import group40.newsapp.service.newsDataService.NewsDataAddService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

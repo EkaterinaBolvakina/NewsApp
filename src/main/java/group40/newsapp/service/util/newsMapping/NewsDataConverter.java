@@ -1,9 +1,9 @@
-package group40.newsapp.service.mapping;
+package group40.newsapp.service.util.newsMapping;
 
-import group40.newsapp.models.NewsDataEntity;
-import group40.newsapp.models.Region;
-import group40.newsapp.dto.NewsDataResponseDto;
-import group40.newsapp.dto.newsJsonModel.FetchResponseData;
+import group40.newsapp.models.news.NewsDataEntity;
+import group40.newsapp.models.region.Region;
+import group40.newsapp.DTO.newsDTO.NewsDataResponseDto;
+import group40.newsapp.DTO.newsDTO.newsJsonModel.FetchResponseData;
 import group40.newsapp.service.regionService.RegionFindService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

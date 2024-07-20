@@ -1,4 +1,4 @@
-package group40.newsapp.controller;
+package group40.newsapp.controller.newsController.newsDataController;
 
 import group40.newsapp.service.newsDataService.NewsDataUpdateService;
 import jakarta.servlet.http.HttpServletRequest;

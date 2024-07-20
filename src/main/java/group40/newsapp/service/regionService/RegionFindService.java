@@ -1,6 +1,6 @@
 package group40.newsapp.service.regionService;
 
-import group40.newsapp.models.Region;
+import group40.newsapp.models.region.Region;
 import group40.newsapp.repository.RegionRepositoryInterface;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

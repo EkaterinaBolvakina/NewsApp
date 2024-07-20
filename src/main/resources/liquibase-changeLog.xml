@@ -133,4 +133,67 @@
             <column name="region_name" value="Deutschland"/>
         </insert>
     </changeSet>
+
+    <!-- USER  -->
+    <changeSet id="create.table.role" author="developer">
+        <createTable tableName="role">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints  primaryKey="true" nullable="false"/>
+            </column>
+            <column name="role" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="insert.default.roles" author="developer">
+        <insert tableName="role">
+            <column name="role" value="ADMIN"/>
+        </insert>
+        <insert tableName="role">
+            <column name="role" value="USER"/>
+        </insert>
+    </changeSet>
+    <changeSet id="create.table.user" author="developer">
+        <createTable tableName="user">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar (255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar (255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar (255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="role_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" type="varchar (255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="user" baseColumnNames="role_id" constraintName="fk_user_role_id"
+                                 referencedTableName="role"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="insert.default.user" author="developer">
+        <insert tableName="user">
+            <column name="name" value="Administrator"/>
+            <column name="password" value="$2a$10$mISx06jsPFcUokNLGacWqeJjG4fHud4RlgIzIfd9dxpbpEO0iJ33i"/>
+            <column name="email" value="admin@company.com"/>
+            <column name="role_id" value="1"/>
+            <column name="state" value="1"/>
+            <column name="code" value=""/>
+        </insert>
+    </changeSet>
+
+
 </databaseChangeLog>

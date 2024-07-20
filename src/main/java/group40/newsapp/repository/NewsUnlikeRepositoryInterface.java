@@ -1,7 +1,7 @@
 package group40.newsapp.repository;
 
-import group40.newsapp.models.NewsDataEntity;
-import group40.newsapp.models.NewsUnlike;
+import group40.newsapp.models.news.NewsDataEntity;
+import group40.newsapp.models.news.NewsUnlike;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

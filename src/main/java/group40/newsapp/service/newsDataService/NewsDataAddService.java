@@ -1,10 +1,10 @@
 package group40.newsapp.service.newsDataService;
 
-import group40.newsapp.models.NewsDataEntity;
-import group40.newsapp.dto.NewsDataResponseDto;
-import group40.newsapp.dto.newsJsonModel.FetchResponseData;
+import group40.newsapp.models.news.NewsDataEntity;
+import group40.newsapp.DTO.newsDTO.NewsDataResponseDto;
+import group40.newsapp.DTO.newsDTO.newsJsonModel.FetchResponseData;
 import group40.newsapp.repository.NewsDataRepositoryInterface;
-import group40.newsapp.service.mapping.NewsDataConverter;
+import group40.newsapp.service.util.newsMapping.NewsDataConverter;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

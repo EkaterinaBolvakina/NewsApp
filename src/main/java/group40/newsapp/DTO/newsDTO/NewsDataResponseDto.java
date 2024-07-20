@@ -1,4 +1,4 @@
-package group40.newsapp.dto.newsJsonModel;
+package group40.newsapp.DTO.newsDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,14 +7,17 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FetchResponseData {
+public class NewsDataResponseDto {
+    private Long id;
     private Integer regionId;
-   // private String regionName;
+    private String regionName;
     private String sectionName;
     private String title;
     private String date;
     private String titleImageSquare;
     private String titleImageWide;
-    // @Lob
     private String content;
+    private int likeCount;
+    private int unlikeCount;
+  //private int comments;
 }

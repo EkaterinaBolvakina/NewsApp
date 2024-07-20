@@ -1,5 +1,6 @@
-package group40.newsapp.models;
+package group40.newsapp.models.news;
 
+import group40.newsapp.models.region.Region;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

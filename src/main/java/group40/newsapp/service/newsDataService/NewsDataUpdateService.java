@@ -1,8 +1,8 @@
 package group40.newsapp.service.newsDataService;
 
-import group40.newsapp.models.NewsDataEntity;
-import group40.newsapp.models.NewsLike;
-import group40.newsapp.models.NewsUnlike;
+import group40.newsapp.models.news.NewsDataEntity;
+import group40.newsapp.models.news.NewsLike;
+import group40.newsapp.models.news.NewsUnlike;
 import group40.newsapp.repository.NewsDataRepositoryInterface;
 import group40.newsapp.repository.NewsLikeRepositoryInterface;
 import group40.newsapp.repository.NewsUnlikeRepositoryInterface;
