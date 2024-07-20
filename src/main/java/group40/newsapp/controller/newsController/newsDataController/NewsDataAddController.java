@@ -1,7 +1,7 @@
 package group40.newsapp.controller.newsController.newsDataController;
 
-import group40.newsapp.DTO.newsDTO.NewsDataResponseDto;
-import group40.newsapp.service.newsDataService.NewsDataAddService;
+import group40.newsapp.DTO.news.NewsDataResponseDto;
+import group40.newsapp.service.newsDataService.AddNewsDataService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +14,10 @@ import java.util.List;
 @RequestMapping("/api/loading")
 @AllArgsConstructor
 public class NewsDataAddController {
-    private final NewsDataAddService newsDataAddService;
+    private final AddNewsDataService addNewsDataService;
 
     @GetMapping
     public List<NewsDataResponseDto> getAllLoadedNews() throws IOException {
-        return newsDataAddService.saveNewsFromFetchApi();
+        return addNewsDataService.saveNewsFromFetchApi();
     }
 }

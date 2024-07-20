@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface NewsLikeRepositoryInterface extends JpaRepository<NewsLike, Long> {
+public interface NewsLikeRepository extends JpaRepository<NewsLike, Long> {
 
     boolean existsByNewsDataAndUser(NewsDataEntity newsData, User user);
 

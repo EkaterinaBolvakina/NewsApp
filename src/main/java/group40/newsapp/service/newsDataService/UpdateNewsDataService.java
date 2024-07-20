@@ -4,9 +4,9 @@ import group40.newsapp.models.news.NewsDataEntity;
 import group40.newsapp.models.news.NewsLike;
 import group40.newsapp.models.news.NewsUnlike;
 import group40.newsapp.models.user.User;
-import group40.newsapp.repository.NewsDataRepositoryInterface;
-import group40.newsapp.repository.NewsLikeRepositoryInterface;
-import group40.newsapp.repository.NewsUnlikeRepositoryInterface;
+import group40.newsapp.repository.NewsDataRepository;
+import group40.newsapp.repository.NewsLikeRepository;
+import group40.newsapp.repository.NewsUnlikeRepository;
 import group40.newsapp.service.user.UserFindService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,10 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
-public class NewsDataUpdateService {
-    private final NewsDataRepositoryInterface newsDataRepository;
-    private final NewsLikeRepositoryInterface newsLikeRepository;
-    private final NewsUnlikeRepositoryInterface newsUnlikeRepository;
+public class UpdateNewsDataService {
+    private final NewsDataRepository newsDataRepository;
+    private final NewsLikeRepository newsLikeRepository;
+    private final NewsUnlikeRepository newsUnlikeRepository;
     private final UserFindService userFindService;
 
     @Transactional

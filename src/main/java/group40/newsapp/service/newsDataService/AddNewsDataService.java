@@ -1,9 +1,9 @@
 package group40.newsapp.service.newsDataService;
 
 import group40.newsapp.models.news.NewsDataEntity;
-import group40.newsapp.DTO.newsDTO.NewsDataResponseDto;
-import group40.newsapp.DTO.newsDTO.newsJsonModel.FetchResponseData;
-import group40.newsapp.repository.NewsDataRepositoryInterface;
+import group40.newsapp.DTO.news.NewsDataResponseDto;
+import group40.newsapp.DTO.news.newsJsonModel.FetchResponseData;
+import group40.newsapp.repository.NewsDataRepository;
 import group40.newsapp.service.util.newsMapping.NewsDataConverter;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,9 +15,9 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class NewsDataAddService {
+public class AddNewsDataService {
     private final FetchNewsApi fetchNewsApi;
-    private final NewsDataRepositoryInterface newsDataRepository;
+    private final NewsDataRepository newsDataRepository;
     private final NewsDataConverter newsDataConverter;
 
     @Transactional

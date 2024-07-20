@@ -1,7 +1,7 @@
 package group40.newsapp.service.regionService;
 
 import group40.newsapp.models.region.Region;
-import group40.newsapp.repository.RegionRepositoryInterface;
+import group40.newsapp.repository.RegionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,8 +9,8 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class RegionFindService {
-    private final RegionRepositoryInterface regionRepository;
+public class FindRegionService {
+    private final RegionRepository regionRepository;
 
     public Region findRegionById(Long id) {
         Optional<Region> foundedRegionOpt= regionRepository.findById(id);

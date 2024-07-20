@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface NewsDataRepositoryInterface extends JpaRepository<NewsDataEntity, Long> {
+public interface NewsDataRepository extends JpaRepository<NewsDataEntity, Long> {
     //Optional<NewsDataEntity> findById(Long id);
     List<NewsDataEntity> findBySectionName(String sectionName);
     List<NewsDataEntity> findByRegionId(Integer regionNewsId);

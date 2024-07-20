@@ -2,16 +2,16 @@ package group40.newsapp.service.util.newsMapping;
 
 import group40.newsapp.models.news.NewsDataEntity;
 import group40.newsapp.models.region.Region;
-import group40.newsapp.DTO.newsDTO.NewsDataResponseDto;
-import group40.newsapp.DTO.newsDTO.newsJsonModel.FetchResponseData;
-import group40.newsapp.service.regionService.RegionFindService;
+import group40.newsapp.DTO.news.NewsDataResponseDto;
+import group40.newsapp.DTO.news.newsJsonModel.FetchResponseData;
+import group40.newsapp.service.regionService.FindRegionService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
 public class NewsDataConverter {
-    private final RegionFindService regionFindService;
+    private final FindRegionService findRegionService;
 
     public NewsDataResponseDto fromEntityToDto(NewsDataEntity newsDataEntity) {
         NewsDataResponseDto dto = new NewsDataResponseDto();
@@ -32,7 +32,7 @@ public class NewsDataConverter {
     public NewsDataEntity fromFetchApiToEntity(FetchResponseData dto) {
         NewsDataEntity newsDataEntity = new NewsDataEntity();
 
-        Region region = regionFindService.findRegionByRegionNewsId(dto.getRegionId());
+        Region region = findRegionService.findRegionByRegionNewsId(dto.getRegionId());
         newsDataEntity.setRegion(region);
         newsDataEntity.setSectionName(dto.getSectionName());
         newsDataEntity.setTitle(dto.getTitle());

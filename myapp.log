@@ -94,7 +94,7 @@ Caused by: org.postgresql.util.PSQLException: FEHLER: Typ »mediumtext« existie
 2024-07-20T00:04:23.251+02:00 ERROR 11276 --- [NewsApp] [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: Cannot unlike a news item that has already been liked by this session/IP address] with root cause
 
 java.lang.RuntimeException: Cannot unlike a news item that has already been liked by this session/IP address
-	at group40.newsapp.service.newsDataService.NewsDataUpdateService.addUnlikeToNews(NewsDataUpdateService.java:52) ~[classes/:na]
+	at group40.newsapp.service.newsDataService.UpdateNewsDataService.addUnlikeToNews(NewsDataUpdateService.java:52) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.10.jar:6.1.10]
@@ -107,7 +107,7 @@ java.lang.RuntimeException: Cannot unlike a news item that has already been like
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.10.jar:6.1.10]
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.10.jar:6.1.10]
-	at group40.newsapp.service.newsDataService.NewsDataUpdateService$$SpringCGLIB$$0.addUnlikeToNews(<generated>) ~[classes/:na]
+	at group40.newsapp.service.newsDataService.UpdateNewsDataService$$SpringCGLIB$$0.addUnlikeToNews(<generated>) ~[classes/:na]
 	at group40.newsapp.controller.newsController.newsDataController.NewsDataUpdateController.unlikeNews(NewsDataUpdateController.java:25) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
@@ -1748,7 +1748,7 @@ Caused by: org.postgresql.util.PSQLException: FEHLER: Typ »mediumtext« existie
 2024-07-20T11:25:42.658+02:00 ERROR 7324 --- [NewsApp] [http-nio-8080-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: Cannot like a news item that has already been unliked by this session/IP address] with root cause
 
 java.lang.RuntimeException: Cannot like a news item that has already been unliked by this session/IP address
-	at group40.newsapp.service.newsDataService.NewsDataUpdateService.addLikeToNews(NewsDataUpdateService.java:28) ~[classes/:na]
+	at group40.newsapp.service.newsDataService.UpdateNewsDataService.addLikeToNews(NewsDataUpdateService.java:28) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.10.jar:6.1.10]
@@ -1761,7 +1761,7 @@ java.lang.RuntimeException: Cannot like a news item that has already been unlike
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.10.jar:6.1.10]
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.10.jar:6.1.10]
-	at group40.newsapp.service.newsDataService.NewsDataUpdateService$$SpringCGLIB$$0.addLikeToNews(<generated>) ~[classes/:na]
+	at group40.newsapp.service.newsDataService.UpdateNewsDataService$$SpringCGLIB$$0.addLikeToNews(<generated>) ~[classes/:na]
 	at group40.newsapp.controller.newsController.newsDataController.NewsDataUpdateController.likeNews(NewsDataUpdateController.java:18) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
@@ -1815,7 +1815,7 @@ java.lang.RuntimeException: Cannot like a news item that has already been unlike
 2024-07-20T11:30:41.048+02:00 ERROR 7324 --- [NewsApp] [http-nio-8080-exec-9] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: Cannot like a news item that has already been unliked by this session/IP address] with root cause
 
 java.lang.RuntimeException: Cannot like a news item that has already been unliked by this session/IP address
-	at group40.newsapp.service.newsDataService.NewsDataUpdateService.addLikeToNews(NewsDataUpdateService.java:28) ~[classes/:na]
+	at group40.newsapp.service.newsDataService.UpdateNewsDataService.addLikeToNews(NewsDataUpdateService.java:28) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.10.jar:6.1.10]
@@ -1828,7 +1828,7 @@ java.lang.RuntimeException: Cannot like a news item that has already been unlike
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.10.jar:6.1.10]
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.10.jar:6.1.10]
-	at group40.newsapp.service.newsDataService.NewsDataUpdateService$$SpringCGLIB$$0.addLikeToNews(<generated>) ~[classes/:na]
+	at group40.newsapp.service.newsDataService.UpdateNewsDataService$$SpringCGLIB$$0.addLikeToNews(<generated>) ~[classes/:na]
 	at group40.newsapp.controller.newsController.newsDataController.NewsDataUpdateController.likeNews(NewsDataUpdateController.java:18) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
@@ -3899,7 +3899,7 @@ Caused by: org.postgresql.util.PSQLException: FEHLER: Typ »mediumtext« existie
 2024-07-20T14:09:24.502+02:00 ERROR 6620 --- [NewsApp] [http-nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: Cannot unlike a news item that has already been liked by this user id: 1] with root cause
 
 java.lang.RuntimeException: Cannot unlike a news item that has already been liked by this user id: 1
-	at group40.newsapp.service.newsDataService.NewsDataUpdateService.addUnlikeToNews(NewsDataUpdateService.java:55) ~[classes/:na]
+	at group40.newsapp.service.newsDataService.UpdateNewsDataService.addUnlikeToNews(NewsDataUpdateService.java:55) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.10.jar:6.1.10]
@@ -3912,7 +3912,7 @@ java.lang.RuntimeException: Cannot unlike a news item that has already been like
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.10.jar:6.1.10]
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.10.jar:6.1.10]
-	at group40.newsapp.service.newsDataService.NewsDataUpdateService$$SpringCGLIB$$0.addUnlikeToNews(<generated>) ~[classes/:na]
+	at group40.newsapp.service.newsDataService.UpdateNewsDataService$$SpringCGLIB$$0.addUnlikeToNews(<generated>) ~[classes/:na]
 	at group40.newsapp.controller.newsController.newsDataController.NewsDataUpdateController.unlikeNews(NewsDataUpdateController.java:21) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
@@ -3966,9 +3966,9 @@ java.lang.RuntimeException: Cannot unlike a news item that has already been like
 2024-07-20T14:13:33.780+02:00 ERROR 6620 --- [NewsApp] [http-nio-8080-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: News not found] with root cause
 
 java.lang.RuntimeException: News not found
-	at group40.newsapp.service.newsDataService.NewsDataUpdateService.lambda$addUnlikeToNews$1(NewsDataUpdateService.java:49) ~[classes/:na]
+	at group40.newsapp.service.newsDataService.UpdateNewsDataService.lambda$addUnlikeToNews$1(NewsDataUpdateService.java:49) ~[classes/:na]
 	at java.base/java.util.Optional.orElseThrow(Optional.java:403) ~[na:na]
-	at group40.newsapp.service.newsDataService.NewsDataUpdateService.addUnlikeToNews(NewsDataUpdateService.java:49) ~[classes/:na]
+	at group40.newsapp.service.newsDataService.UpdateNewsDataService.addUnlikeToNews(NewsDataUpdateService.java:49) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.10.jar:6.1.10]
@@ -3981,7 +3981,7 @@ java.lang.RuntimeException: News not found
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.10.jar:6.1.10]
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.10.jar:6.1.10]
-	at group40.newsapp.service.newsDataService.NewsDataUpdateService$$SpringCGLIB$$0.addUnlikeToNews(<generated>) ~[classes/:na]
+	at group40.newsapp.service.newsDataService.UpdateNewsDataService$$SpringCGLIB$$0.addUnlikeToNews(<generated>) ~[classes/:na]
 	at group40.newsapp.controller.newsController.newsDataController.NewsDataUpdateController.unlikeNews(NewsDataUpdateController.java:21) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]

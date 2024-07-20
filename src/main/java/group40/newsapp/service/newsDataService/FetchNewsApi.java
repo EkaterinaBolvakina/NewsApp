@@ -2,7 +2,7 @@ package group40.newsapp.service.newsDataService;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import group40.newsapp.DTO.newsDTO.newsJsonModel.FetchResponseData;
+import group40.newsapp.DTO.news.newsJsonModel.FetchResponseData;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;

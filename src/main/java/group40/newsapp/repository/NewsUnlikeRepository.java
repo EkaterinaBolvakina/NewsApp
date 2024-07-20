@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface NewsUnlikeRepositoryInterface extends JpaRepository<NewsUnlike, Long> {
+public interface NewsUnlikeRepository extends JpaRepository<NewsUnlike, Long> {
     boolean existsByNewsDataAndUser(NewsDataEntity newsData, User user);
 
     void deleteAllUnlikesByNewsDataAndUser(NewsDataEntity newsData, User user);

@@ -1,4 +1,4 @@
-package group40.newsapp.DTO.newsDTO;
+package group40.newsapp.DTO.news;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

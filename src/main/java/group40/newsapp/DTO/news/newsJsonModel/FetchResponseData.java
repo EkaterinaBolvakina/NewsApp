@@ -1,4 +1,4 @@
-package group40.newsapp.DTO.newsDTO.newsJsonModel;
+package group40.newsapp.DTO.news.newsJsonModel;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
