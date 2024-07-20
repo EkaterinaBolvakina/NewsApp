@@ -63,6 +63,4 @@ public class NewsCommentConverter {
         }
         return dto;
     }
-
-
 }

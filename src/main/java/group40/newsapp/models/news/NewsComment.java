@@ -34,4 +34,10 @@ public class NewsComment {
         this.user = user;
         this.newsDataEntity = newsDataEntity;
     }
+
+    public NewsComment(Long id, String comment, LocalDateTime commentDate) {
+        this.id = id;
+        this.comment = comment;
+        this.commentDate = commentDate;
+    }
 }
