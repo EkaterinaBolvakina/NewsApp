@@ -1,8 +1,6 @@
 package group40.newsapp.repository;
 
 import group40.newsapp.models.news.NewsComment;
-import group40.newsapp.models.news.NewsDataEntity;
-import group40.newsapp.models.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -19,7 +17,7 @@ public interface NewsCommentRepository extends JpaRepository<NewsComment, Long> 
     List<NewsComment> findAllByUserId(Long userId);
     List<NewsComment> findAllByUserName(String name);
     List<NewsComment> findAllByNewsDataEntityId(Long newsDataEntityId);
-    List<NewsComment> findAllByCommentDate(LocalDateTime commentDate);
+   // List<NewsComment> findAllByCommentDate(LocalDateTime commentDate);
 
     @Modifying
     @Query("UPDATE NewsComment c SET c.comment = :comment, c.commentDate = :commentDate WHERE c.id = :id")
