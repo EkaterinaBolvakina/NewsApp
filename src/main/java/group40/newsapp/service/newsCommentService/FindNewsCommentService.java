@@ -3,7 +3,6 @@ package group40.newsapp.service.newsCommentService;
 import group40.newsapp.DTO.newsComment.NewsCommentResponseDTO;
 import group40.newsapp.exception.RestException;
 import group40.newsapp.models.news.NewsComment;
-import group40.newsapp.models.news.NewsDataEntity;
 import group40.newsapp.repository.NewsCommentRepository;
 import group40.newsapp.service.util.newsCommentMapping.NewsCommentConverter;
 import lombok.AllArgsConstructor;
