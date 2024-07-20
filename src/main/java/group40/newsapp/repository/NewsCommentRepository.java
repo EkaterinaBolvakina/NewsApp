@@ -17,14 +17,9 @@ import java.util.Optional;
 public interface NewsCommentRepository extends JpaRepository<NewsComment, Long> {
     Optional<NewsComment> findById(Long id);
     List<NewsComment> findAllByUserId(Long userId);
-    List<NewsComment> findAllByUser(User user);
-    List<NewsComment> findAllByNewsDataEntity(NewsDataEntity newsDataEntity);
+    List<NewsComment> findAllByUserName(String name);
     List<NewsComment> findAllByNewsDataEntityId(Long newsDataEntityId);
     List<NewsComment> findAllByCommentDate(LocalDateTime commentDate);
-
-  //  @Modifying
-  //  @Query("UPDATE NewsComment c SET c.comment = :comment WHERE c.id = :id")
-  //  int updateCommentById(@Param("comment") String comment, @Param("id") Long id);
 
     @Modifying
     @Query("UPDATE NewsComment c SET c.comment = :comment, c.commentDate = :commentDate WHERE c.id = :id")
