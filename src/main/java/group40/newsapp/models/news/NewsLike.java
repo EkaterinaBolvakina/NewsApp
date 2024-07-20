@@ -1,5 +1,6 @@
 package group40.newsapp.models.news;
 
+import group40.newsapp.models.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,10 +16,14 @@ public class NewsLike {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "news_id", referencedColumnName = "id")
     private NewsDataEntity newsData;
 
-    private String sessionId;
-    private String ipAddress;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "news_like_user_id", referencedColumnName = "id")
+    private User user;
+
+    //private String sessionId;
+    //private String ipAddress;
 }

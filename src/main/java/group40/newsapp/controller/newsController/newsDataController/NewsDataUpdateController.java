@@ -11,31 +11,23 @@ import org.springframework.web.bind.annotation.*;
 public class NewsDataUpdateController {
     private final NewsDataUpdateService newsDataUpdateService;
 
-    @PostMapping("/{newsId}/like")
-    public void likeNews(@PathVariable Long newsId, HttpServletRequest request) {
-        String sessionId = request.getSession().getId();
-        String ipAddress = request.getRemoteAddr();
-        newsDataUpdateService.addLikeToNews(newsId, sessionId, ipAddress);
+    @PostMapping("/{newsId}/{userId}/like")
+    public void likeNews(@PathVariable Long newsId, @PathVariable Long userId) {
+        newsDataUpdateService.addLikeToNews(newsId, userId);
     }
 
-    @PostMapping("/{newsId}/unlike")
-    public void unlikeNews(@PathVariable Long newsId, HttpServletRequest request) {
-        String sessionId = request.getSession().getId();
-        String ipAddress = request.getRemoteAddr();
-        newsDataUpdateService.addUnlikeToNews(newsId, sessionId, ipAddress);
+    @PostMapping("/{newsId}/{userId}/unlike")
+    public void unlikeNews(@PathVariable Long newsId, @PathVariable Long userId) {
+        newsDataUpdateService.addUnlikeToNews(newsId, userId);
     }
 
-    @DeleteMapping("/{newsId}/like")
-    public void removeLike(@PathVariable Long newsId, HttpServletRequest request) {
-        String sessionId = request.getSession().getId();
-        String ipAddress = request.getRemoteAddr();
-        newsDataUpdateService.removeLike(newsId, sessionId, ipAddress);
+    @DeleteMapping("/{newsId}/{userId}/like")
+    public void removeLike(@PathVariable Long newsId, @PathVariable Long userId) {
+        newsDataUpdateService.removeLike(newsId, userId);
     }
 
-    @DeleteMapping("/{newsId}/unlike")
-    public void removeUnlike(@PathVariable Long newsId, HttpServletRequest request) {
-        String sessionId = request.getSession().getId();
-        String ipAddress = request.getRemoteAddr();
-        newsDataUpdateService.removeUnlike(newsId, sessionId, ipAddress);
+    @DeleteMapping("/{newsId}/{userId}/unlike")
+    public void removeUnlike(@PathVariable Long newsId, @PathVariable Long userId) {
+        newsDataUpdateService.removeUnlike(newsId, userId);
     }
 }
