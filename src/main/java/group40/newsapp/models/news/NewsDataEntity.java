@@ -36,5 +36,6 @@ public class NewsDataEntity {
     @Column(nullable = false)
     private int unlikeCount = 0;
 
-    //private int comments;
+    @Column(nullable = false, name = "comments_count")
+    private int commentsCount = 0;
 }

@@ -19,5 +19,5 @@ public class NewsDataResponseDto {
     private String content;
     private int likeCount;
     private int unlikeCount;
-  //private int comments;
+    private int commentsCount;
 }

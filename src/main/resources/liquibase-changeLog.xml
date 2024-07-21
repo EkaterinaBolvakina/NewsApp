@@ -46,6 +46,8 @@
             <column name="content" type="TEXT">
                 <constraints nullable="false"/>
             </column>
+            <column name="comments_count" type="INTEGER">
+            </column>
         </createTable>
     </changeSet>
 

@@ -122,4 +122,16 @@ public class UpdateNewsDataService {
                     " because it has already been removed by this user id: " + userId);
         }
     }
+
+    public void upCommentsCount(Long newsId) {
+        NewsDataEntity newsData = findNewsDataService.getNewsById(newsId);
+        newsData.setCommentsCount(newsData.getCommentsCount() + 1);
+        newsDataRepository.save(newsData);
+    }
+
+    public void downCommentsCount(Long newsId) {
+        NewsDataEntity newsData = findNewsDataService.getNewsById(newsId);
+        newsData.setCommentsCount(newsData.getCommentsCount() - 1);
+        newsDataRepository.save(newsData);
+    }
 }
