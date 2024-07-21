@@ -6070,7 +6070,7 @@ Caused by: org.postgresql.util.PSQLException: FEHLER: Typ »mediumtext« existie
 2024-07-21T17:33:45.837+02:00 ERROR 7648 --- [NewsApp] [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "group40.newsapp.service.newsDataService.FindNewsDataService.findAllNews()" because "this.findNewsDataService" is null] with root cause
 
 java.lang.NullPointerException: Cannot invoke "group40.newsapp.service.newsDataService.FindNewsDataService.findAllNews()" because "this.findNewsDataService" is null
-	at group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNews(NewsDataFindController.java:20) ~[classes/:na]
+	at group40.newsapp.controller.newsController.FindNewsController.findAllNews(NewsDataFindController.java:20) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.10.jar:6.1.10]
@@ -6123,7 +6123,7 @@ java.lang.NullPointerException: Cannot invoke "group40.newsapp.service.newsDataS
 2024-07-21T17:33:57.712+02:00 ERROR 7648 --- [NewsApp] [http-nio-8080-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "group40.newsapp.service.newsDataService.FindNewsDataService.findAllNews()" because "this.findNewsDataService" is null] with root cause
 
 java.lang.NullPointerException: Cannot invoke "group40.newsapp.service.newsDataService.FindNewsDataService.findAllNews()" because "this.findNewsDataService" is null
-	at group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNews(NewsDataFindController.java:20) ~[classes/:na]
+	at group40.newsapp.controller.newsController.FindNewsController.findAllNews(NewsDataFindController.java:20) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.10.jar:6.1.10]
@@ -6176,7 +6176,7 @@ java.lang.NullPointerException: Cannot invoke "group40.newsapp.service.newsDataS
 2024-07-21T17:36:02.419+02:00 ERROR 7648 --- [NewsApp] [http-nio-8080-exec-9] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "group40.newsapp.service.newsDataService.FindNewsDataService.findAllNews()" because "this.findNewsDataService" is null] with root cause
 
 java.lang.NullPointerException: Cannot invoke "group40.newsapp.service.newsDataService.FindNewsDataService.findAllNews()" because "this.findNewsDataService" is null
-	at group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNews(NewsDataFindController.java:20) ~[classes/:na]
+	at group40.newsapp.controller.newsController.FindNewsController.findAllNews(NewsDataFindController.java:20) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.10.jar:6.1.10]
@@ -6420,9 +6420,9 @@ Caused by: org.postgresql.util.PSQLException: FEHLER: Typ »mediumtext« existie
 2024-07-21T18:00:57.209+02:00  INFO 11340 --- [NewsApp] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-07-21T18:00:57.209+02:00  INFO 11340 --- [NewsApp] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-07-21T18:00:57.210+02:00  INFO 11340 --- [NewsApp] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2024-07-21T18:01:15.286+02:00 ERROR 11340 --- [NewsApp] [http-nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/9': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsBySection(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionName(java.lang.String)}] with root cause
+2024-07-21T18:01:15.286+02:00 ERROR 11340 --- [NewsApp] [http-nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/9': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsBySection(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionName(java.lang.String)}] with root cause
 
-java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/9': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsBySection(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionName(java.lang.String)}
+java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/9': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsBySection(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionName(java.lang.String)}
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:431) ~[spring-webmvc-6.1.10.jar:6.1.10]
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:382) ~[spring-webmvc-6.1.10.jar:6.1.10]
 	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:127) ~[spring-webmvc-6.1.10.jar:6.1.10]
@@ -6470,9 +6470,9 @@ java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
 	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
 
-2024-07-21T18:01:35.218+02:00 ERROR 11340 --- [NewsApp] [http-nio-8080-exec-9] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/9L': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsBySection(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionName(java.lang.String)}] with root cause
+2024-07-21T18:01:35.218+02:00 ERROR 11340 --- [NewsApp] [http-nio-8080-exec-9] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/9L': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsBySection(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionName(java.lang.String)}] with root cause
 
-java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/9L': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsBySection(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionName(java.lang.String)}
+java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/9L': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsBySection(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionName(java.lang.String)}
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:431) ~[spring-webmvc-6.1.10.jar:6.1.10]
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:382) ~[spring-webmvc-6.1.10.jar:6.1.10]
 	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:127) ~[spring-webmvc-6.1.10.jar:6.1.10]
@@ -6520,9 +6520,9 @@ java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
 	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
 
-2024-07-21T18:03:17.584+02:00 ERROR 11340 --- [NewsApp] [http-nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/1': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsBySection(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionName(java.lang.String)}] with root cause
+2024-07-21T18:03:17.584+02:00 ERROR 11340 --- [NewsApp] [http-nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/1': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsBySection(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionName(java.lang.String)}] with root cause
 
-java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/1': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsBySection(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionName(java.lang.String)}
+java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/1': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsBySection(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionName(java.lang.String)}
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:431) ~[spring-webmvc-6.1.10.jar:6.1.10]
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:382) ~[spring-webmvc-6.1.10.jar:6.1.10]
 	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:127) ~[spring-webmvc-6.1.10.jar:6.1.10]
@@ -6765,9 +6765,9 @@ Caused by: org.postgresql.util.PSQLException: FEHLER: Typ »mediumtext« existie
 2024-07-21T18:15:03.325+02:00  INFO 7764 --- [NewsApp] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-07-21T18:15:03.325+02:00  INFO 7764 --- [NewsApp] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-07-21T18:15:03.326+02:00  INFO 7764 --- [NewsApp] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2024-07-21T18:17:19.227+02:00 ERROR 7764 --- [NewsApp] [http-nio-8080-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/region/sport': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionName(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionId(java.lang.Long)}] with root cause
+2024-07-21T18:17:19.227+02:00 ERROR 7764 --- [NewsApp] [http-nio-8080-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/region/sport': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionName(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionId(java.lang.Long)}] with root cause
 
-java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/region/sport': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionName(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionId(java.lang.Long)}
+java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/region/sport': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionName(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionId(java.lang.Long)}
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:431) ~[spring-webmvc-6.1.10.jar:6.1.10]
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:382) ~[spring-webmvc-6.1.10.jar:6.1.10]
 	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:127) ~[spring-webmvc-6.1.10.jar:6.1.10]
@@ -6815,9 +6815,9 @@ java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
 	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
 
-2024-07-21T18:20:24.610+02:00 ERROR 7764 --- [NewsApp] [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/region/Hamburg': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionName(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionId(java.lang.Long)}] with root cause
+2024-07-21T18:20:24.610+02:00 ERROR 7764 --- [NewsApp] [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/region/Hamburg': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionName(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionId(java.lang.Long)}] with root cause
 
-java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/region/Hamburg': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionName(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionId(java.lang.Long)}
+java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/region/Hamburg': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionName(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionId(java.lang.Long)}
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:431) ~[spring-webmvc-6.1.10.jar:6.1.10]
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:382) ~[spring-webmvc-6.1.10.jar:6.1.10]
 	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:127) ~[spring-webmvc-6.1.10.jar:6.1.10]
@@ -6865,9 +6865,9 @@ java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
 	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
 
-2024-07-21T18:22:48.112+02:00 ERROR 7764 --- [NewsApp] [http-nio-8080-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/region/Hamburg': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionName(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionId(java.lang.Long)}] with root cause
+2024-07-21T18:22:48.112+02:00 ERROR 7764 --- [NewsApp] [http-nio-8080-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/region/Hamburg': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionName(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionId(java.lang.Long)}] with root cause
 
-java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/region/Hamburg': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionName(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.newsDataController.NewsDataFindController.findAllNewsByRegionId(java.lang.Long)}
+java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/news/region/Hamburg': {public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionName(java.lang.String), public org.springframework.http.ResponseEntity group40.newsapp.controller.newsController.FindNewsController.findAllNewsByRegionId(java.lang.Long)}
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:431) ~[spring-webmvc-6.1.10.jar:6.1.10]
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:382) ~[spring-webmvc-6.1.10.jar:6.1.10]
 	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:127) ~[spring-webmvc-6.1.10.jar:6.1.10]
@@ -7128,7 +7128,7 @@ java.lang.RuntimeException: News not found
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.10.jar:6.1.10]
 	at group40.newsapp.service.newsDataService.UpdateNewsDataService$$SpringCGLIB$$0.addUnlikeToNews(<generated>) ~[classes/:na]
-	at group40.newsapp.controller.newsController.newsDataController.UpdateNewsController.unlikeNews(NewsDataUpdateController.java:20) ~[classes/:na]
+	at group40.newsapp.controller.newsController.UpdateNewsController.unlikeNews(NewsDataUpdateController.java:20) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.10.jar:6.1.10]
@@ -7197,7 +7197,7 @@ java.lang.RuntimeException: News not found
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.10.jar:6.1.10]
 	at group40.newsapp.service.newsDataService.UpdateNewsDataService$$SpringCGLIB$$0.addUnlikeToNews(<generated>) ~[classes/:na]
-	at group40.newsapp.controller.newsController.newsDataController.UpdateNewsController.unlikeNews(NewsDataUpdateController.java:20) ~[classes/:na]
+	at group40.newsapp.controller.newsController.UpdateNewsController.unlikeNews(NewsDataUpdateController.java:20) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.10.jar:6.1.10]
@@ -7455,7 +7455,7 @@ java.lang.RuntimeException: Cannot like a news item that has already been unlike
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.10.jar:6.1.10]
 	at group40.newsapp.service.newsDataService.UpdateNewsDataService$$SpringCGLIB$$0.addLikeToNews(<generated>) ~[classes/:na]
-	at group40.newsapp.controller.newsController.newsDataController.UpdateNewsController.likeNews(UpdateNewsController.java:15) ~[classes/:na]
+	at group40.newsapp.controller.newsController.UpdateNewsController.likeNews(UpdateNewsController.java:15) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.10.jar:6.1.10]
@@ -7524,7 +7524,7 @@ java.lang.RuntimeException: News not found
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.10.jar:6.1.10]
 	at group40.newsapp.service.newsDataService.UpdateNewsDataService$$SpringCGLIB$$0.addLikeToNews(<generated>) ~[classes/:na]
-	at group40.newsapp.controller.newsController.newsDataController.UpdateNewsController.likeNews(UpdateNewsController.java:15) ~[classes/:na]
+	at group40.newsapp.controller.newsController.UpdateNewsController.likeNews(UpdateNewsController.java:15) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.10.jar:6.1.10]
@@ -7593,7 +7593,7 @@ java.lang.RuntimeException: News not found
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.10.jar:6.1.10]
 	at group40.newsapp.service.newsDataService.UpdateNewsDataService$$SpringCGLIB$$0.addLikeToNews(<generated>) ~[classes/:na]
-	at group40.newsapp.controller.newsController.newsDataController.UpdateNewsController.likeNews(UpdateNewsController.java:15) ~[classes/:na]
+	at group40.newsapp.controller.newsController.UpdateNewsController.likeNews(UpdateNewsController.java:15) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.10.jar:6.1.10]
@@ -10806,3 +10806,524 @@ Caused by: org.postgresql.util.PSQLException: FEHLER: Typ »mediumtext« existie
 2024-07-21T21:12:10.409+02:00  INFO 6452 --- [NewsApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-07-21T21:12:10.412+02:00  INFO 6452 --- [NewsApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-07-21T21:12:10.415+02:00  INFO 6452 --- [NewsApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-21T21:18:03.434+02:00  INFO 9160 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : Starting NewsAppApplication using Java 21.0.2 with PID 9160 (C:\Users\ekate\IdeaProjects\NewsApp\target\classes started by ekate in C:\Users\ekate\IdeaProjects\NewsApp)
+2024-07-21T21:18:03.438+02:00  INFO 9160 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2024-07-21T21:18:04.179+02:00  INFO 9160 --- [NewsApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-21T21:18:04.251+02:00  INFO 9160 --- [NewsApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 7 JPA repository interfaces.
+2024-07-21T21:18:04.755+02:00  INFO 9160 --- [NewsApp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-21T21:18:04.768+02:00  INFO 9160 --- [NewsApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-21T21:18:04.768+02:00  INFO 9160 --- [NewsApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-21T21:18:04.823+02:00  INFO 9160 --- [NewsApp] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-21T21:18:04.824+02:00  INFO 9160 --- [NewsApp] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1329 ms
+2024-07-21T21:18:04.962+02:00  INFO 9160 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-21T21:18:05.135+02:00  INFO 9160 --- [NewsApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4e80a001
+2024-07-21T21:18:05.137+02:00  INFO 9160 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-21T21:18:05.322+02:00  INFO 9160 --- [NewsApp] [main] liquibase.database                       : Set default schema name to public
+2024-07-21T21:18:05.848+02:00  INFO 9160 --- [NewsApp] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-21T21:18:05.913+02:00  INFO 9160 --- [NewsApp] [main] liquibase.ui                             : Database is up to date, no changesets to execute
+2024-07-21T21:18:05.914+02:00  INFO 9160 --- [NewsApp] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-21T21:18:05.922+02:00  INFO 9160 --- [NewsApp] [main] liquibase.util                           : UPDATE SUMMARY
+2024-07-21T21:18:05.923+02:00  INFO 9160 --- [NewsApp] [main] liquibase.util                           : Run:                          0
+2024-07-21T21:18:05.923+02:00  INFO 9160 --- [NewsApp] [main] liquibase.util                           : Previously run:               8
+2024-07-21T21:18:05.923+02:00  INFO 9160 --- [NewsApp] [main] liquibase.util                           : Filtered out:                 0
+2024-07-21T21:18:05.923+02:00  INFO 9160 --- [NewsApp] [main] liquibase.util                           : -------------------------------
+2024-07-21T21:18:05.923+02:00  INFO 9160 --- [NewsApp] [main] liquibase.util                           : Total change sets:            8
+2024-07-21T21:18:05.924+02:00  INFO 9160 --- [NewsApp] [main] liquibase.util                           : Update summary generated
+2024-07-21T21:18:05.949+02:00  INFO 9160 --- [NewsApp] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-07-21T21:18:05.951+02:00  INFO 9160 --- [NewsApp] [main] liquibase.command                        : Command execution complete
+2024-07-21T21:18:06.028+02:00  INFO 9160 --- [NewsApp] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-21T21:18:06.112+02:00  INFO 9160 --- [NewsApp] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-21T21:18:06.166+02:00  INFO 9160 --- [NewsApp] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-21T21:18:06.496+02:00  INFO 9160 --- [NewsApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-21T21:18:07.578+02:00  INFO 9160 --- [NewsApp] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-21T21:18:07.627+02:00  WARN 9160 --- [NewsApp] [main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists news alter column content set data type MEDIUMTEXT" via JDBC [FEHLER: Typ »mediumtext« existiert nicht]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists news alter column content set data type MEDIUMTEXT" via JDBC [FEHLER: Typ »mediumtext« existiert nicht]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:575) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:515) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:333) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:232) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:117) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at group40.newsapp.NewsAppApplication.main(NewsAppApplication.java:10) ~[classes/:na]
+Caused by: org.postgresql.util.PSQLException: FEHLER: Typ »mediumtext« existiert nicht
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:341) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:326) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:302) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:297) ~[postgresql-42.7.3.jar:42.7.3]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	... 37 common frames omitted
+
+2024-07-21T21:18:07.715+02:00  INFO 9160 --- [NewsApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-21T21:18:08.055+02:00  INFO 9160 --- [NewsApp] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-07-21T21:18:08.594+02:00  WARN 9160 --- [NewsApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-21T21:18:08.944+02:00  INFO 9160 --- [NewsApp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-21T21:18:08.950+02:00  INFO 9160 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : Started NewsAppApplication in 6.035 seconds (process running for 6.78)
+2024-07-21T21:18:19.529+02:00  INFO 9160 --- [NewsApp] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-21T21:18:19.530+02:00  INFO 9160 --- [NewsApp] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-21T21:18:19.532+02:00  INFO 9160 --- [NewsApp] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-07-21T21:19:01.376+02:00  INFO 9160 --- [NewsApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-21T21:19:01.378+02:00  INFO 9160 --- [NewsApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-21T21:19:01.381+02:00  INFO 9160 --- [NewsApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-21T21:25:22.896+02:00  INFO 7796 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : Starting NewsAppApplication using Java 21.0.2 with PID 7796 (C:\Users\ekate\IdeaProjects\NewsApp\target\classes started by ekate in C:\Users\ekate\IdeaProjects\NewsApp)
+2024-07-21T21:25:22.898+02:00  INFO 7796 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2024-07-21T21:25:23.581+02:00  INFO 7796 --- [NewsApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-21T21:25:23.649+02:00  INFO 7796 --- [NewsApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 7 JPA repository interfaces.
+2024-07-21T21:25:24.115+02:00  INFO 7796 --- [NewsApp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-21T21:25:24.126+02:00  INFO 7796 --- [NewsApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-21T21:25:24.127+02:00  INFO 7796 --- [NewsApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-21T21:25:24.175+02:00  INFO 7796 --- [NewsApp] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-21T21:25:24.175+02:00  INFO 7796 --- [NewsApp] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1230 ms
+2024-07-21T21:25:24.301+02:00  INFO 7796 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-21T21:25:24.457+02:00  INFO 7796 --- [NewsApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4d98e41b
+2024-07-21T21:25:24.459+02:00  INFO 7796 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-21T21:25:24.610+02:00  INFO 7796 --- [NewsApp] [main] liquibase.database                       : Set default schema name to public
+2024-07-21T21:25:25.048+02:00  INFO 7796 --- [NewsApp] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-21T21:25:25.116+02:00  INFO 7796 --- [NewsApp] [main] liquibase.ui                             : Database is up to date, no changesets to execute
+2024-07-21T21:25:25.117+02:00  INFO 7796 --- [NewsApp] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-21T21:25:25.125+02:00  INFO 7796 --- [NewsApp] [main] liquibase.util                           : UPDATE SUMMARY
+2024-07-21T21:25:25.125+02:00  INFO 7796 --- [NewsApp] [main] liquibase.util                           : Run:                          0
+2024-07-21T21:25:25.125+02:00  INFO 7796 --- [NewsApp] [main] liquibase.util                           : Previously run:               8
+2024-07-21T21:25:25.125+02:00  INFO 7796 --- [NewsApp] [main] liquibase.util                           : Filtered out:                 0
+2024-07-21T21:25:25.125+02:00  INFO 7796 --- [NewsApp] [main] liquibase.util                           : -------------------------------
+2024-07-21T21:25:25.125+02:00  INFO 7796 --- [NewsApp] [main] liquibase.util                           : Total change sets:            8
+2024-07-21T21:25:25.127+02:00  INFO 7796 --- [NewsApp] [main] liquibase.util                           : Update summary generated
+2024-07-21T21:25:25.145+02:00  INFO 7796 --- [NewsApp] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-07-21T21:25:25.146+02:00  INFO 7796 --- [NewsApp] [main] liquibase.command                        : Command execution complete
+2024-07-21T21:25:25.220+02:00  INFO 7796 --- [NewsApp] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-21T21:25:25.297+02:00  INFO 7796 --- [NewsApp] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-21T21:25:25.353+02:00  INFO 7796 --- [NewsApp] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-21T21:25:25.681+02:00  INFO 7796 --- [NewsApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-21T21:25:26.838+02:00  INFO 7796 --- [NewsApp] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-21T21:25:26.887+02:00  WARN 7796 --- [NewsApp] [main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists news alter column content set data type MEDIUMTEXT" via JDBC [FEHLER: Typ »mediumtext« existiert nicht]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists news alter column content set data type MEDIUMTEXT" via JDBC [FEHLER: Typ »mediumtext« existiert nicht]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:575) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:515) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:333) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:232) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:117) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at group40.newsapp.NewsAppApplication.main(NewsAppApplication.java:10) ~[classes/:na]
+Caused by: org.postgresql.util.PSQLException: FEHLER: Typ »mediumtext« existiert nicht
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:341) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:326) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:302) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:297) ~[postgresql-42.7.3.jar:42.7.3]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	... 37 common frames omitted
+
+2024-07-21T21:25:26.982+02:00  INFO 7796 --- [NewsApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-21T21:25:27.287+02:00  INFO 7796 --- [NewsApp] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-07-21T21:25:27.813+02:00  WARN 7796 --- [NewsApp] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'deleteNewsController' defined in file [C:\Users\ekate\IdeaProjects\NewsApp\target\classes\group40\newsapp\controller\newsController\newsDataController\DeleteNewsController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'deleteNewsController': Requested bean is currently in creation: Is there an unresolvable circular reference?
+2024-07-21T21:25:27.813+02:00  INFO 7796 --- [NewsApp] [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-21T21:25:27.815+02:00  INFO 7796 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-21T21:25:27.818+02:00  INFO 7796 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-21T21:25:27.821+02:00  INFO 7796 --- [NewsApp] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-07-21T21:25:27.831+02:00  INFO 7796 --- [NewsApp] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-07-21T21:25:27.848+02:00 ERROR 7796 --- [NewsApp] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+┌──->──┐
+|  deleteNewsController defined in file [C:\Users\ekate\IdeaProjects\NewsApp\target\classes\group40\newsapp\controller\newsController\newsDataController\DeleteNewsController.class]
+└──<-──┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+2024-07-21T21:28:57.921+02:00  INFO 2684 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : Starting NewsAppApplication using Java 21.0.2 with PID 2684 (C:\Users\ekate\IdeaProjects\NewsApp\target\classes started by ekate in C:\Users\ekate\IdeaProjects\NewsApp)
+2024-07-21T21:28:57.923+02:00  INFO 2684 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2024-07-21T21:28:58.632+02:00  INFO 2684 --- [NewsApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-21T21:28:58.705+02:00  INFO 2684 --- [NewsApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 7 JPA repository interfaces.
+2024-07-21T21:28:59.163+02:00  INFO 2684 --- [NewsApp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-21T21:28:59.173+02:00  INFO 2684 --- [NewsApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-21T21:28:59.174+02:00  INFO 2684 --- [NewsApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-21T21:28:59.224+02:00  INFO 2684 --- [NewsApp] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-21T21:28:59.224+02:00  INFO 2684 --- [NewsApp] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1255 ms
+2024-07-21T21:28:59.342+02:00  INFO 2684 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-21T21:28:59.505+02:00  INFO 2684 --- [NewsApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5f025000
+2024-07-21T21:28:59.506+02:00  INFO 2684 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-21T21:28:59.658+02:00  INFO 2684 --- [NewsApp] [main] liquibase.database                       : Set default schema name to public
+2024-07-21T21:29:00.128+02:00  INFO 2684 --- [NewsApp] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-21T21:29:00.191+02:00  INFO 2684 --- [NewsApp] [main] liquibase.ui                             : Database is up to date, no changesets to execute
+2024-07-21T21:29:00.194+02:00  INFO 2684 --- [NewsApp] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-21T21:29:00.201+02:00  INFO 2684 --- [NewsApp] [main] liquibase.util                           : UPDATE SUMMARY
+2024-07-21T21:29:00.202+02:00  INFO 2684 --- [NewsApp] [main] liquibase.util                           : Run:                          0
+2024-07-21T21:29:00.202+02:00  INFO 2684 --- [NewsApp] [main] liquibase.util                           : Previously run:               8
+2024-07-21T21:29:00.202+02:00  INFO 2684 --- [NewsApp] [main] liquibase.util                           : Filtered out:                 0
+2024-07-21T21:29:00.202+02:00  INFO 2684 --- [NewsApp] [main] liquibase.util                           : -------------------------------
+2024-07-21T21:29:00.202+02:00  INFO 2684 --- [NewsApp] [main] liquibase.util                           : Total change sets:            8
+2024-07-21T21:29:00.203+02:00  INFO 2684 --- [NewsApp] [main] liquibase.util                           : Update summary generated
+2024-07-21T21:29:00.226+02:00  INFO 2684 --- [NewsApp] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-07-21T21:29:00.228+02:00  INFO 2684 --- [NewsApp] [main] liquibase.command                        : Command execution complete
+2024-07-21T21:29:00.305+02:00  INFO 2684 --- [NewsApp] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-21T21:29:00.375+02:00  INFO 2684 --- [NewsApp] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-21T21:29:00.433+02:00  INFO 2684 --- [NewsApp] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-21T21:29:00.748+02:00  INFO 2684 --- [NewsApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-21T21:29:01.750+02:00  INFO 2684 --- [NewsApp] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-21T21:29:01.791+02:00  WARN 2684 --- [NewsApp] [main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists news alter column content set data type MEDIUMTEXT" via JDBC [FEHLER: Typ »mediumtext« existiert nicht]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists news alter column content set data type MEDIUMTEXT" via JDBC [FEHLER: Typ »mediumtext« existiert nicht]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:575) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:515) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:333) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:232) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:117) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at group40.newsapp.NewsAppApplication.main(NewsAppApplication.java:10) ~[classes/:na]
+Caused by: org.postgresql.util.PSQLException: FEHLER: Typ »mediumtext« existiert nicht
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:341) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:326) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:302) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:297) ~[postgresql-42.7.3.jar:42.7.3]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	... 37 common frames omitted
+
+2024-07-21T21:29:01.875+02:00  INFO 2684 --- [NewsApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-21T21:29:02.214+02:00  INFO 2684 --- [NewsApp] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-07-21T21:29:02.720+02:00  WARN 2684 --- [NewsApp] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'deleteNewsController' defined in file [C:\Users\ekate\IdeaProjects\NewsApp\target\classes\group40\newsapp\controller\newsController\DeleteNewsController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'deleteNewsController': Requested bean is currently in creation: Is there an unresolvable circular reference?
+2024-07-21T21:29:02.721+02:00  INFO 2684 --- [NewsApp] [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-21T21:29:02.722+02:00  INFO 2684 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-21T21:29:02.727+02:00  INFO 2684 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-21T21:29:02.730+02:00  INFO 2684 --- [NewsApp] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-07-21T21:29:02.740+02:00  INFO 2684 --- [NewsApp] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-07-21T21:29:02.761+02:00 ERROR 2684 --- [NewsApp] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+┌──->──┐
+|  deleteNewsController defined in file [C:\Users\ekate\IdeaProjects\NewsApp\target\classes\group40\newsapp\controller\newsController\DeleteNewsController.class]
+└──<-──┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+2024-07-21T21:31:19.823+02:00  INFO 2524 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : Starting NewsAppApplication using Java 21.0.2 with PID 2524 (C:\Users\ekate\IdeaProjects\NewsApp\target\classes started by ekate in C:\Users\ekate\IdeaProjects\NewsApp)
+2024-07-21T21:31:19.825+02:00  INFO 2524 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2024-07-21T21:31:20.495+02:00  INFO 2524 --- [NewsApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-21T21:31:20.563+02:00  INFO 2524 --- [NewsApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 7 JPA repository interfaces.
+2024-07-21T21:31:21.029+02:00  INFO 2524 --- [NewsApp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-21T21:31:21.040+02:00  INFO 2524 --- [NewsApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-21T21:31:21.040+02:00  INFO 2524 --- [NewsApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-21T21:31:21.089+02:00  INFO 2524 --- [NewsApp] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-21T21:31:21.089+02:00  INFO 2524 --- [NewsApp] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1213 ms
+2024-07-21T21:31:21.222+02:00  INFO 2524 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-21T21:31:21.381+02:00  INFO 2524 --- [NewsApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@149c39b
+2024-07-21T21:31:21.383+02:00  INFO 2524 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-21T21:31:21.531+02:00  INFO 2524 --- [NewsApp] [main] liquibase.database                       : Set default schema name to public
+2024-07-21T21:31:21.995+02:00  INFO 2524 --- [NewsApp] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-21T21:31:22.072+02:00  INFO 2524 --- [NewsApp] [main] liquibase.ui                             : Database is up to date, no changesets to execute
+2024-07-21T21:31:22.074+02:00  INFO 2524 --- [NewsApp] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-21T21:31:22.081+02:00  INFO 2524 --- [NewsApp] [main] liquibase.util                           : UPDATE SUMMARY
+2024-07-21T21:31:22.081+02:00  INFO 2524 --- [NewsApp] [main] liquibase.util                           : Run:                          0
+2024-07-21T21:31:22.081+02:00  INFO 2524 --- [NewsApp] [main] liquibase.util                           : Previously run:               8
+2024-07-21T21:31:22.082+02:00  INFO 2524 --- [NewsApp] [main] liquibase.util                           : Filtered out:                 0
+2024-07-21T21:31:22.082+02:00  INFO 2524 --- [NewsApp] [main] liquibase.util                           : -------------------------------
+2024-07-21T21:31:22.082+02:00  INFO 2524 --- [NewsApp] [main] liquibase.util                           : Total change sets:            8
+2024-07-21T21:31:22.083+02:00  INFO 2524 --- [NewsApp] [main] liquibase.util                           : Update summary generated
+2024-07-21T21:31:22.104+02:00  INFO 2524 --- [NewsApp] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-07-21T21:31:22.106+02:00  INFO 2524 --- [NewsApp] [main] liquibase.command                        : Command execution complete
+2024-07-21T21:31:22.178+02:00  INFO 2524 --- [NewsApp] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-21T21:31:22.251+02:00  INFO 2524 --- [NewsApp] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-21T21:31:22.293+02:00  INFO 2524 --- [NewsApp] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-21T21:31:22.602+02:00  INFO 2524 --- [NewsApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-21T21:31:23.602+02:00  INFO 2524 --- [NewsApp] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-21T21:31:23.642+02:00  WARN 2524 --- [NewsApp] [main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists news alter column content set data type MEDIUMTEXT" via JDBC [FEHLER: Typ »mediumtext« existiert nicht]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists news alter column content set data type MEDIUMTEXT" via JDBC [FEHLER: Typ »mediumtext« existiert nicht]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:575) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:515) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:333) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:232) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:117) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at group40.newsapp.NewsAppApplication.main(NewsAppApplication.java:10) ~[classes/:na]
+Caused by: org.postgresql.util.PSQLException: FEHLER: Typ »mediumtext« existiert nicht
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:341) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:326) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:302) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:297) ~[postgresql-42.7.3.jar:42.7.3]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	... 37 common frames omitted
+
+2024-07-21T21:31:23.769+02:00  INFO 2524 --- [NewsApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-21T21:31:24.041+02:00  INFO 2524 --- [NewsApp] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-07-21T21:31:24.614+02:00  WARN 2524 --- [NewsApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-21T21:31:24.970+02:00  INFO 2524 --- [NewsApp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-21T21:31:24.978+02:00  INFO 2524 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : Started NewsAppApplication in 5.632 seconds (process running for 6.328)
+2024-07-21T21:31:47.557+02:00  INFO 2524 --- [NewsApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-21T21:31:47.559+02:00  INFO 2524 --- [NewsApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-21T21:31:47.562+02:00  INFO 2524 --- [NewsApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-21T21:34:17.417+02:00  INFO 6664 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : Starting NewsAppApplication using Java 21.0.2 with PID 6664 (C:\Users\ekate\IdeaProjects\NewsApp\target\classes started by ekate in C:\Users\ekate\IdeaProjects\NewsApp)
+2024-07-21T21:34:17.420+02:00  INFO 6664 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2024-07-21T21:34:18.117+02:00  INFO 6664 --- [NewsApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-21T21:34:18.189+02:00  INFO 6664 --- [NewsApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 7 JPA repository interfaces.
+2024-07-21T21:34:18.764+02:00  INFO 6664 --- [NewsApp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-21T21:34:18.781+02:00  INFO 6664 --- [NewsApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-21T21:34:18.782+02:00  INFO 6664 --- [NewsApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-21T21:34:18.870+02:00  INFO 6664 --- [NewsApp] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-21T21:34:18.871+02:00  INFO 6664 --- [NewsApp] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1400 ms
+2024-07-21T21:34:19.045+02:00  INFO 6664 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-21T21:34:19.199+02:00  INFO 6664 --- [NewsApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@61149fa5
+2024-07-21T21:34:19.201+02:00  INFO 6664 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-21T21:34:19.363+02:00  INFO 6664 --- [NewsApp] [main] liquibase.database                       : Set default schema name to public
+2024-07-21T21:34:19.858+02:00  INFO 6664 --- [NewsApp] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-21T21:34:19.926+02:00  INFO 6664 --- [NewsApp] [main] liquibase.ui                             : Database is up to date, no changesets to execute
+2024-07-21T21:34:19.928+02:00  INFO 6664 --- [NewsApp] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-21T21:34:19.935+02:00  INFO 6664 --- [NewsApp] [main] liquibase.util                           : UPDATE SUMMARY
+2024-07-21T21:34:19.936+02:00  INFO 6664 --- [NewsApp] [main] liquibase.util                           : Run:                          0
+2024-07-21T21:34:19.936+02:00  INFO 6664 --- [NewsApp] [main] liquibase.util                           : Previously run:               8
+2024-07-21T21:34:19.936+02:00  INFO 6664 --- [NewsApp] [main] liquibase.util                           : Filtered out:                 0
+2024-07-21T21:34:19.936+02:00  INFO 6664 --- [NewsApp] [main] liquibase.util                           : -------------------------------
+2024-07-21T21:34:19.936+02:00  INFO 6664 --- [NewsApp] [main] liquibase.util                           : Total change sets:            8
+2024-07-21T21:34:19.937+02:00  INFO 6664 --- [NewsApp] [main] liquibase.util                           : Update summary generated
+2024-07-21T21:34:19.959+02:00  INFO 6664 --- [NewsApp] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-07-21T21:34:19.960+02:00  INFO 6664 --- [NewsApp] [main] liquibase.command                        : Command execution complete
+2024-07-21T21:34:20.041+02:00  INFO 6664 --- [NewsApp] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-21T21:34:20.156+02:00  INFO 6664 --- [NewsApp] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-21T21:34:20.202+02:00  INFO 6664 --- [NewsApp] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-21T21:34:20.538+02:00  INFO 6664 --- [NewsApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-21T21:34:21.598+02:00  INFO 6664 --- [NewsApp] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-21T21:34:21.642+02:00  WARN 6664 --- [NewsApp] [main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists news alter column content set data type MEDIUMTEXT" via JDBC [FEHLER: Typ »mediumtext« existiert nicht]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists news alter column content set data type MEDIUMTEXT" via JDBC [FEHLER: Typ »mediumtext« existiert nicht]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:575) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:515) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:333) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:232) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:117) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at group40.newsapp.NewsAppApplication.main(NewsAppApplication.java:10) ~[classes/:na]
+Caused by: org.postgresql.util.PSQLException: FEHLER: Typ »mediumtext« existiert nicht
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:341) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:326) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:302) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:297) ~[postgresql-42.7.3.jar:42.7.3]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	... 37 common frames omitted
+
+2024-07-21T21:34:21.729+02:00  INFO 6664 --- [NewsApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-21T21:34:22.028+02:00  INFO 6664 --- [NewsApp] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-07-21T21:34:22.576+02:00  WARN 6664 --- [NewsApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-21T21:34:22.945+02:00  INFO 6664 --- [NewsApp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-21T21:34:22.952+02:00  INFO 6664 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : Started NewsAppApplication in 6.065 seconds (process running for 6.755)
+2024-07-21T21:34:34.674+02:00  INFO 6664 --- [NewsApp] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-21T21:34:34.675+02:00  INFO 6664 --- [NewsApp] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-21T21:34:34.678+02:00  INFO 6664 --- [NewsApp] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-07-21T21:34:52.356+02:00  WARN 6664 --- [NewsApp] [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'DELETE' is not supported]
+2024-07-21T21:35:12.898+02:00  WARN 6664 --- [NewsApp] [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'DELETE' is not supported]
+2024-07-21T21:35:31.866+02:00  WARN 6664 --- [NewsApp] [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'DELETE' is not supported]
+2024-07-21T21:36:32.673+02:00  INFO 6664 --- [NewsApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-21T21:36:32.675+02:00  INFO 6664 --- [NewsApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-21T21:36:32.679+02:00  INFO 6664 --- [NewsApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

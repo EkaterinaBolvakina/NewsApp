@@ -1,4 +1,4 @@
-package group40.newsapp.controller.newsController.newsDataController;
+package group40.newsapp.controller.newsController;
 
 import group40.newsapp.DTO.news.NewsDataResponseDto;
 import group40.newsapp.service.newsDataService.FindNewsDataService;
@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/news")
 @RequiredArgsConstructor
-public class NewsDataFindController {
+public class FindNewsController {
 
     private final FindNewsDataService findNewsDataService;
 

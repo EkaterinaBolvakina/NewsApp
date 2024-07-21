@@ -1,4 +1,4 @@
-package group40.newsapp.controller.newsController.newsDataController;
+package group40.newsapp.controller.newsController;
 
 import group40.newsapp.DTO.news.NewsDataResponseDto;
 import group40.newsapp.service.newsDataService.AddNewsDataService;

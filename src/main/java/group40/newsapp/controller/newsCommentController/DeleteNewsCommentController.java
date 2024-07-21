@@ -1,4 +1,4 @@
-package group40.newsapp.controller.newsController.newsCommentController;
+package group40.newsapp.controller.newsCommentController;
 
 import group40.newsapp.service.newsCommentService.DeleteNewsCommentService;
 import lombok.RequiredArgsConstructor;

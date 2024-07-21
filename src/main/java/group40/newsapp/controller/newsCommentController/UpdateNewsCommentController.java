@@ -1,4 +1,4 @@
-package group40.newsapp.controller.newsController.newsCommentController;
+package group40.newsapp.controller.newsCommentController;
 
 import group40.newsapp.DTO.newsComment.NewsCommentResponseDTO;
 import group40.newsapp.DTO.newsComment.UpdateCommentRequestDTO;
