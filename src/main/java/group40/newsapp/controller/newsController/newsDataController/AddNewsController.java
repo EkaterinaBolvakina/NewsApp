@@ -3,21 +3,20 @@ package group40.newsapp.controller.newsController.newsDataController;
 import group40.newsapp.DTO.news.NewsDataResponseDto;
 import group40.newsapp.service.newsDataService.AddNewsDataService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/loading")
+@RequestMapping("/api/news")
 @AllArgsConstructor
-public class NewsDataAddController {
+public class AddNewsController {
     private final AddNewsDataService addNewsDataService;
 
-    @GetMapping
-    public List<NewsDataResponseDto> getAllLoadedNews() throws IOException {
+    @GetMapping("/loading")
+    public ResponseEntity<List<NewsDataResponseDto>> getAllLoadedNews(){
         return addNewsDataService.saveNewsFromFetchApi();
     }
 }

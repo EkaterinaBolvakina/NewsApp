@@ -6,10 +6,10 @@ import group40.newsapp.DTO.news.newsJsonModel.FetchResponseData;
 import group40.newsapp.repository.NewsDataRepository;
 import group40.newsapp.service.util.newsMapping.NewsDataConverter;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +21,8 @@ public class AddNewsDataService {
     private final NewsDataConverter newsDataConverter;
 
     @Transactional
-    public List<NewsDataResponseDto> saveNewsFromFetchApi() throws IOException {
+    public ResponseEntity<List<NewsDataResponseDto>>  saveNewsFromFetchApi() {
+        try{
         List<NewsDataResponseDto> responses = new ArrayList<>();
         List<FetchResponseData> newsFromFetch = fetchNewsApi.fetchDataFromApi();
 
@@ -33,6 +34,13 @@ public class AddNewsDataService {
             NewsDataResponseDto responseDto = newsDataConverter.fromEntityToDto(newsDataEntity);
             responses.add(responseDto);
         }
-        return responses;
+            return new ResponseEntity<>(responses, HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            // Логирование исключения (рекомендуется использовать логгер)
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

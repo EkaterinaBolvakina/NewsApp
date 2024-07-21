@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class NewsDataResponseDto {
     private Long id;
-    private Integer regionId;
+    private Long regionId;
     private String regionName;
     private String sectionName;
     private String title;

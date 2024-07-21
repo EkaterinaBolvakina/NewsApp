@@ -16,7 +16,7 @@ public class NewsDataConverter {
     public NewsDataResponseDto fromEntityToDto(NewsDataEntity newsDataEntity) {
         NewsDataResponseDto dto = new NewsDataResponseDto();
         dto.setId(newsDataEntity.getId());
-        dto.setRegionId(newsDataEntity.getRegion().getRegionNewsId());
+        dto.setRegionId(newsDataEntity.getRegion().getId());
         dto.setRegionName(newsDataEntity.getRegion().getRegionName());
         dto.setSectionName(newsDataEntity.getSectionName());
         dto.setTitle(newsDataEntity.getTitle());

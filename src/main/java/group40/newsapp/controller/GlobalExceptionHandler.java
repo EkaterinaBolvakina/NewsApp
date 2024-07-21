@@ -1,6 +1,8 @@
 package group40.newsapp.controller;
 
-import group40.newsapp.DTO.ResponseErrors;
+import group40.newsapp.DTO.errorDTO.ErrorResponseDto;
+import group40.newsapp.DTO.errorDTO.FieldErrorDto;
+import group40.newsapp.DTO.errorDTO.ResponseErrors;
 import group40.newsapp.exception.NullArgException;
 import group40.newsapp.exception.RestException;
 import jakarta.validation.ConstraintViolationException;
@@ -10,14 +12,26 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(RestException.class)
-    public ResponseEntity<String> handlerNotFoundException(RestException exception) {
-        return new ResponseEntity<>(exception.getMessage(), exception.getStatus());
+    public ResponseEntity<ErrorResponseDto> handlerNotFoundException(RestException exception) {
+        ErrorResponseDto errorResponse = ErrorResponseDto.builder()
+                .message(exception.getMessage())
+                .build();
+        return new ResponseEntity<>(errorResponse, exception.getStatus());
+    }
+
+    @ExceptionHandler(NullPointerException.class)
+    public ResponseEntity<ErrorResponseDto> handlerNullPointerException(NullPointerException exception){
+        ErrorResponseDto errorResponse = ErrorResponseDto.builder()
+                .message(exception.getMessage())
+                .build();
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(NullArgException.class)
@@ -26,17 +40,24 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<String> handlerConstraintViolationException(ConstraintViolationException exception) {
+    public ResponseEntity<ErrorResponseDto> handlerConstraintViolationException(ConstraintViolationException exception){
+        List<FieldErrorDto> fieldErrors = new ArrayList<>();
 
-        StringBuilder responseMessage = new StringBuilder();
+        exception.getConstraintViolations().forEach(violation -> {
+            FieldErrorDto fieldError = FieldErrorDto.builder()
+                    .field(violation.getPropertyPath().toString())
+                    .message(violation.getMessage())
+                    .rejectedValue(violation.getInvalidValue())
+                    .build();
+            fieldErrors.add(fieldError);
+        });
 
-        exception.getConstraintViolations()
-                .forEach(constraintViolation -> {
-                    String message = constraintViolation.getMessage();
-                    responseMessage.append(message);
-                    responseMessage.append("\n");
-                });
-        return new ResponseEntity<>(responseMessage.toString(), HttpStatus.BAD_REQUEST);
+        ErrorResponseDto errorResponse = ErrorResponseDto.builder()
+                .message("Validation failed")
+                .fieldErrors(fieldErrors)
+                .build();
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

@@ -193,6 +193,14 @@
             <column name="state" value="1"/>
             <column name="code" value=""/>
         </insert>
+        <insert tableName="user">
+            <column name="name" value="User"/>
+            <column name="password" value="$2a$10$mISx06jsPFcUokNLGacWqeJjG4fHud4RlgIzIfd9dxpEO0iJ33i"/>
+            <column name="email" value="user@company.com"/>
+            <column name="role_id" value="2"/>
+            <column name="state" value="1"/>
+            <column name="code" value=""/>
+        </insert>
     </changeSet>
 
 

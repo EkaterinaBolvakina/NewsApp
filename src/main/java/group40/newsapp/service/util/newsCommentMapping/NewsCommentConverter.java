@@ -5,7 +5,6 @@ import group40.newsapp.DTO.newsComment.NewsCommentResponseDTO;
 import group40.newsapp.models.news.NewsComment;
 import group40.newsapp.models.news.NewsDataEntity;
 import group40.newsapp.models.user.User;
-import group40.newsapp.repository.NewsCommentRepository;
 import group40.newsapp.service.newsDataService.FindNewsDataService;
 import group40.newsapp.service.user.UserFindService;
 import lombok.AllArgsConstructor;
@@ -15,7 +14,7 @@ import java.time.LocalDateTime;
 @Service
 @AllArgsConstructor
 public class NewsCommentConverter {
-    private final NewsCommentRepository newsCommentRepository;
+
     private final UserFindService userFindService;
     private final FindNewsDataService findNewsDataService;
 
@@ -35,7 +34,7 @@ public class NewsCommentConverter {
         }
 
         if (dto.getNewsId() != null) {
-            NewsDataEntity newsData = findNewsDataService.findNewsById(dto.getNewsId());
+            NewsDataEntity newsData = findNewsDataService.getNewsById(dto.getNewsId());
             newsComment.setNewsDataEntity(newsData);
         }
 
