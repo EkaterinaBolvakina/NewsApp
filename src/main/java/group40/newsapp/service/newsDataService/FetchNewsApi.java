@@ -3,20 +3,19 @@ package group40.newsapp.service.newsDataService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import group40.newsapp.DTO.news.newsJsonModel.FetchResponseData;
+import group40.newsapp.exception.RestException;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Service
 @AllArgsConstructor
 public class FetchNewsApi {
-   // private static final Logger logger = LoggerFactory.getLogger(FetchNewsApi.class);
+
     private final RestTemplate restTemplate;
 
     public List<FetchResponseData> fetchDataFromApi() {
@@ -30,16 +29,30 @@ public class FetchNewsApi {
         allNews.addAll(sportNews);
         allNews.addAll(wirtschaftNews);
         allNews.addAll(wissenNews);
+
+        if (allNews.isEmpty()) {
+            throw new RestException(HttpStatus.NO_CONTENT, "Fetch response contains no data");
+        }
+
         return allNews;
     }
 
     private List<FetchResponseData> fetchDataFromUrl(String url, String apiType) {
         String json1Response = restTemplate.getForObject(url, String.class);
+        if (json1Response == null) {
+            throw new RestException(HttpStatus.INTERNAL_SERVER_ERROR, "Error fetching data from URL: " + url);
+        }
+
         ObjectMapper mapper = new ObjectMapper();
         List<FetchResponseData> savedNews = new ArrayList<>();
 
+        JsonNode jsonResponse;
         try {
-            JsonNode jsonResponse = mapper.readTree(json1Response);
+            jsonResponse = mapper.readTree(json1Response);
+        } catch (IOException e) {
+            throw new RestException(HttpStatus.INTERNAL_SERVER_ERROR, "Error processing JSON response: " + e.getMessage());
+        }
+
             JsonNode newsArray = jsonResponse.path("news");
             for (JsonNode item : newsArray) {
 
@@ -62,10 +75,8 @@ public class FetchNewsApi {
 
                 // Check if detailsUrl is valid
                 if (detailsUrl == null || detailsUrl.isEmpty()) {
-                //    logger.warn("Details URL is missing or empty for item with title: {}", item.path("title").asText());
                     continue;
                 }
-
                 // Fetch and check content
                 String content = fetchContentFromDetailsUrl(detailsUrl);
 
@@ -81,14 +92,11 @@ public class FetchNewsApi {
                         && (!(apiType.equals("general") && regionId == 0 && sectionName.isEmpty()))
                 ) {
                     FetchResponseData newsData = new FetchResponseData();
-
                     // RegionId
-                //    logger.info("RegionId: {}", regionId);
                     newsData.setRegionId((long) (regionId + 1));
 
                     // Section
                     if (regionId > 0) {
-                //        logger.info("SectionName: inland");
                         newsData.setSectionName("inland");
                     } else {
                         if (apiType.equals("sport") && sectionName.isEmpty()) {
@@ -98,50 +106,34 @@ public class FetchNewsApi {
                         } else if (apiType.equals("wissen") && sectionName.isEmpty()) {
                             sectionName = "wissen";
                         }
-                //        logger.info("SectionName: {}", sectionName);
                         newsData.setSectionName(sectionName);
                     }
 
-                    // Title
-                    String title = item.path("title").asText();
-                //    logger.info("Title: {}", title);
-                    newsData.setTitle(title);
-
-                    // Date
-                    String date = item.path("date").asText();
-                //    logger.info("Date: {}", date);
-                    newsData.setDate(date);
-
-                    // Teaser Image
-                //    logger.info("ImageSquareUrl: {}", imageSquareUrl);
+                    newsData.setTitle(item.path("title").asText());
+                    newsData.setDate(item.path("date").asText());
                     newsData.setTitleImageSquare(imageSquareUrl);
-
-                //    logger.info("ImageWideUrl: {}", imageWideUrl);
                     newsData.setTitleImageWide(imageWideUrl);
-
-                    // Set Content
-                //    logger.info("DetailsUrl: {}", detailsUrl);
                     newsData.setContent(content);
-
-                    // Save news
+                    savedNews.add(newsData);
                     savedNews.add(newsData);
                 }
             }
-        } catch (IOException e) {
-        //    logger.error("Error processing JSON response: {}", e.getMessage());
-        }
 
         return savedNews;
     }
 
     private String fetchContentFromDetailsUrl(String detailsUrl) {
-        String content = "";
-        try {
-            String json2Response = restTemplate.getForObject(detailsUrl, String.class);
+
+        String json2Response = restTemplate.getForObject(detailsUrl, String.class);
+        if (json2Response == null) {
+            throw new RestException(HttpStatus.INTERNAL_SERVER_ERROR, "Error fetching data from details URL: " + detailsUrl);
+        }
             ObjectMapper mapper = new ObjectMapper();
+            StringBuilder contentBuilder = new StringBuilder();
+
+        try {
             JsonNode jsonResponse = mapper.readTree(json2Response);
             JsonNode contentArray = jsonResponse.path("content");
-            StringBuilder contentBuilder = new StringBuilder();
 
             for (JsonNode contentItem : contentArray) {
                 if (contentItem.has("value")) {
@@ -150,11 +142,7 @@ public class FetchNewsApi {
                     value = value.replaceAll("/api2u", "");
                     value = value.replaceAll("\\.json", ".html");
                     value = value.replaceAll("type=\"intern\"", "type=\"extern\"");
-
-                    contentBuilder.append("<div className=\"textValueNews\">")
-                            .append(value)
-                            .append("</div>")
-                            .append(" ");
+                    contentBuilder.append("<div className=\"textValueNews\">").append(value).append("</div>").append(" ");
                 }
                 if (contentItem.has("quotation")) {
                     String quotationText = contentItem.path("quotation").path("text").asText();
@@ -162,17 +150,13 @@ public class FetchNewsApi {
                     quotationText = quotationText.replaceAll("/api2u", "");
                     quotationText = quotationText.replaceAll("\\.json", ".html");
                     quotationText = quotationText.replaceAll("type=\"intern\"", "type=\"extern\"");
-
-                    contentBuilder.append("<div className=\"quotationNews\">")
-                            .append(quotationText)
-                            .append("</div>")
-                            .append(" ");
+                    contentBuilder.append("<div className=\"quotationNews\">").append(quotationText).append("</div>").append(" ");
                 }
             }
-            content = contentBuilder.toString().trim();
         } catch (IOException e) {
-        //    logger.error("Error fetching or processing details URL JSON: {}", e.getMessage());
+            throw new RestException(HttpStatus.INTERNAL_SERVER_ERROR, "Error processing details URL JSON: " + e.getMessage());
         }
-        return content;
+
+        return contentBuilder.toString().trim();
     }
 }

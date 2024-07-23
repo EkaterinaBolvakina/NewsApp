@@ -1,5 +1,6 @@
 package group40.newsapp.service.newsDataService;
 
+import group40.newsapp.DTO.appDTO.StandardResponseDto;
 import group40.newsapp.models.news.NewsDataEntity;
 import group40.newsapp.DTO.news.NewsDataResponseDto;
 import group40.newsapp.DTO.news.newsJsonModel.FetchResponseData;
@@ -21,26 +22,16 @@ public class AddNewsDataService {
     private final NewsDataConverter newsDataConverter;
 
     @Transactional
-    public ResponseEntity<List<NewsDataResponseDto>>  saveNewsFromFetchApi() {
-        try{
-        List<NewsDataResponseDto> responses = new ArrayList<>();
+    public StandardResponseDto saveNewsFromFetchApi() {
         List<FetchResponseData> newsFromFetch = fetchNewsApi.fetchDataFromApi();
 
-        for (FetchResponseData fetchResponseData : newsFromFetch) {
+            for (FetchResponseData fetchResponseData : newsFromFetch) {
+                NewsDataEntity newsDataEntity = newsDataConverter.fromFetchApiToEntity(fetchResponseData);
+                if (newsDataRepository.findByTitle(newsDataEntity.getTitle()).isEmpty()) {
+                    newsDataRepository.save(newsDataEntity);
+                }
+            }
+            return new StandardResponseDto("All news loaded successfully");
 
-            NewsDataEntity newsDataEntity = newsDataConverter.fromFetchApiToEntity(fetchResponseData);
-            newsDataRepository.save(newsDataEntity);
-
-            NewsDataResponseDto responseDto = newsDataConverter.fromEntityToDto(newsDataEntity);
-            responses.add(responseDto);
-        }
-            return new ResponseEntity<>(responses, HttpStatus.CREATED);
-        } catch (IllegalArgumentException e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        } catch (Exception e) {
-            // Логирование исключения (рекомендуется использовать логгер)
-            e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
     }
 }

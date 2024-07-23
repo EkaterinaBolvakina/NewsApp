@@ -13,5 +13,6 @@ public interface NewsDataRepository extends JpaRepository<NewsDataEntity, Long> 
     List<NewsDataEntity> findBySectionName(String sectionName);
     List<NewsDataEntity> findByRegionId(Long regionId);
     List<NewsDataEntity> findByRegionRegionName(String regionName);
-   // List<NewsDataEntity> findByRegionRegionNewsId(Integer regionNewsId);
+    Optional<NewsDataEntity> findByTitle(String title);
+    //  List<NewsDataEntity> findByDateBefore(String date);
 }
