@@ -11,9 +11,6 @@
             <column name="id" type="BIGSERIAL">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="region_news_id" type="INTEGER">
-                <constraints unique="true" nullable="false"/>
-            </column>
             <column name="region_name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
@@ -26,7 +23,7 @@
             <column name="id" type="BIGSERIAL">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="region_news_id" type="INTEGER">
+            <column name="region_id" type="BIGSERIAL">
             </column>
             <column name="section_name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
@@ -54,84 +51,84 @@
     <!-- Add foreign key constraint to news table -->
     <changeSet id="add-foreign-key-news-region" author="Author1">
         <addForeignKeyConstraint baseTableName="news"
-                                 baseColumnNames="region_news_id"
+                                 baseColumnNames="region_id"
                                  referencedTableName="region"
-                                 referencedColumnNames="region_news_id"
+                                 referencedColumnNames="id"
                                  constraintName="fk_news_region"/>
     </changeSet>
 
     <!-- Insert initial data into region table -->
     <changeSet id="insert-initial-data-region" author="Author1">
         <insert tableName="region">
-            <column name="region_news_id" value="0"/>
+
             <column name="region_name" value="non-region"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="1"/>
+
             <column name="region_name" value="Baden-Württemberg"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="2"/>
+
             <column name="region_name" value="Bayern"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="3"/>
+
             <column name="region_name" value="Berlin"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="4"/>
+
             <column name="region_name" value="Brandenburg"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="5"/>
+
             <column name="region_name" value="Bremen"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="6"/>
+
             <column name="region_name" value="Hamburg"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="7"/>
+
             <column name="region_name" value="Hessen"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="8"/>
+
             <column name="region_name" value="Mecklenburg-Vorpommern"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="9"/>
+
             <column name="region_name" value="Niedersachsen"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="10"/>
+
             <column name="region_name" value="Nordrhein-Westfalen"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="11"/>
+
             <column name="region_name" value="Rheinland-Pfalz"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="12"/>
+
             <column name="region_name" value="Saarland"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="13"/>
+
             <column name="region_name" value="Sachsen"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="14"/>
+
             <column name="region_name" value="Sachsen-Anhalt"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="15"/>
+
             <column name="region_name" value="Schleswig-Holstein"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="16"/>
+
             <column name="region_name" value="Thüringen"/>
         </insert>
         <insert tableName="region">
-            <column name="region_news_id" value="17"/>
+
             <column name="region_name" value="Deutschland"/>
         </insert>
     </changeSet>

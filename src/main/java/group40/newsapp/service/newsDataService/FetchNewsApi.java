@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class FetchNewsApi {
-    private static final Logger logger = LoggerFactory.getLogger(FetchNewsApi.class);
+   // private static final Logger logger = LoggerFactory.getLogger(FetchNewsApi.class);
     private final RestTemplate restTemplate;
 
     public List<FetchResponseData> fetchDataFromApi() {
@@ -62,7 +62,7 @@ public class FetchNewsApi {
 
                 // Check if detailsUrl is valid
                 if (detailsUrl == null || detailsUrl.isEmpty()) {
-                    logger.warn("Details URL is missing or empty for item with title: {}", item.path("title").asText());
+                //    logger.warn("Details URL is missing or empty for item with title: {}", item.path("title").asText());
                     continue;
                 }
 
@@ -83,12 +83,12 @@ public class FetchNewsApi {
                     FetchResponseData newsData = new FetchResponseData();
 
                     // RegionId
-                    logger.info("RegionId: {}", regionId);
-                    newsData.setRegionId(regionId);
+                //    logger.info("RegionId: {}", regionId);
+                    newsData.setRegionId((long) (regionId + 1));
 
                     // Section
                     if (regionId > 0) {
-                        logger.info("SectionName: inland");
+                //        logger.info("SectionName: inland");
                         newsData.setSectionName("inland");
                     } else {
                         if (apiType.equals("sport") && sectionName.isEmpty()) {
@@ -98,29 +98,29 @@ public class FetchNewsApi {
                         } else if (apiType.equals("wissen") && sectionName.isEmpty()) {
                             sectionName = "wissen";
                         }
-                        logger.info("SectionName: {}", sectionName);
+                //        logger.info("SectionName: {}", sectionName);
                         newsData.setSectionName(sectionName);
                     }
 
                     // Title
                     String title = item.path("title").asText();
-                    logger.info("Title: {}", title);
+                //    logger.info("Title: {}", title);
                     newsData.setTitle(title);
 
                     // Date
                     String date = item.path("date").asText();
-                    logger.info("Date: {}", date);
+                //    logger.info("Date: {}", date);
                     newsData.setDate(date);
 
                     // Teaser Image
-                    logger.info("ImageSquareUrl: {}", imageSquareUrl);
+                //    logger.info("ImageSquareUrl: {}", imageSquareUrl);
                     newsData.setTitleImageSquare(imageSquareUrl);
 
-                    logger.info("ImageWideUrl: {}", imageWideUrl);
+                //    logger.info("ImageWideUrl: {}", imageWideUrl);
                     newsData.setTitleImageWide(imageWideUrl);
 
                     // Set Content
-                    logger.info("DetailsUrl: {}", detailsUrl);
+                //    logger.info("DetailsUrl: {}", detailsUrl);
                     newsData.setContent(content);
 
                     // Save news
@@ -128,7 +128,7 @@ public class FetchNewsApi {
                 }
             }
         } catch (IOException e) {
-            logger.error("Error processing JSON response: {}", e.getMessage());
+        //    logger.error("Error processing JSON response: {}", e.getMessage());
         }
 
         return savedNews;
@@ -171,7 +171,7 @@ public class FetchNewsApi {
             }
             content = contentBuilder.toString().trim();
         } catch (IOException e) {
-            logger.error("Error fetching or processing details URL JSON: {}", e.getMessage());
+        //    logger.error("Error fetching or processing details URL JSON: {}", e.getMessage());
         }
         return content;
     }

@@ -33,7 +33,8 @@ public class NewsDataConverter {
     public NewsDataEntity fromFetchApiToEntity(FetchResponseData dto) {
         NewsDataEntity newsDataEntity = new NewsDataEntity();
 
-        Region region = findRegionService.findRegionByRegionNewsId(dto.getRegionId());
+       // Region region = findRegionService.findRegionByRegionNewsId(dto.getRegionId());
+        Region region = findRegionService.findRegionById(dto.getRegionId());
         newsDataEntity.setRegion(region);
         newsDataEntity.setSectionName(dto.getSectionName());
         newsDataEntity.setTitle(dto.getTitle());

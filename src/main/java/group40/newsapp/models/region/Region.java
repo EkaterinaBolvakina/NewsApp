@@ -14,7 +14,7 @@ public class Region {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer regionNewsId;
+    //private Integer regionNewsId;
 
     private String regionName;
 

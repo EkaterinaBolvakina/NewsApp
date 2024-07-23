@@ -5,12 +5,15 @@ import group40.newsapp.repository.RegionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class FindRegionService {
     private final RegionRepository regionRepository;
+
+    public List<Region> findAll() {return regionRepository.findAll();}
 
     public Region findRegionById(Long id) {
         Optional<Region> foundedRegionOpt= regionRepository.findById(id);
@@ -31,7 +34,7 @@ public class FindRegionService {
             throw new RuntimeException();
         }
     }
-
+/*
     public Region findRegionByRegionNewsId(Integer regionNewsId) {
         Optional<Region> foundedRegionOpt= regionRepository.findByRegionNewsId(regionNewsId);
 
@@ -41,4 +44,6 @@ public class FindRegionService {
             throw new RuntimeException();
         }
     }
+
+ */
 }
