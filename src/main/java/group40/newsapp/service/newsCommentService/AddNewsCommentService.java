@@ -2,12 +2,10 @@ package group40.newsapp.service.newsCommentService;
 
 import group40.newsapp.DTO.newsComment.NewsCommentRequestDTO;
 import group40.newsapp.DTO.newsComment.NewsCommentResponseDTO;
-import group40.newsapp.exception.RestException;
 import group40.newsapp.models.news.NewsComment;
 import group40.newsapp.models.news.NewsDataEntity;
 import group40.newsapp.models.user.User;
-import group40.newsapp.repository.NewsCommentRepository;
-import group40.newsapp.repository.UserRepository;
+import group40.newsapp.repository.news.NewsCommentRepository;
 import group40.newsapp.service.newsDataService.FindNewsDataService;
 import group40.newsapp.service.newsDataService.UpdateNewsDataService;
 import group40.newsapp.service.user.UserFindService;

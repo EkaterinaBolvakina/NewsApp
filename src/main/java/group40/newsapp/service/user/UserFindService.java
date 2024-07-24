@@ -2,7 +2,7 @@ package group40.newsapp.service.user;
 
 import group40.newsapp.exception.RestException;
 import group40.newsapp.models.user.User;
-import group40.newsapp.repository.UserRepository;
+import group40.newsapp.repository.user.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 

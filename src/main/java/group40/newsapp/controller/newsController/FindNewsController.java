@@ -4,10 +4,8 @@ import group40.newsapp.DTO.news.NewsDataResponseDto;
 import group40.newsapp.service.newsDataService.FindNewsDataService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -26,13 +24,19 @@ public class FindNewsController {
     public ResponseEntity<NewsDataResponseDto> findNewsById(@PathVariable Long newsId) {
         return findNewsDataService.findNewsById(newsId);
     }
+
+    @GetMapping("/findBy")
+    public ResponseEntity<List<NewsDataResponseDto>> findBySectionAndRegion(@RequestParam String section, @RequestParam String region) {
+        return findNewsDataService.findAllNewsBySectionNameAndRegionName(section, region);
+    }
+
     //localhost:8080/api/news/section/sport
     @GetMapping("/section/{sectionName}")
     public ResponseEntity<List<NewsDataResponseDto>> findAllNewsBySectionName(@PathVariable String sectionName){
         return findNewsDataService.findAllNewsBySectionName(sectionName);
     }
 
-    @GetMapping("/region/name/{regionName}")
+    @GetMapping("/region/{regionName}")
     public ResponseEntity<List<NewsDataResponseDto>> findAllNewsByRegionName(@PathVariable String regionName){
         return findNewsDataService.findAllNewsByRegionName(regionName);
     }

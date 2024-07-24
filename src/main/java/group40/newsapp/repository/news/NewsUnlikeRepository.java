@@ -1,4 +1,4 @@
-package group40.newsapp.repository;
+package group40.newsapp.repository.news;
 
 import group40.newsapp.models.news.NewsDataEntity;
 import group40.newsapp.models.news.NewsUnlike;

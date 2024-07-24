@@ -2,7 +2,7 @@ package group40.newsapp.service.newsCommentService;
 
 import group40.newsapp.exception.RestException;
 import group40.newsapp.models.news.NewsComment;
-import group40.newsapp.repository.NewsCommentRepository;
+import group40.newsapp.repository.news.NewsCommentRepository;
 import group40.newsapp.service.newsDataService.UpdateNewsDataService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

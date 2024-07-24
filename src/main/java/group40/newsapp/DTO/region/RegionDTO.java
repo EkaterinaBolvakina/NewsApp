@@ -1,18 +1,13 @@
-package group40.newsapp.models.region;
+package group40.newsapp.DTO.region;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Region {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class RegionDTO {
     private Long id;
     private String regionName;
-
 }

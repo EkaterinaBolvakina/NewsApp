@@ -1,4 +1,4 @@
-package group40.newsapp.repository;
+package group40.newsapp.repository.user;
 
 import group40.newsapp.models.user.Role;
 import org.springframework.data.jpa.repository.JpaRepository;

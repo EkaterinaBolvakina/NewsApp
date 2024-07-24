@@ -2,16 +2,12 @@ package group40.newsapp.service.newsDataService;
 
 import group40.newsapp.DTO.appDTO.StandardResponseDto;
 import group40.newsapp.models.news.NewsDataEntity;
-import group40.newsapp.DTO.news.NewsDataResponseDto;
 import group40.newsapp.DTO.news.newsJsonModel.FetchResponseData;
-import group40.newsapp.repository.NewsDataRepository;
+import group40.newsapp.repository.news.NewsDataRepository;
 import group40.newsapp.service.util.newsMapping.NewsDataConverter;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,6 +23,7 @@ public class AddNewsDataService {
 
             for (FetchResponseData fetchResponseData : newsFromFetch) {
                 NewsDataEntity newsDataEntity = newsDataConverter.fromFetchApiToEntity(fetchResponseData);
+
                 if (newsDataRepository.findByTitle(newsDataEntity.getTitle()).isEmpty()) {
                     newsDataRepository.save(newsDataEntity);
                 }

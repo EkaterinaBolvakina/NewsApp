@@ -156,7 +156,6 @@ public class FetchNewsApi {
         } catch (IOException e) {
             throw new RestException(HttpStatus.INTERNAL_SERVER_ERROR, "Error processing details URL JSON: " + e.getMessage());
         }
-
         return contentBuilder.toString().trim();
     }
 }

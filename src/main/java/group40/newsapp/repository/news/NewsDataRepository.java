@@ -1,4 +1,4 @@
-package group40.newsapp.repository;
+package group40.newsapp.repository.news;
 
 import group40.newsapp.models.news.NewsDataEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,6 +13,7 @@ public interface NewsDataRepository extends JpaRepository<NewsDataEntity, Long> 
     List<NewsDataEntity> findBySectionName(String sectionName);
     List<NewsDataEntity> findByRegionId(Long regionId);
     List<NewsDataEntity> findByRegionRegionName(String regionName);
+    List<NewsDataEntity> findBySectionNameAndRegionRegionName(String sectionName, String regionName);
     Optional<NewsDataEntity> findByTitle(String title);
     //  List<NewsDataEntity> findByDateBefore(String date);
 }
