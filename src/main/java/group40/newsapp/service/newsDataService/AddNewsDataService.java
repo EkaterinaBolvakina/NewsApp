@@ -2,7 +2,7 @@ package group40.newsapp.service.newsDataService;
 
 import group40.newsapp.DTO.appDTO.StandardResponseDto;
 import group40.newsapp.models.news.NewsDataEntity;
-import group40.newsapp.DTO.news.newsJsonModel.FetchResponseData;
+import group40.newsapp.DTO.news.newsJsonModel.FetchNewsDataDTO;
 import group40.newsapp.repository.news.NewsDataRepository;
 import group40.newsapp.service.util.newsMapping.NewsDataConverter;
 import lombok.AllArgsConstructor;
@@ -19,10 +19,10 @@ public class AddNewsDataService {
 
     @Transactional
     public StandardResponseDto saveNewsFromFetchApi() {
-        List<FetchResponseData> newsFromFetch = fetchNewsApi.fetchDataFromApi();
+        List<FetchNewsDataDTO> newsFromFetch = fetchNewsApi.fetchDataFromApi();
 
-            for (FetchResponseData fetchResponseData : newsFromFetch) {
-                NewsDataEntity newsDataEntity = newsDataConverter.fromFetchApiToEntity(fetchResponseData);
+            for (FetchNewsDataDTO fetchNewsDataDTO : newsFromFetch) {
+                NewsDataEntity newsDataEntity = newsDataConverter.fromFetchApiToEntity(fetchNewsDataDTO);
 
                 if (newsDataRepository.findByTitle(newsDataEntity.getTitle()).isEmpty()) {
                     newsDataRepository.save(newsDataEntity);

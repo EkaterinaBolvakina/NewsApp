@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FetchResponseData {
+public class FetchNewsDataDTO {
    // private Integer regionId;
    // private String regionName;
     private Long regionId;

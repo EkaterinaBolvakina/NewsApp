@@ -2,7 +2,6 @@ package group40.newsapp.controller.newsController;
 
 import group40.newsapp.DTO.news.NewsDataResponseDto;
 import group40.newsapp.service.newsDataService.FindNewsDataService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

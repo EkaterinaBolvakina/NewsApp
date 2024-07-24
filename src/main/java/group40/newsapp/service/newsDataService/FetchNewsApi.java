@@ -2,7 +2,7 @@ package group40.newsapp.service.newsDataService;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import group40.newsapp.DTO.news.newsJsonModel.FetchResponseData;
+import group40.newsapp.DTO.news.newsJsonModel.FetchNewsDataDTO;
 import group40.newsapp.exception.RestException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,13 +18,13 @@ public class FetchNewsApi {
 
     private final RestTemplate restTemplate;
 
-    public List<FetchResponseData> fetchDataFromApi() {
-        List<FetchResponseData> generalNews = fetchDataFromUrl("https://www.tagesschau.de/api2u/news", "general");
-        List<FetchResponseData> sportNews = fetchDataFromUrl("https://www.tagesschau.de/api2u/news?ressort=sport", "sport");
-        List<FetchResponseData> wirtschaftNews = fetchDataFromUrl("https://www.tagesschau.de/api2u/news?ressort=wirtschaft", "wirtschaft");
-        List<FetchResponseData> wissenNews = fetchDataFromUrl("https://www.tagesschau.de/api2u/news?ressort=wissen", "wissen");
+    public List<FetchNewsDataDTO> fetchDataFromApi() {
+        List<FetchNewsDataDTO> generalNews = fetchDataFromUrl("https://www.tagesschau.de/api2u/news", "general");
+        List<FetchNewsDataDTO> sportNews = fetchDataFromUrl("https://www.tagesschau.de/api2u/news?ressort=sport", "sport");
+        List<FetchNewsDataDTO> wirtschaftNews = fetchDataFromUrl("https://www.tagesschau.de/api2u/news?ressort=wirtschaft", "wirtschaft");
+        List<FetchNewsDataDTO> wissenNews = fetchDataFromUrl("https://www.tagesschau.de/api2u/news?ressort=wissen", "wissen");
 
-        List<FetchResponseData> allNews = new ArrayList<>();
+        List<FetchNewsDataDTO> allNews = new ArrayList<>();
         allNews.addAll(generalNews);
         allNews.addAll(sportNews);
         allNews.addAll(wirtschaftNews);
@@ -37,14 +37,14 @@ public class FetchNewsApi {
         return allNews;
     }
 
-    private List<FetchResponseData> fetchDataFromUrl(String url, String apiType) {
+    private List<FetchNewsDataDTO> fetchDataFromUrl(String url, String apiType) {
         String json1Response = restTemplate.getForObject(url, String.class);
         if (json1Response == null) {
             throw new RestException(HttpStatus.INTERNAL_SERVER_ERROR, "Error fetching data from URL: " + url);
         }
 
         ObjectMapper mapper = new ObjectMapper();
-        List<FetchResponseData> savedNews = new ArrayList<>();
+        List<FetchNewsDataDTO> savedNews = new ArrayList<>();
 
         JsonNode jsonResponse;
         try {
@@ -91,7 +91,7 @@ public class FetchNewsApi {
                         && content != null && !content.isEmpty()
                         && (!(apiType.equals("general") && regionId == 0 && sectionName.isEmpty()))
                 ) {
-                    FetchResponseData newsData = new FetchResponseData();
+                    FetchNewsDataDTO newsData = new FetchNewsDataDTO();
                     // RegionId
                     newsData.setRegionId((long) (regionId + 1));
 
