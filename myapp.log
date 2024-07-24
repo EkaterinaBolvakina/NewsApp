@@ -609,3 +609,87 @@ group40.newsapp.controller.regionController.FindRegionController#findRegionById(
 2024-07-24T11:40:05.637+02:00  INFO 9572 --- [NewsApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-07-24T11:40:05.639+02:00  INFO 9572 --- [NewsApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-07-24T11:40:05.644+02:00  INFO 9572 --- [NewsApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-24T11:59:22.802+02:00  INFO 8612 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : Starting NewsAppApplication using Java 21.0.2 with PID 8612 (C:\Users\ekate\IdeaProjects\NewsApp\target\classes started by ekate in C:\Users\ekate\IdeaProjects\NewsApp)
+2024-07-24T11:59:22.805+02:00  INFO 8612 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2024-07-24T11:59:23.749+02:00  INFO 8612 --- [NewsApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-24T11:59:23.822+02:00  INFO 8612 --- [NewsApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66 ms. Found 7 JPA repository interfaces.
+2024-07-24T11:59:24.328+02:00  INFO 8612 --- [NewsApp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-24T11:59:24.340+02:00  INFO 8612 --- [NewsApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-24T11:59:24.341+02:00  INFO 8612 --- [NewsApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-24T11:59:24.403+02:00  INFO 8612 --- [NewsApp] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-24T11:59:24.403+02:00  INFO 8612 --- [NewsApp] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1533 ms
+2024-07-24T11:59:24.545+02:00  INFO 8612 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-24T11:59:24.734+02:00  INFO 8612 --- [NewsApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2dff7085
+2024-07-24T11:59:24.736+02:00  INFO 8612 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-24T11:59:24.930+02:00  INFO 8612 --- [NewsApp] [main] liquibase.database                       : Set default schema name to public
+2024-07-24T11:59:25.452+02:00  INFO 8612 --- [NewsApp] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-24T11:59:25.530+02:00  INFO 8612 --- [NewsApp] [main] liquibase.ui                             : Database is up to date, no changesets to execute
+2024-07-24T11:59:25.532+02:00  INFO 8612 --- [NewsApp] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-24T11:59:25.541+02:00  INFO 8612 --- [NewsApp] [main] liquibase.util                           : UPDATE SUMMARY
+2024-07-24T11:59:25.542+02:00  INFO 8612 --- [NewsApp] [main] liquibase.util                           : Run:                          0
+2024-07-24T11:59:25.542+02:00  INFO 8612 --- [NewsApp] [main] liquibase.util                           : Previously run:               8
+2024-07-24T11:59:25.542+02:00  INFO 8612 --- [NewsApp] [main] liquibase.util                           : Filtered out:                 0
+2024-07-24T11:59:25.542+02:00  INFO 8612 --- [NewsApp] [main] liquibase.util                           : -------------------------------
+2024-07-24T11:59:25.542+02:00  INFO 8612 --- [NewsApp] [main] liquibase.util                           : Total change sets:            8
+2024-07-24T11:59:25.543+02:00  INFO 8612 --- [NewsApp] [main] liquibase.util                           : Update summary generated
+2024-07-24T11:59:25.564+02:00  INFO 8612 --- [NewsApp] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-07-24T11:59:25.566+02:00  INFO 8612 --- [NewsApp] [main] liquibase.command                        : Command execution complete
+2024-07-24T11:59:25.653+02:00  INFO 8612 --- [NewsApp] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-24T11:59:25.767+02:00  INFO 8612 --- [NewsApp] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-24T11:59:25.805+02:00  INFO 8612 --- [NewsApp] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-24T11:59:26.133+02:00  INFO 8612 --- [NewsApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-24T11:59:27.216+02:00  INFO 8612 --- [NewsApp] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-24T11:59:27.345+02:00  INFO 8612 --- [NewsApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-24T11:59:27.670+02:00  INFO 8612 --- [NewsApp] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-07-24T11:59:28.310+02:00  WARN 8612 --- [NewsApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-24T11:59:28.747+02:00  INFO 8612 --- [NewsApp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-24T11:59:28.755+02:00  INFO 8612 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : Started NewsAppApplication in 6.614 seconds (process running for 7.582)
+2024-07-24T11:59:34.273+02:00  INFO 8612 --- [NewsApp] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-24T11:59:34.274+02:00  INFO 8612 --- [NewsApp] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-24T11:59:34.275+02:00  INFO 8612 --- [NewsApp] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-24T11:59:34.821+02:00  INFO 8612 --- [NewsApp] [http-nio-8080-exec-6] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 357 ms
+2024-07-24T12:01:41.048+02:00  INFO 8612 --- [NewsApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-24T12:01:41.050+02:00  INFO 8612 --- [NewsApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-24T12:01:41.053+02:00  INFO 8612 --- [NewsApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-24T12:06:55.704+02:00  INFO 3080 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : Starting NewsAppApplication using Java 21.0.2 with PID 3080 (C:\Users\ekate\IdeaProjects\NewsApp\target\classes started by ekate in C:\Users\ekate\IdeaProjects\NewsApp)
+2024-07-24T12:06:55.706+02:00  INFO 3080 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2024-07-24T12:06:56.461+02:00  INFO 3080 --- [NewsApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-24T12:06:56.532+02:00  INFO 3080 --- [NewsApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 7 JPA repository interfaces.
+2024-07-24T12:06:57.027+02:00  INFO 3080 --- [NewsApp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-24T12:06:57.041+02:00  INFO 3080 --- [NewsApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-24T12:06:57.041+02:00  INFO 3080 --- [NewsApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-24T12:06:57.103+02:00  INFO 3080 --- [NewsApp] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-24T12:06:57.104+02:00  INFO 3080 --- [NewsApp] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1354 ms
+2024-07-24T12:06:57.226+02:00  INFO 3080 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-24T12:06:57.390+02:00  INFO 3080 --- [NewsApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2dff7085
+2024-07-24T12:06:57.393+02:00  INFO 3080 --- [NewsApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-24T12:06:57.527+02:00  INFO 3080 --- [NewsApp] [main] liquibase.database                       : Set default schema name to public
+2024-07-24T12:06:57.975+02:00  INFO 3080 --- [NewsApp] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-24T12:06:58.042+02:00  INFO 3080 --- [NewsApp] [main] liquibase.ui                             : Database is up to date, no changesets to execute
+2024-07-24T12:06:58.044+02:00  INFO 3080 --- [NewsApp] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2024-07-24T12:06:58.053+02:00  INFO 3080 --- [NewsApp] [main] liquibase.util                           : UPDATE SUMMARY
+2024-07-24T12:06:58.053+02:00  INFO 3080 --- [NewsApp] [main] liquibase.util                           : Run:                          0
+2024-07-24T12:06:58.053+02:00  INFO 3080 --- [NewsApp] [main] liquibase.util                           : Previously run:               8
+2024-07-24T12:06:58.053+02:00  INFO 3080 --- [NewsApp] [main] liquibase.util                           : Filtered out:                 0
+2024-07-24T12:06:58.053+02:00  INFO 3080 --- [NewsApp] [main] liquibase.util                           : -------------------------------
+2024-07-24T12:06:58.053+02:00  INFO 3080 --- [NewsApp] [main] liquibase.util                           : Total change sets:            8
+2024-07-24T12:06:58.054+02:00  INFO 3080 --- [NewsApp] [main] liquibase.util                           : Update summary generated
+2024-07-24T12:06:58.072+02:00  INFO 3080 --- [NewsApp] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-07-24T12:06:58.074+02:00  INFO 3080 --- [NewsApp] [main] liquibase.command                        : Command execution complete
+2024-07-24T12:06:58.150+02:00  INFO 3080 --- [NewsApp] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-24T12:06:58.229+02:00  INFO 3080 --- [NewsApp] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-24T12:06:58.274+02:00  INFO 3080 --- [NewsApp] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-24T12:06:58.598+02:00  INFO 3080 --- [NewsApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-24T12:06:59.716+02:00  INFO 3080 --- [NewsApp] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-24T12:06:59.850+02:00  INFO 3080 --- [NewsApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-24T12:07:00.086+02:00  INFO 3080 --- [NewsApp] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-07-24T12:07:00.742+02:00  WARN 3080 --- [NewsApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-24T12:07:01.135+02:00  INFO 3080 --- [NewsApp] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-24T12:07:01.145+02:00  INFO 3080 --- [NewsApp] [main] group40.newsapp.NewsAppApplication       : Started NewsAppApplication in 5.897 seconds (process running for 6.591)
+2024-07-24T12:07:11.185+02:00  INFO 3080 --- [NewsApp] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-24T12:07:11.186+02:00  INFO 3080 --- [NewsApp] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-24T12:07:11.187+02:00  INFO 3080 --- [NewsApp] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-24T12:07:11.667+02:00  INFO 3080 --- [NewsApp] [http-nio-8080-exec-4] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 304 ms
+2024-07-24T12:10:54.701+02:00  INFO 3080 --- [NewsApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-24T12:10:54.704+02:00  INFO 3080 --- [NewsApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-24T12:10:54.708+02:00  INFO 3080 --- [NewsApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

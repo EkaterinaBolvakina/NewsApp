@@ -4,6 +4,8 @@ import group40.newsapp.DTO.region.RegionDTO;
 import group40.newsapp.service.regionService.FindRegionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,16 +19,17 @@ public class FindRegionController {
 
     @GetMapping
     public ResponseEntity<List<RegionDTO>> findAllRegions() {
-        return service.findAllRegions();
+        ResponseEntity<List<RegionDTO>> response = service.findAllRegions();
+        return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
     }
 
     @GetMapping("/findById")
-    public RegionDTO findRegionById(@Valid @RequestParam Long id) {
-        return service.findRegionById(id);
+    public ResponseEntity<RegionDTO> findRegionById(@Valid @RequestParam Long id) {
+        return new ResponseEntity<>(service.findRegionById(id), HttpStatus.OK);
     }
 
     @GetMapping("/findBy")
-    public RegionDTO findRegionByName(@Valid @RequestParam String region) {
-        return service.findRegionByName(region);
+    public ResponseEntity<RegionDTO> findRegionByName(@Valid @RequestParam String region) {
+        return new ResponseEntity<>(service.findRegionByName(region), HttpStatus.OK);
     }
 }
