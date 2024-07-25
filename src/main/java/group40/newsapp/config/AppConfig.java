@@ -1,13 +1,23 @@
 package group40.newsapp.config;
 
+import freemarker.cache.ClassTemplateLoader;
+import freemarker.template.Configuration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
-@Configuration
+@org.springframework.context.annotation.Configuration
 public class AppConfig {
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
+    }
+
+    @Bean
+    public Configuration freemakerConfiguration(){
+        Configuration configuration = new Configuration(Configuration.VERSION_2_3_21);
+        configuration.setDefaultEncoding("UTF-8");
+        configuration.setTemplateLoader(new ClassTemplateLoader(AppConfig.class, "/mails/"));
+
+        return configuration;
     }
 }

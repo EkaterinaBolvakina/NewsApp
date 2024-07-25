@@ -28,21 +28,8 @@ public class FindNewsController {
     }
 
     @GetMapping("/findBy")
-    public ResponseEntity<List<NewsDataResponseDto>> findBySectionAndRegion(@RequestParam String section, @RequestParam String region) {
-        ResponseEntity<List<NewsDataResponseDto>> response = findNewsDataService.findAllNewsBySectionNameAndRegionName(section, region);
-        return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
-    }
-
-    //localhost:8080/api/news/section/sport
-    @GetMapping("/section/{sectionName}")
-    public ResponseEntity<List<NewsDataResponseDto>> findAllNewsBySectionName(@PathVariable String sectionName){
-        ResponseEntity<List<NewsDataResponseDto>> response = findNewsDataService.findAllNewsBySectionName(sectionName);
-        return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
-    }
-
-    @GetMapping("/region/{regionName}")
-    public ResponseEntity<List<NewsDataResponseDto>> findAllNewsByRegionName(@PathVariable String regionName){
-        ResponseEntity<List<NewsDataResponseDto>> response = findNewsDataService.findAllNewsByRegionName(regionName);
+    public ResponseEntity<List<NewsDataResponseDto>> findByCriteria(@RequestParam String section, @RequestParam String region) {
+        ResponseEntity<List<NewsDataResponseDto>> response = findNewsDataService.findAllNewsByCriteria(section, region);
         return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
     }
 
@@ -51,8 +38,4 @@ public class FindNewsController {
         ResponseEntity<List<NewsDataResponseDto>> response = findNewsDataService.findAllNewsByRegionId(regionId);
         return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
     }
-
-
-
-
 }

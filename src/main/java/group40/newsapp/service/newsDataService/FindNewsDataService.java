@@ -1,6 +1,7 @@
 package group40.newsapp.service.newsDataService;
 
 import group40.newsapp.DTO.news.NewsDataResponseDto;
+import group40.newsapp.exception.NullArgException;
 import group40.newsapp.exception.RestException;
 import group40.newsapp.models.news.NewsDataEntity;
 import group40.newsapp.repository.news.NewsDataRepository;
@@ -39,30 +40,6 @@ public class FindNewsDataService {
         }
     }
 
-    public ResponseEntity<List<NewsDataResponseDto>> findAllNewsBySectionName(String sectionName) {
-        List<NewsDataEntity> allNewsBySectionName = newsDataRepository.findBySectionName(sectionName);
-        List<NewsDataResponseDto> DTOs = allNewsBySectionName.stream()
-                .map(newsDataConverter::fromEntityToDto)
-                .toList();
-        if (!allNewsBySectionName.isEmpty()) {
-            return new ResponseEntity<>(DTOs, HttpStatus.OK);
-        }else {
-            throw new RestException(HttpStatus.NOT_FOUND, "News Data for section name: '"+ sectionName+"' Not found");
-        }
-    }
-
-    public ResponseEntity<List<NewsDataResponseDto>> findAllNewsByRegionName(String regionName) {
-        List<NewsDataEntity> allNewsByRegionName = newsDataRepository.findByRegionRegionName(regionName);
-        List<NewsDataResponseDto> DTOs = allNewsByRegionName.stream()
-                .map(newsDataConverter::fromEntityToDto)
-                .toList();
-        if (!allNewsByRegionName.isEmpty()) {
-            return new ResponseEntity<>(DTOs, HttpStatus.OK);
-        }else {
-            throw new RestException(HttpStatus.NOT_FOUND, "News Data for region: '"+ regionName+"' Not found");
-        }
-    }
-
     public ResponseEntity<List<NewsDataResponseDto>> findAllNewsByRegionId(Long regionId) {
         List<NewsDataEntity> allNewsByRegionId = newsDataRepository.findByRegionId(regionId);
         List<NewsDataResponseDto> DTOs = allNewsByRegionId.stream()
@@ -75,15 +52,54 @@ public class FindNewsDataService {
         }
     }
 
-    public ResponseEntity<List<NewsDataResponseDto>> findAllNewsBySectionNameAndRegionName(String sectionName, String regionName) {
+    public ResponseEntity<List<NewsDataResponseDto>> findAllNewsByCriteria(String sectionName, String regionName) {
+        if ((sectionName == null || sectionName.isEmpty()) && (regionName == null || regionName.isEmpty())) {
+            throw new NullArgException("Both section and region name cannot be null or empty");
+        }
+
+        if (sectionName == null || sectionName.isEmpty()) {
+            return findAllNewsByRegionName(regionName);
+        }
+
+        if (regionName == null || regionName.isEmpty()) {
+            return findAllNewsBySectionName(sectionName);
+        }
+
         List<NewsDataEntity> allNewsBySectionNameAndRegionName = newsDataRepository.findBySectionNameAndRegionRegionName(sectionName, regionName);
         List<NewsDataResponseDto> DTOs = allNewsBySectionNameAndRegionName.stream()
                 .map(newsDataConverter::fromEntityToDto)
                 .toList();
-        if (!allNewsBySectionNameAndRegionName.isEmpty()) {
+
+        if (!DTOs.isEmpty()) {
             return new ResponseEntity<>(DTOs, HttpStatus.OK);
-        }else {
-            throw new RestException(HttpStatus.NOT_FOUND, "News Data for section '"+ sectionName +" and region: '"+ regionName+"' Not found");
+        } else {
+            throw new RestException(HttpStatus.NOT_FOUND, "News Data for section: '" + sectionName + "' and region: '" + regionName + "' not found");
+        }
+    }
+
+    private ResponseEntity<List<NewsDataResponseDto>> findAllNewsBySectionName(String sectionName) {
+        List<NewsDataEntity> allNewsBySectionName = newsDataRepository.findBySectionName(sectionName);
+        List<NewsDataResponseDto> DTOs = allNewsBySectionName.stream()
+                .map(newsDataConverter::fromEntityToDto)
+                .toList();
+
+        if (!DTOs.isEmpty()) {
+            return new ResponseEntity<>(DTOs, HttpStatus.OK);
+        } else {
+            throw new RestException(HttpStatus.NOT_FOUND, "News Data for section name: '" + sectionName + "' not found");
+        }
+    }
+
+    private ResponseEntity<List<NewsDataResponseDto>> findAllNewsByRegionName(String regionName) {
+        List<NewsDataEntity> allNewsByRegionName = newsDataRepository.findByRegionRegionName(regionName);
+        List<NewsDataResponseDto> DTOs = allNewsByRegionName.stream()
+                .map(newsDataConverter::fromEntityToDto)
+                .toList();
+
+        if (!DTOs.isEmpty()) {
+            return new ResponseEntity<>(DTOs, HttpStatus.OK);
+        } else {
+            throw new RestException(HttpStatus.NOT_FOUND, "News Data for region: '" + regionName + "' not found");
         }
     }
 
