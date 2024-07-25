@@ -8,7 +8,12 @@ import group40.newsapp.service.util.newsMapping.NewsDataConverter;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -19,16 +24,19 @@ public class AddNewsDataService {
 
     @Transactional
     public StandardResponseDto saveNewsFromFetchApi() {
-        List<FetchNewsDataDTO> newsFromFetch = fetchNewsApi.fetchDataFromApi();
+        Map<String, FetchNewsDataDTO> newsFromFetch = fetchNewsApi.fetchDataFromApi();
+        Optional<String> lastDateOpt = newsDataRepository.findLastDate();
 
-            for (FetchNewsDataDTO fetchNewsDataDTO : newsFromFetch) {
+        String lastDate = lastDateOpt.orElse("0000-00-00T00:00:00");
+
+        for (FetchNewsDataDTO fetchNewsDataDTO : newsFromFetch.values()) {
+            String newsDate = fetchNewsDataDTO.getDate();
+
+            if (newsDate.compareTo(lastDate) > 0) {
                 NewsDataEntity newsDataEntity = newsDataConverter.fromFetchApiToEntity(fetchNewsDataDTO);
-
-                if (newsDataRepository.findByTitle(newsDataEntity.getTitle()).isEmpty()) {
-                    newsDataRepository.save(newsDataEntity);
-                }
+                newsDataRepository.save(newsDataEntity);
             }
-            return new StandardResponseDto("All news loaded successfully");
-
+        }
+        return new StandardResponseDto("All news loaded successfully");
     }
 }

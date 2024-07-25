@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @AllArgsConstructor
@@ -18,17 +20,13 @@ public class FetchNewsApi {
 
     private final RestTemplate restTemplate;
 
-    public List<FetchNewsDataDTO> fetchDataFromApi() {
-        List<FetchNewsDataDTO> generalNews = fetchDataFromUrl("https://www.tagesschau.de/api2u/news", "general");
-        List<FetchNewsDataDTO> sportNews = fetchDataFromUrl("https://www.tagesschau.de/api2u/news?ressort=sport", "sport");
-        List<FetchNewsDataDTO> wirtschaftNews = fetchDataFromUrl("https://www.tagesschau.de/api2u/news?ressort=wirtschaft", "wirtschaft");
-        List<FetchNewsDataDTO> wissenNews = fetchDataFromUrl("https://www.tagesschau.de/api2u/news?ressort=wissen", "wissen");
+    public Map<String, FetchNewsDataDTO> fetchDataFromApi() {
+        Map<String, FetchNewsDataDTO> allNews = new HashMap<>();
 
-        List<FetchNewsDataDTO> allNews = new ArrayList<>();
-        allNews.addAll(generalNews);
-        allNews.addAll(sportNews);
-        allNews.addAll(wirtschaftNews);
-        allNews.addAll(wissenNews);
+        allNews.putAll(fetchDataFromUrl("https://www.tagesschau.de/api2u/news", "general"));
+        allNews.putAll(fetchDataFromUrl("https://www.tagesschau.de/api2u/news?ressort=sport", "sport"));
+        allNews.putAll(fetchDataFromUrl("https://www.tagesschau.de/api2u/news?ressort=wirtschaft", "wirtschaft"));
+        allNews.putAll(fetchDataFromUrl("https://www.tagesschau.de/api2u/news?ressort=wissen", "wissen"));
 
         if (allNews.isEmpty()) {
             throw new RestException(HttpStatus.NO_CONTENT, "Fetch response contains no data");
@@ -37,14 +35,14 @@ public class FetchNewsApi {
         return allNews;
     }
 
-    private List<FetchNewsDataDTO> fetchDataFromUrl(String url, String apiType) {
+    private Map<String, FetchNewsDataDTO> fetchDataFromUrl(String url, String apiType) {
         String json1Response = restTemplate.getForObject(url, String.class);
         if (json1Response == null) {
             throw new RestException(HttpStatus.INTERNAL_SERVER_ERROR, "Error fetching data from URL: " + url);
         }
 
         ObjectMapper mapper = new ObjectMapper();
-        List<FetchNewsDataDTO> savedNews = new ArrayList<>();
+        Map<String, FetchNewsDataDTO> savedNews = new HashMap<>();
 
         JsonNode jsonResponse;
         try {
@@ -53,83 +51,84 @@ public class FetchNewsApi {
             throw new RestException(HttpStatus.INTERNAL_SERVER_ERROR, "Error processing JSON response: " + e.getMessage());
         }
 
-            JsonNode newsArray = jsonResponse.path("news");
-            for (JsonNode item : newsArray) {
+        JsonNode newsArray = jsonResponse.path("news");
+        for (JsonNode item : newsArray) {
 
-                boolean isLiveblog = false;
-                JsonNode trackingArray = item.path("tracking");
-                for (JsonNode trackingItem : trackingArray) {
-                    if ("LIVEBLOG".equals(trackingItem.path("ctp").asText())) {
-                        isLiveblog = true;
-                        break;
-                    }
-                }
-
-                Integer regionId = item.path("regionId").asInt();
-                String sectionName = item.path("ressort").asText();
-                JsonNode teaserImage = item.path("teaserImage");
-                JsonNode imageVariants = teaserImage.path("imageVariants");
-                String imageSquareUrl = imageVariants.path("1x1-840").asText();
-                String imageWideUrl = imageVariants.path("16x9-960").asText();
-                String detailsUrl = item.path("details").asText();
-
-                // Check if detailsUrl is valid
-                if (detailsUrl == null || detailsUrl.isEmpty()) {
-                    continue;
-                }
-                // Fetch and check content
-                String content = fetchContentFromDetailsUrl(detailsUrl);
-
-                if ("story".equals(item.path("type").asText())
-                        && !isLiveblog
-                        && !(sectionName.equals("investigativ"))
-                        && !teaserImage.isMissingNode()
-                        && imageVariants.has("1x1-840")
-                        && !imageSquareUrl.isEmpty()
-                        && imageVariants.has("16x9-960")
-                        && !imageWideUrl.isEmpty()
-                        && content != null && !content.isEmpty()
-                        && (!(apiType.equals("general") && regionId == 0 && sectionName.isEmpty()))
-                ) {
-                    FetchNewsDataDTO newsData = new FetchNewsDataDTO();
-                    // RegionId
-                    newsData.setRegionId((long) (regionId + 1));
-
-                    // Section
-                    if (regionId > 0) {
-                        newsData.setSectionName("inland");
-                    } else {
-                        if (apiType.equals("sport") && sectionName.isEmpty()) {
-                            sectionName = "sport";
-                        } else if (apiType.equals("wirtschaft") && sectionName.isEmpty()) {
-                            sectionName = "wirtschaft";
-                        } else if (apiType.equals("wissen") && sectionName.isEmpty()) {
-                            sectionName = "wissen";
-                        }
-                        newsData.setSectionName(sectionName);
-                    }
-
-                    newsData.setTitle(item.path("title").asText());
-                    newsData.setDate(item.path("date").asText());
-                    newsData.setTitleImageSquare(imageSquareUrl);
-                    newsData.setTitleImageWide(imageWideUrl);
-                    newsData.setContent(content);
-                    savedNews.add(newsData);
-                    savedNews.add(newsData);
+            boolean isLiveblog = false;
+            JsonNode trackingArray = item.path("tracking");
+            for (JsonNode trackingItem : trackingArray) {
+                if ("LIVEBLOG".equals(trackingItem.path("ctp").asText())) {
+                    isLiveblog = true;
+                    break;
                 }
             }
+
+            Integer regionId = item.path("regionId").asInt();
+            String sectionName = item.path("ressort").asText();
+            JsonNode teaserImage = item.path("teaserImage");
+            JsonNode imageVariants = teaserImage.path("imageVariants");
+            String imageSquareUrl = imageVariants.path("1x1-840").asText();
+            String imageWideUrl = imageVariants.path("16x9-960").asText();
+            String detailsUrl = item.path("details").asText();
+
+            // Check if detailsUrl is valid
+            if (detailsUrl == null || detailsUrl.isEmpty()) {
+                continue;
+            }
+            // Fetch and check content
+            String content = fetchContentFromDetailsUrl(detailsUrl);
+
+            if ("story".equals(item.path("type").asText())
+                    && !isLiveblog
+                    && !(sectionName.equals("investigativ"))
+                    && !teaserImage.isMissingNode()
+                    && imageVariants.has("1x1-840")
+                    && !imageSquareUrl.isEmpty()
+                    && imageVariants.has("16x9-960")
+                    && !imageWideUrl.isEmpty()
+                    && content != null && !content.isEmpty()
+                    && (!(apiType.equals("general") && regionId == 0 && sectionName.isEmpty()))
+            ) {
+                FetchNewsDataDTO newsData = new FetchNewsDataDTO();
+                // RegionId
+                newsData.setRegionId((long) (regionId + 1));
+
+                // Section
+                if (regionId > 0) {
+                    newsData.setSectionName("inland");
+                } else {
+                    if (apiType.equals("sport") && sectionName.isEmpty()) {
+                        sectionName = "sport";
+                    } else if (apiType.equals("wirtschaft") && sectionName.isEmpty()) {
+                        sectionName = "wirtschaft";
+                    } else if (apiType.equals("wissen") && sectionName.isEmpty()) {
+                        sectionName = "wissen";
+                    }
+                    newsData.setSectionName(sectionName);
+                }
+
+                newsData.setTitle(item.path("title").asText());
+                newsData.setDate(item.path("date").asText());
+                newsData.setTitleImageSquare(imageSquareUrl);
+                newsData.setTitleImageWide(imageWideUrl);
+                newsData.setContent(content);
+
+                // Add newsData to the map if the title is not already present
+                savedNews.putIfAbsent(newsData.getTitle(), newsData);
+            }
+        }
 
         return savedNews;
     }
 
     private String fetchContentFromDetailsUrl(String detailsUrl) {
-
         String json2Response = restTemplate.getForObject(detailsUrl, String.class);
         if (json2Response == null) {
             throw new RestException(HttpStatus.INTERNAL_SERVER_ERROR, "Error fetching data from details URL: " + detailsUrl);
         }
-            ObjectMapper mapper = new ObjectMapper();
-            StringBuilder contentBuilder = new StringBuilder();
+
+        ObjectMapper mapper = new ObjectMapper();
+        StringBuilder contentBuilder = new StringBuilder();
 
         try {
             JsonNode jsonResponse = mapper.readTree(json2Response);
