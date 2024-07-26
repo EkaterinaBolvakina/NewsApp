@@ -28,7 +28,7 @@ public class NewsDataConverter {
         dto.setTitleImageWide(newsDataEntity.getTitleImageWide());
         dto.setContent(newsDataEntity.getContent());
         dto.setLikeCount(newsDataEntity.getLikeCount());
-        dto.setUnlikeCount(newsDataEntity.getUnlikeCount());
+        dto.setDislikeCount(newsDataEntity.getDislikeCount());
         dto.setCommentsCount(newsDataEntity.getCommentsCount());
         return dto;
     }

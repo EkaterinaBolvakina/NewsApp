@@ -18,6 +18,6 @@ public class NewsDataResponseDto {
     private String titleImageWide;
     private String content;
     private int likeCount;
-    private int unlikeCount;
+    private int dislikeCount;
     private int commentsCount;
 }

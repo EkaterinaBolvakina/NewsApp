@@ -23,7 +23,4 @@ public class NewsLike {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "news_like_user_id", referencedColumnName = "id")
     private User user;
-
-    //private String sessionId;
-    //private String ipAddress;
 }
