@@ -1,6 +1,6 @@
 package group40.newsapp.controller.newsCommentController;
 
-import group40.newsapp.DTO.newsComment.NewsCommentResponseDTO;
+import group40.newsapp.DTO.appDTO.StandardResponseDto;
 import group40.newsapp.DTO.newsComment.UpdateCommentRequestDTO;
 import group40.newsapp.service.newsCommentService.UpdateNewsCommentService;
 import jakarta.validation.Valid;
@@ -9,17 +9,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/news")
+@RequestMapping("/news-comment")
 @RequiredArgsConstructor
 public class UpdateNewsCommentController {
     private final UpdateNewsCommentService updateNewsCommentService;
 
-    @PutMapping("/{newsId}/comments/{commentId}")
-    public ResponseEntity<NewsCommentResponseDTO> updateNewsCommentById(
-            @PathVariable Long newsId,
-            @PathVariable Long commentId,
-            @Valid @RequestBody UpdateCommentRequestDTO updateCommentRequestDTO
-    ) {
-        return updateNewsCommentService.updateNewsComment(commentId, updateCommentRequestDTO);
+    @PutMapping
+    public ResponseEntity<StandardResponseDto> updateNewsCommentById(@Valid @RequestBody UpdateCommentRequestDTO DTO) {
+        updateNewsCommentService.updateNewsComment(DTO);
+        return ResponseEntity.ok(new StandardResponseDto("Comment with id = "+ DTO.getId() +" updated successfully"));
     }
 }

@@ -1,21 +1,21 @@
 package group40.newsapp.controller.newsCommentController;
 
+import group40.newsapp.DTO.appDTO.StandardResponseDto;
 import group40.newsapp.DTO.newsComment.NewsCommentRequestDTO;
-import group40.newsapp.DTO.newsComment.NewsCommentResponseDTO;
+import group40.newsapp.controller.api.newsComment.AddNewsCommentApi;
 import group40.newsapp.service.newsCommentService.AddNewsCommentService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/news")
 @RequiredArgsConstructor
-public class AddNewsCommentController {
+public class AddNewsCommentController implements AddNewsCommentApi {
     private final AddNewsCommentService addNewsCommentService;
 
-    @PostMapping("/{newsId}/addComment")
-    public ResponseEntity<NewsCommentResponseDTO> addNewsComment(@Valid @RequestBody NewsCommentRequestDTO newsCommentRequestDTO, @PathVariable Long newsId) {
-        return addNewsCommentService.addNewsComment(newsCommentRequestDTO);
+    @Override
+    public ResponseEntity<StandardResponseDto> addNewsComment(NewsCommentRequestDTO DTO) {
+        addNewsCommentService.addNewsComment(DTO);
+        return ResponseEntity.ok(new StandardResponseDto("Comment added successfully"));
     }
 }

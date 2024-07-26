@@ -1,21 +1,22 @@
 package group40.newsapp.controller.newsCommentController;
 
+import group40.newsapp.DTO.appDTO.StandardDelRequest;
+import group40.newsapp.DTO.appDTO.StandardResponseDto;
 import group40.newsapp.service.newsCommentService.DeleteNewsCommentService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/news")
+@RequestMapping("/news-comment")
 @RequiredArgsConstructor
 public class DeleteNewsCommentController {
     private final DeleteNewsCommentService deleteNewsCommentService;
 
-    @DeleteMapping("/{newsId}/comments/{commentId}")
-    public ResponseEntity<Void> deleteNewsCommentById(@PathVariable Long newsId, @PathVariable Long commentId) {
-        return deleteNewsCommentService.deleteNewsCommentById(commentId);
+    @DeleteMapping
+    public ResponseEntity<StandardResponseDto> deleteNewsCommentById(@Valid @RequestBody StandardDelRequest dto) {
+        deleteNewsCommentService.deleteNewsCommentById(dto);
+        return ResponseEntity.ok(new StandardResponseDto("News Comment with ID = "+ dto.getId() +" deleted successfully"));
     }
 }

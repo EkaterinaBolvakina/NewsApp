@@ -15,29 +15,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @AllArgsConstructor
 public class AddNewsCommentService {
     private final NewsCommentRepository newsCommentRepository;
-    private final NewsCommentConverter newsCommentConverter;
     private final FindNewsDataService findNewsDataService;
     private final UserFindService userFindService;
     private final UpdateNewsDataService updateNewsDataService;
 
-    public ResponseEntity<NewsCommentResponseDTO> addNewsComment(NewsCommentRequestDTO newsCommentRequestDTO) {
+    public void addNewsComment(NewsCommentRequestDTO DTO) {
+        User user = userFindService.getUserFromContext();
+        NewsDataEntity newsData = findNewsDataService.getNewsById(DTO.getNewsId());
+        newsCommentRepository.save(new NewsComment(DTO.getComment(), LocalDateTime.now(), user, newsData));
 
-            NewsDataEntity newsData = findNewsDataService.getNewsById(newsCommentRequestDTO.getNewsId());
-            User user = userFindService.findUserById(newsCommentRequestDTO.getAuthorId());
-
-            NewsComment newsCommentForAdd = newsCommentConverter.fromDto(newsCommentRequestDTO);
-            NewsComment savedNewsComment = newsCommentRepository.save(newsCommentForAdd);
-            NewsCommentResponseDTO dto = newsCommentConverter.toDto(savedNewsComment);
-
-            updateNewsDataService.upCommentsCount(newsData.getId());
-
-            return new ResponseEntity<>(dto, HttpStatus.CREATED);
-
-
+        updateNewsDataService.increaseCommentsCount(newsData);
     }
-
 }

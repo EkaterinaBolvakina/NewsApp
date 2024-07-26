@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/news")
+@RequestMapping("/news")
 @AllArgsConstructor
 public class AddNewsController {
     private final AddNewsDataService addNewsDataService;

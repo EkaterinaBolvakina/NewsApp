@@ -29,15 +29,10 @@ public class NewsComment {
     @JoinColumn(name="news_id")
     private NewsDataEntity newsDataEntity;
 
-    public NewsComment(String comment, User user, NewsDataEntity newsDataEntity) {
-        this.comment = comment;
-        this.user = user;
-        this.newsDataEntity = newsDataEntity;
-    }
-
-    public NewsComment(Long id, String comment, LocalDateTime commentDate) {
-        this.id = id;
+    public NewsComment(String comment, LocalDateTime commentDate, User user, NewsDataEntity newsDataEntity) {
         this.comment = comment;
         this.commentDate = commentDate;
+        this.user = user;
+        this.newsDataEntity = newsDataEntity;
     }
 }

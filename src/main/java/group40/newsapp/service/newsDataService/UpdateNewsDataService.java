@@ -123,14 +123,12 @@ public class UpdateNewsDataService {
         }
     }
 
-    public void upCommentsCount(Long newsId) {
-        NewsDataEntity newsData = findNewsDataService.getNewsById(newsId);
+    public void increaseCommentsCount(NewsDataEntity newsData) {
         newsData.setCommentsCount(newsData.getCommentsCount() + 1);
         newsDataRepository.save(newsData);
     }
 
-    public void downCommentsCount(Long newsId) {
-        NewsDataEntity newsData = findNewsDataService.getNewsById(newsId);
+    public void reduceCommentsCount(NewsDataEntity newsData) {
         newsData.setCommentsCount(newsData.getCommentsCount() - 1);
         newsDataRepository.save(newsData);
     }

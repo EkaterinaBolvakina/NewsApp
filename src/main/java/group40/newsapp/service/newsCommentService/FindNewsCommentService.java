@@ -33,7 +33,7 @@ public class FindNewsCommentService {
         if (newsCommentRepository.findById(id).isPresent()) {
             return new ResponseEntity<>(newsCommentConverter.toDto(newsCommentRepository.findById(id).get()), HttpStatus.OK);
         }else {
-            throw new RestException(HttpStatus.NOT_FOUND, "Comment with ID = "+ id +" not found");
+            throw new RestException(HttpStatus.NOT_FOUND, "Comment with id = "+ id +" not found");
         }
     }
 
@@ -45,7 +45,7 @@ public class FindNewsCommentService {
         if (!allCommentsForNewsId.isEmpty()) {
             return new ResponseEntity<>(DTOs, HttpStatus.OK);
         }else {
-            throw new RestException(HttpStatus.NOT_FOUND, "Comments for news with ID = "+ newsId +" are not found");
+            throw new RestException(HttpStatus.NOT_FOUND, "Comments for news with id = "+ newsId +" are not found");
         }
     }
 }
