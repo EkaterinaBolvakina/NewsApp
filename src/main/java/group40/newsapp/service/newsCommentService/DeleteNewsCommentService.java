@@ -29,7 +29,7 @@ public class DeleteNewsCommentService {
                 .orElseThrow(()-> new NotFoundException("Comment with id = " + dto.getId() + " not found"));
         Role role = roleRepository.findByRole("ADMIN");
         if (user != comment.getUser() && user.getRole() != role){
-            throw new RestException(HttpStatus.CONFLICT, "You don't have permission to delete this message");
+            throw new RestException(HttpStatus.CONFLICT, "You don't have permission to delete this comment");
         }
         updateNewsDataService.reduceCommentsCount(comment.getNewsDataEntity());
         newsCommentRepository.delete(comment);

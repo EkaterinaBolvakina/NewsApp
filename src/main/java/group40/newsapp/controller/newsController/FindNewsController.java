@@ -1,42 +1,43 @@
 package group40.newsapp.controller.newsController;
 
-import group40.newsapp.DTO.news.NewsDataRequestDto;
+import group40.newsapp.DTO.news.NewsDataPageResponseDto;
 import group40.newsapp.DTO.news.NewsDataResponseDto;
+import group40.newsapp.controller.api.news.FindNewsApi;
 import group40.newsapp.service.newsDataService.FindNewsDataService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/news")
 @RequiredArgsConstructor
-public class FindNewsController {
+public class FindNewsController implements FindNewsApi {
 
     private final FindNewsDataService findNewsDataService;
-
+    @Override
     @GetMapping
-    public ResponseEntity<List<NewsDataResponseDto>> findAllNews() {
-        ResponseEntity<List<NewsDataResponseDto>> response = findNewsDataService.findAllNews();
+    public ResponseEntity<NewsDataPageResponseDto> findAllNews(@RequestParam Integer page) {
+        ResponseEntity<NewsDataPageResponseDto> response = findNewsDataService.findAllNews(page);
         return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
     }
 
+    @Override
     @GetMapping("/{newsId}")
     public ResponseEntity<NewsDataResponseDto> findNewsById(@PathVariable Long newsId) {
         ResponseEntity<NewsDataResponseDto> response = findNewsDataService.findNewsById(newsId);
         return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
     }
-
+    @Override
     @GetMapping("/findBy")
-    public ResponseEntity<List<NewsDataResponseDto>> findByCriteria(@RequestParam Integer page, @RequestParam String section, @RequestParam String region) {
-        ResponseEntity<List<NewsDataResponseDto>> response = findNewsDataService.findAllNewsByCriteria(section, region, page);
+    public ResponseEntity<NewsDataPageResponseDto> findByCriteria(@RequestParam Integer page, @RequestParam String section, @RequestParam String region) {
+        ResponseEntity<NewsDataPageResponseDto> response = findNewsDataService.findAllNewsByCriteria(section, region, page);
         return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
     }
 
+    @Override
     @GetMapping("/region-id")
-    public ResponseEntity<List<NewsDataResponseDto>> findAllNewsByRegionId(@RequestParam Integer page, @RequestParam Long regionId){
-        ResponseEntity<List<NewsDataResponseDto>> response = findNewsDataService.findAllNewsByRegionId(regionId, page);
+    public ResponseEntity<NewsDataPageResponseDto> findAllNewsByRegionId(@RequestParam Integer page, @RequestParam Long regionId){
+        ResponseEntity<NewsDataPageResponseDto> response = findNewsDataService.findAllNewsByRegionId(regionId, page);
         return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
     }
 }

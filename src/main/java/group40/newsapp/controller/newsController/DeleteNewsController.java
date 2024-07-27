@@ -1,21 +1,22 @@
 package group40.newsapp.controller.newsController;
 
+import group40.newsapp.DTO.appDTO.StandardDelRequest;
 import group40.newsapp.DTO.appDTO.StandardResponseDto;
+import group40.newsapp.controller.api.news.DeleteNewsApi;
 import group40.newsapp.service.newsDataService.DeleteNewsDataService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/news")
+@RequestMapping("/admin")
 @RequiredArgsConstructor
-public class DeleteNewsController {
+public class DeleteNewsController implements DeleteNewsApi {
     private final DeleteNewsDataService deleteNewsDataService;
 
-    @DeleteMapping("/delete/{newsId}")
-    public StandardResponseDto deleteNewsById(@PathVariable Long newsId) {
-        return deleteNewsDataService.deleteNewsDataById(newsId);
+    @Override
+    @DeleteMapping("/news")
+    public StandardResponseDto deleteNewsById(@Valid @RequestBody StandardDelRequest dto) {
+        return deleteNewsDataService.deleteNewsDataById(dto.getId());
     }
 }

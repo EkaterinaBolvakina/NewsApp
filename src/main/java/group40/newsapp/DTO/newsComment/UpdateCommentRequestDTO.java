@@ -9,7 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Schema(name = "request to update news comment")
+@Schema(name = "Request: update Comment on news")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

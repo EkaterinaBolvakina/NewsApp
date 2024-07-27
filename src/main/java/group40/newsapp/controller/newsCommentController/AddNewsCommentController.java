@@ -16,6 +16,6 @@ public class AddNewsCommentController implements AddNewsCommentApi {
     @Override
     public ResponseEntity<StandardResponseDto> addNewsComment(NewsCommentRequestDTO DTO) {
         addNewsCommentService.addNewsComment(DTO);
-        return ResponseEntity.ok(new StandardResponseDto("Comment added successfully"));
+        return ResponseEntity.ok(new StandardResponseDto("Comment to news with ID = "+ DTO.getNewsId() +" added successfully"));
     }
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
-@Schema(name = "Comment for news")
+@Schema(name = "Response: Comment on news")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

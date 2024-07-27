@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-@Schema(name = "News Reaction data")
+@Schema(name = "Request: update Reaction to news")
 @Data
 @AllArgsConstructor
 public class NewsDataRequestDto {

@@ -1,5 +1,6 @@
 package group40.newsapp.service.newsDataService;
 
+import group40.newsapp.DTO.news.NewsDataPageResponseDto;
 import group40.newsapp.DTO.news.NewsDataResponseDto;
 import group40.newsapp.exception.NullArgException;
 import group40.newsapp.exception.RestException;
@@ -24,8 +25,8 @@ public class FindNewsDataService {
     private final NewsDataRepository newsDataRepository;
     private final NewsDataConverter newsDataConverter;
 
-    public ResponseEntity<List<NewsDataResponseDto>> findAllNews() {
-        PageRequest pageRequest = PageRequest.of(0, 300, Sort.by(Sort.Order.desc("id")));
+    public ResponseEntity<NewsDataPageResponseDto> findAllNews(Integer page) {
+        PageRequest pageRequest = PageRequest.of(page, 300, Sort.by(Sort.Order.desc("id")));
         Page<NewsDataEntity> newsPage = newsDataRepository.findAll(pageRequest);
         List<NewsDataEntity> allNews = newsPage.getContent();
 
@@ -33,11 +34,12 @@ public class FindNewsDataService {
             throw new RestException(HttpStatus.NOT_FOUND, "No News found");
         }
 
-        List<NewsDataResponseDto> dtos = allNews.stream()
+        List<NewsDataResponseDto> DTOs = allNews.stream()
                 .map(newsDataConverter::fromEntityToDto)
                 .collect(Collectors.toList());
 
-        return new ResponseEntity<>(dtos, HttpStatus.OK);
+        NewsDataPageResponseDto pageDTO = new NewsDataPageResponseDto(newsPage.getTotalPages(),page,DTOs);
+        return new ResponseEntity<>(pageDTO, HttpStatus.OK);
     }
 
     public ResponseEntity<NewsDataResponseDto> findNewsById(Long id) {
@@ -48,7 +50,7 @@ public class FindNewsDataService {
         }
     }
 
-    public ResponseEntity<List<NewsDataResponseDto>> findAllNewsByRegionId(Long regionId, Integer page) {
+    public ResponseEntity<NewsDataPageResponseDto> findAllNewsByRegionId(Long regionId, Integer page) {
         PageRequest pageRequest = PageRequest.of(page, 50, Sort.by(Sort.Order.desc("id")));
         Page<NewsDataEntity> newsPage = newsDataRepository.findByRegionId(regionId, pageRequest);
         List<NewsDataEntity> allNewsByRegionId = newsPage.getContent();
@@ -56,13 +58,14 @@ public class FindNewsDataService {
                 .map(newsDataConverter::fromEntityToDto)
                 .toList();
         if (!allNewsByRegionId.isEmpty()) {
-            return new ResponseEntity<>(DTOs, HttpStatus.OK);
+            NewsDataPageResponseDto pageDTO = new NewsDataPageResponseDto(newsPage.getTotalPages(),page,DTOs);
+            return new ResponseEntity<>(pageDTO, HttpStatus.OK);
         }else {
             throw new RestException(HttpStatus.NOT_FOUND, "News Data for region with ID = "+ regionId+" Not found");
         }
     }
 
-    public ResponseEntity<List<NewsDataResponseDto>> findAllNewsByCriteria(String sectionName, String regionName, Integer page) {
+    public ResponseEntity<NewsDataPageResponseDto> findAllNewsByCriteria(String sectionName, String regionName, Integer page) {
         if ((sectionName == null || sectionName.isEmpty()) && (regionName == null || regionName.isEmpty())) {
             throw new NullArgException("Both section and region name cannot be null or empty");
         }
@@ -84,13 +87,14 @@ public class FindNewsDataService {
                 .toList();
 
         if (!DTOs.isEmpty()) {
-            return new ResponseEntity<>(DTOs, HttpStatus.OK);
+            NewsDataPageResponseDto pageDTO = new NewsDataPageResponseDto(newsPage.getTotalPages(),page,DTOs);
+            return new ResponseEntity<>(pageDTO, HttpStatus.OK);
         } else {
             throw new RestException(HttpStatus.NOT_FOUND, "News Data for section: '" + sectionName + "' and region: '" + regionName + "' not found");
         }
     }
 
-    private ResponseEntity<List<NewsDataResponseDto>> findAllNewsBySectionName(String sectionName, Integer page) {
+    private ResponseEntity<NewsDataPageResponseDto> findAllNewsBySectionName(String sectionName, Integer page) {
         PageRequest pageRequest = PageRequest.of(page, 30, Sort.by(Sort.Order.desc("id")));
         Page<NewsDataEntity> newsPage = newsDataRepository.findBySectionName(sectionName, pageRequest);
         List<NewsDataEntity> allNewsBySectionName = newsPage.getContent();
@@ -100,13 +104,14 @@ public class FindNewsDataService {
                 .toList();
 
         if (!DTOs.isEmpty()) {
-            return new ResponseEntity<>(DTOs, HttpStatus.OK);
+            NewsDataPageResponseDto pageDTO = new NewsDataPageResponseDto(newsPage.getTotalPages(),page,DTOs);
+            return new ResponseEntity<>(pageDTO, HttpStatus.OK);
         } else {
             throw new RestException(HttpStatus.NOT_FOUND, "News Data for section name: '" + sectionName + "' not found");
         }
     }
 
-    private ResponseEntity<List<NewsDataResponseDto>> findAllNewsByRegionName(String regionName, Integer page) {
+    private ResponseEntity<NewsDataPageResponseDto> findAllNewsByRegionName(String regionName, Integer page) {
         PageRequest pageRequest = PageRequest.of(page, 30, Sort.by(Sort.Order.desc("id")));
         Page<NewsDataEntity> newsPage = newsDataRepository.findByRegionRegionName(regionName, pageRequest);
         List<NewsDataEntity> allNewsByRegionName = newsPage.getContent();
@@ -116,7 +121,8 @@ public class FindNewsDataService {
                 .toList();
 
         if (!DTOs.isEmpty()) {
-            return new ResponseEntity<>(DTOs, HttpStatus.OK);
+            NewsDataPageResponseDto pageDTO = new NewsDataPageResponseDto(newsPage.getTotalPages(),page,DTOs);
+            return new ResponseEntity<>(pageDTO, HttpStatus.OK);
         } else {
             throw new RestException(HttpStatus.NOT_FOUND, "News Data for region: '" + regionName + "' not found");
         }

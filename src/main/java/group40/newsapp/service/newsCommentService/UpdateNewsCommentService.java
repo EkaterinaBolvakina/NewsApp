@@ -28,10 +28,10 @@ public class UpdateNewsCommentService {
     public void updateNewsComment(UpdateCommentRequestDTO dto) {
         User user = userFindService.getUserFromContext();
         NewsComment comment = newsCommentRepository.findById(dto.getId())
-                .orElseThrow(()-> new NotFoundException("Comment with id = " + dto.getId() + " not found"));
+                .orElseThrow(()-> new NotFoundException("Comment with ID = " + dto.getId() + " not found"));
         Role role = roleRepository.findByRole("ADMIN");
         if (user != comment.getUser() && user.getRole() != role){
-            throw new RestException(HttpStatus.CONFLICT, "You don't have permission to update this message");
+            throw new RestException(HttpStatus.CONFLICT, "You don't have permission to update this comment");
         }
         newsCommentRepository.updateCommentById(dto.getComment(), LocalDateTime.now(), dto.getId());
     }
