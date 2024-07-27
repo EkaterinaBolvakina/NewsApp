@@ -48,6 +48,16 @@ public class FindRegionService {
             throw new RestException(HttpStatus.NOT_FOUND, "Region with name '" + name + "' not found");
         }
     }
+
+    public Region getRegionById(Long id) {
+        Optional<Region> foundedRegionOpt= regionRepository.findById(id);
+
+        if (foundedRegionOpt.isPresent()) {
+            return foundedRegionOpt.get();
+        }else {
+            throw new RestException(HttpStatus.NOT_FOUND, "Region with ID = " + id + " not found");
+        }
+    }
 }
 /*
     public List<Region> getAllRegions() {
