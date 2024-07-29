@@ -22,10 +22,13 @@ public class WeatherDataEntity {
     private String longitude;
     private String cityName;
     private String temperature;
-    private String icon; // "c03d" ???
-    private String description; // "Broken clouds"
-    private String wind_cdir; // "NE, NO, S Windrichtung"
-    private String wind_spd; // 6.17
+    private String appTemperature;
+    private String icon;
+    private String description;
+    private String humidity;
+    private String windCdir;
+    private String windCdirFull;
+    private String windSpd;
 
 
     @Column(name = "'create'")
