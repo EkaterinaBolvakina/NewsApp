@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 public class RegionConverter {
     public RegionDTO toDTO(Region region) {
         RegionDTO DTO = new RegionDTO();
+        DTO.setId(region.getId());
         DTO.setRegionName(region.getRegionName());
         return DTO;
     }

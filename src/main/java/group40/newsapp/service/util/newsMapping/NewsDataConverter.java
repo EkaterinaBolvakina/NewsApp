@@ -23,7 +23,7 @@ public class NewsDataConverter {
         dto.setRegionName(newsDataEntity.getRegion().getRegionName());
         dto.setSectionName(newsDataEntity.getSectionName());
         dto.setTitle(newsDataEntity.getTitle());
-        dto.setDate(newsDataEntity.getDate());
+        dto.setDate(newsDataEntity.getDate().substring(0, 16).replace('T',' '));
         dto.setTitleImageSquare(newsDataEntity.getTitleImageSquare());
         dto.setTitleImageWide(newsDataEntity.getTitleImageWide());
         dto.setContent(newsDataEntity.getContent());
