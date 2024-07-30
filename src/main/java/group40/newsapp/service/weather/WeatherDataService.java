@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayDeque;
 import java.util.Optional;
 
 @Service
@@ -26,29 +27,32 @@ public class WeatherDataService implements WeatherDataServiceInterface{
     @Override
     @SneakyThrows
     public WeatherDataResponseDto getWeather(String ipAddress)  {
+        // Get latitude and longitude from IP address
         WeatherLatLonDTO dto = getLatLonFromGeoLocation(ipAddress);
 
-        Optional<WeatherDataEntity> optEntity = getFromDatabase(dto.getLat(), dto.getLon());
+        // Retrieve weather data from database
+        ArrayDeque<WeatherDataEntity> entityQueue = getFromDatabase(dto.getLat(), dto.getLon());
 
-        if (optEntity.isPresent()){
-            WeatherDataEntity weatherDataEntity = optEntity.get();
-            LocalDateTime createdTime = weatherDataEntity.getTimeCreate();
+        if (!entityQueue.isEmpty()) {
+            WeatherDataEntity latestWeatherData = entityQueue.getLast();
+            LocalDateTime createdTime = latestWeatherData.getTimeCreate();
 
-            long duration = Duration.between(LocalDateTime.now(), createdTime).toMinutes();
+            long duration = Duration.between(createdTime, LocalDateTime.now()).toMinutes();
 
+            // If the latest data is less than 10 minutes old, return it
             if (duration < 10) {
-                return weatherConverter.fromEntityToDto(weatherDataEntity);
+                return weatherConverter.fromEntityToDto(latestWeatherData);
             }
         }
 
-    WeatherDataResponseDto response = getFromApi(dto.getLat(), dto.getLon());
-    repository.save(weatherConverter.fromDtoToEntity(response));
+        // Fetch new data from API and save to database
+        WeatherDataResponseDto response = getFromApi(dto.getLat(), dto.getLon());
+        repository.save(weatherConverter.fromDtoToEntity(response));
         return response;
     }
 
-
-    private Optional<WeatherDataEntity> getFromDatabase(String lat, String lon){
-        return repository.findByLatitudeAndLongitude(lat,lon);
+    private ArrayDeque<WeatherDataEntity> getFromDatabase(String lat, String lon) {
+        return repository.findAllByLatitudeAndLongitude(lat, lon);
     }
 
 
@@ -56,7 +60,7 @@ public class WeatherDataService implements WeatherDataServiceInterface{
         return outWeatherApi.receivedFromWeatherApi(lat,lon);
     }
 
-    private WeatherLatLonDTO getLatLonFromGeoLocation(String ipAddress) throws MalformedURLException, URISyntaxException {
+    private WeatherLatLonDTO getLatLonFromGeoLocation(String ipAddress) {
         return outGeoLocationApi.getLatLonFromGeoLocation(ipAddress);
     }
 }
