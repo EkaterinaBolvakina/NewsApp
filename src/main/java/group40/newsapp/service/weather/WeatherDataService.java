@@ -12,7 +12,6 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.ArrayDeque;
 import java.util.Optional;
 
 @Service
@@ -27,42 +26,38 @@ public class WeatherDataService implements WeatherDataServiceInterface{
     @Override
     @SneakyThrows
     public WeatherDataResponseDto getWeather(String ipAddress)  {
-        // Get latitude and longitude from IP address
         WeatherLatLonDTO dto = getLatLonFromGeoLocation(ipAddress);
 
-        // Retrieve weather data from database
-        ArrayDeque<WeatherDataEntity> entityQueue = getFromDatabase(dto.getLat(), dto.getLon());
+        Optional<WeatherDataEntity> optEntity = getFromDatabase(dto.getLat(), dto.getLon());
 
-        if (!entityQueue.isEmpty()) {
-            WeatherDataEntity latestWeatherData = entityQueue.getLast();
-            LocalDateTime createdTime = latestWeatherData.getTimeCreate();
+        if (optEntity.isPresent()){
+            WeatherDataEntity existingEntity = optEntity.get();
+            LocalDateTime createdTime = existingEntity.getTimeCreate();
 
             long duration = Duration.between(createdTime, LocalDateTime.now()).toMinutes();
 
             // If the latest data is less than 10 minutes old, return it
             if (duration < 10) {
-                return weatherConverter.fromEntityToDto(latestWeatherData);
+                return weatherConverter.fromEntityToDto(existingEntity);
             }
         }
-
         // Fetch new data from API and update existing data
         WeatherDataResponseDto response = getFromApi(dto.getLat(), dto.getLon());
         WeatherDataEntity updatedEntity = weatherConverter.fromDtoToEntity(response);
 
         // Update the existing entity with new data
-        if (!entityQueue.isEmpty()) {
-            WeatherDataEntity latestWeatherData = entityQueue.getLast();
-            updateEntity(latestWeatherData, updatedEntity);
-            repository.save(latestWeatherData);
-        } else {
+        if (optEntity.isPresent()){
+            WeatherDataEntity existingEntity = optEntity.get();
+            updateEntity(existingEntity, updatedEntity);
+            repository.save(existingEntity);
+        }else {
             repository.save(updatedEntity);
         }
-
         return response;
     }
 
-    private ArrayDeque<WeatherDataEntity> getFromDatabase(String lat, String lon) {
-        return repository.findAllByLatitudeAndLongitude(lat, lon);
+    private Optional<WeatherDataEntity> getFromDatabase(String lat, String lon) {
+        return repository.findByLatitudeAndLongitude(lat, lon);
     }
 
 
