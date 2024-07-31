@@ -53,12 +53,12 @@ public class OutWeatherApi {
 
     private String createUrl(String lat, String lon) {
 
-        //https://https://api.weatherbit.io/v2.0/current?lat=52.52453&lon=13.41004&key=37195ad08f4d48b98708b260b3747f6e&lang=de
+        //https://https://api.weatherbit.io/v2.0/current?lat=52.52453&lon=13.41004&key=ae6890f1ffa74302988ce90ffbb4e71a&lang=de
 
         return UriComponentsBuilder.fromHttpUrl("https://api.weatherbit.io/v2.0/current")
                 .queryParam("lat",lat)
                 .queryParam("lon",lon)
-                .queryParam("key","37195ad08f4d48b98708b260b3747f6e")
+                .queryParam("key","ae6890f1ffa74302988ce90ffbb4e71a")
                 .queryParam("lang","de")
                 .build()
                 .toString();

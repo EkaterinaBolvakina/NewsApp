@@ -45,9 +45,19 @@ public class WeatherDataService implements WeatherDataServiceInterface{
             }
         }
 
-        // Fetch new data from API and save to database
+        // Fetch new data from API and update existing data
         WeatherDataResponseDto response = getFromApi(dto.getLat(), dto.getLon());
-        repository.save(weatherConverter.fromDtoToEntity(response));
+        WeatherDataEntity updatedEntity = weatherConverter.fromDtoToEntity(response);
+
+        // Update the existing entity with new data
+        if (!entityQueue.isEmpty()) {
+            WeatherDataEntity latestWeatherData = entityQueue.getLast();
+            updateEntity(latestWeatherData, updatedEntity);
+            repository.save(latestWeatherData);
+        } else {
+            repository.save(updatedEntity);
+        }
+
         return response;
     }
 
@@ -62,5 +72,20 @@ public class WeatherDataService implements WeatherDataServiceInterface{
 
     private WeatherLatLonDTO getLatLonFromGeoLocation(String ipAddress) {
         return outGeoLocationApi.getLatLonFromGeoLocation(ipAddress);
+    }
+
+    private void updateEntity(WeatherDataEntity existingEntity, WeatherDataEntity newEntity) {
+        existingEntity.setLatitude(newEntity.getLatitude());
+        existingEntity.setLongitude(newEntity.getLongitude());
+        existingEntity.setCityName(newEntity.getCityName());
+        existingEntity.setTemperature(newEntity.getTemperature());
+        existingEntity.setAppTemperature(newEntity.getAppTemperature());
+        existingEntity.setIcon(newEntity.getIcon());
+        existingEntity.setDescription(newEntity.getDescription());
+        existingEntity.setHumidity(newEntity.getHumidity());
+        existingEntity.setWindCdir(newEntity.getWindCdir());
+        existingEntity.setWindCdirFull(newEntity.getWindCdirFull());
+        existingEntity.setWindSpd(newEntity.getWindSpd());
+        existingEntity.setTimeCreate(newEntity.getTimeCreate());
     }
 }
