@@ -26,7 +26,7 @@ public class FindNewsDataService {
     private final NewsDataConverter newsDataConverter;
 
     public ResponseEntity<NewsDataPageResponseDto> findAllNews(Integer page) {
-        PageRequest pageRequest = PageRequest.of(page, 300, Sort.by(Sort.Order.desc("id")));
+        PageRequest pageRequest = PageRequest.of(page, 12, Sort.by(Sort.Order.desc("id")));
         Page<NewsDataEntity> newsPage = newsDataRepository.findAll(pageRequest);
         List<NewsDataEntity> allNews = newsPage.getContent();
 
@@ -51,7 +51,7 @@ public class FindNewsDataService {
     }
 
     public ResponseEntity<NewsDataPageResponseDto> findAllNewsByRegionId(Long regionId, Integer page) {
-        PageRequest pageRequest = PageRequest.of(page, 50, Sort.by(Sort.Order.desc("id")));
+        PageRequest pageRequest = PageRequest.of(page, 12, Sort.by(Sort.Order.desc("id")));
         Page<NewsDataEntity> newsPage = newsDataRepository.findByRegionId(regionId, pageRequest);
         List<NewsDataEntity> allNewsByRegionId = newsPage.getContent();
         List<NewsDataResponseDto> DTOs = allNewsByRegionId.stream()
@@ -78,7 +78,7 @@ public class FindNewsDataService {
             return findAllNewsBySectionName(sectionName, page);
         }
 
-        PageRequest pageRequest = PageRequest.of(page, 30, Sort.by(Sort.Order.desc("id")));
+        PageRequest pageRequest = PageRequest.of(page, 12, Sort.by(Sort.Order.desc("id")));
         Page<NewsDataEntity> newsPage = newsDataRepository.findBySectionNameAndRegionRegionName(sectionName, regionName, pageRequest);
         List<NewsDataEntity> allNewsBySectionNameAndRegionName = newsPage.getContent();
 
@@ -95,7 +95,7 @@ public class FindNewsDataService {
     }
 
     private ResponseEntity<NewsDataPageResponseDto> findAllNewsBySectionName(String sectionName, Integer page) {
-        PageRequest pageRequest = PageRequest.of(page, 30, Sort.by(Sort.Order.desc("id")));
+        PageRequest pageRequest = PageRequest.of(page, 12, Sort.by(Sort.Order.desc("id")));
         Page<NewsDataEntity> newsPage = newsDataRepository.findBySectionName(sectionName, pageRequest);
         List<NewsDataEntity> allNewsBySectionName = newsPage.getContent();
 
@@ -112,7 +112,7 @@ public class FindNewsDataService {
     }
 
     private ResponseEntity<NewsDataPageResponseDto> findAllNewsByRegionName(String regionName, Integer page) {
-        PageRequest pageRequest = PageRequest.of(page, 30, Sort.by(Sort.Order.desc("id")));
+        PageRequest pageRequest = PageRequest.of(page, 12, Sort.by(Sort.Order.desc("id")));
         Page<NewsDataEntity> newsPage = newsDataRepository.findByRegionRegionName(regionName, pageRequest);
         List<NewsDataEntity> allNewsByRegionName = newsPage.getContent();
 
