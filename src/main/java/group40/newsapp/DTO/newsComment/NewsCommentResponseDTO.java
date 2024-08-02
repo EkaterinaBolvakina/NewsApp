@@ -20,9 +20,12 @@ public class NewsCommentResponseDTO {
     @Schema(description = "id of the news", example = "2")
     private Long newsId;
 
-    @Schema(description = "date of comment publishing", example = "20024-07-26 13:30")
+    @Schema(description = "date of comment publishing", example = "2024-07-26T13:30:00")
     private LocalDateTime commentDate;
 
     @Schema(description = "Author`s name", example = "Tom")
     private String authorName;
+
+    @Schema(description = "Is comment published by current user", example = "true")
+    Boolean isPublishedByCurrentUser;
 }
