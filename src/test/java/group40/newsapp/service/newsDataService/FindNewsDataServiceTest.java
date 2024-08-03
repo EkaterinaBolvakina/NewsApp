@@ -2,6 +2,7 @@ package group40.newsapp.service.newsDataService;
 
 import group40.newsapp.DTO.news.NewsDataPageResponseDto;
 import group40.newsapp.DTO.news.NewsDataResponseDto;
+import group40.newsapp.exception.NullArgException;
 import group40.newsapp.exception.RestException;
 import group40.newsapp.models.news.NewsDataEntity;
 import group40.newsapp.models.region.Region;
@@ -200,12 +201,154 @@ class FindNewsDataServiceTest {
     }
 
 /// ================= findAllNewsByCriteria() ====================================================
+@Test
+void findAllNewsByCriteria_BothSectionAndRegionProvidedAndNewsFound() {
+    String sectionName = "inland";
+    String regionName = "Hessen";
+    Integer page = 0;
+    PageRequest pageRequest = PageRequest.of(page, 12, Sort.by(Sort.Order.desc("id")));
+
+    Page<NewsDataEntity> mockedPage = new PageImpl<>(List.of(newsDataEntity));
+    when(newsDataRepository.findBySectionNameAndRegionRegionName(sectionName, regionName, pageRequest)).thenReturn(mockedPage);
+    when(newsDataConverter.fromEntityToDto(newsDataEntity)).thenReturn(newsDataResponseDto);
+
+    ResponseEntity<NewsDataPageResponseDto> response = findNewsDataService.findAllNewsByCriteria(sectionName, regionName, page);
+
+    assertEquals(HttpStatus.OK, response.getStatusCode());
+    assertEquals(1, response.getBody().getPageCount());
+    assertEquals(0, response.getBody().getCurrentPage());
+    assertEquals(1, response.getBody().getNewsDataPage().size());
+    assertEquals(newsDataResponseDto, response.getBody().getNewsDataPage().get(0));
+}
+
     @Test
-    void findAllNewsByCriteria() {
+    void findAllNewsByCriteria_OnlySectionProvidedAndNewsFound() {
+        String sectionName = "inland";
+        Integer page = 0;
+
+        Page<NewsDataEntity> mockedPage = new PageImpl<>(List.of(newsDataEntity));
+        when(newsDataRepository.findBySectionName(sectionName, PageRequest.of(page, 12, Sort.by(Sort.Order.desc("id"))))).thenReturn(mockedPage);
+        when(newsDataConverter.fromEntityToDto(newsDataEntity)).thenReturn(newsDataResponseDto);
+
+        ResponseEntity<NewsDataPageResponseDto> response = findNewsDataService.findAllNewsByCriteria(sectionName, null, page);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(1, response.getBody().getPageCount());
+        assertEquals(0, response.getBody().getCurrentPage());
+        assertEquals(1, response.getBody().getNewsDataPage().size());
+        assertEquals(newsDataResponseDto, response.getBody().getNewsDataPage().get(0));
     }
 
-/// ================= findAllNewsByCriteria() ====================================================
     @Test
-    void getNewsById() {
+    void findAllNewsByCriteria_OnlyRegionProvidedAndNewsFound() {
+        String regionName = "Hessen";
+        Integer page = 0;
+
+        Page<NewsDataEntity> mockedPage = new PageImpl<>(List.of(newsDataEntity));
+        when(newsDataRepository.findByRegionRegionName(regionName, PageRequest.of(page, 12, Sort.by(Sort.Order.desc("id"))))).thenReturn(mockedPage);
+        when(newsDataConverter.fromEntityToDto(newsDataEntity)).thenReturn(newsDataResponseDto);
+
+        ResponseEntity<NewsDataPageResponseDto> response = findNewsDataService.findAllNewsByCriteria(null, regionName, page);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(1, response.getBody().getPageCount());
+        assertEquals(0, response.getBody().getCurrentPage());
+        assertEquals(1, response.getBody().getNewsDataPage().size());
+        assertEquals(newsDataResponseDto, response.getBody().getNewsDataPage().get(0));
+    }
+
+    @Test
+    void findAllNewsByCriteria_BothSectionAndRegionNotProvided() {
+        Integer page = 0;
+
+        NullArgException exception = assertThrows(NullArgException.class, () -> findNewsDataService.findAllNewsByCriteria(null, null, page));
+
+        assertEquals("{\"fieldName\" : \"Both section and region name cannot be null or empty\", \"message\" : \"must not be null\"}", exception.getMessage());
+    }
+    @Test
+    void findAllNewsByCriteria_BothSectionAndRegionProvidedAndNewsNotFound() {
+        String sectionName = "sport";
+        String regionName = "Hessen";
+        Integer page = 0;
+        PageRequest pageRequest = PageRequest.of(page, 12, Sort.by(Sort.Order.desc("id")));
+
+        // Mock the repository to return an empty page
+        Page<NewsDataEntity> emptyPage = Page.empty(pageRequest);
+        when(newsDataRepository.findBySectionNameAndRegionRegionName(sectionName, regionName, pageRequest)).thenReturn(emptyPage);
+
+        // Assert that a RestException is thrown
+        RestException exception = assertThrows(RestException.class, () -> findNewsDataService.findAllNewsByCriteria(sectionName, regionName, page));
+
+        assertEquals(HttpStatus.NOT_FOUND, exception.getStatus());
+        assertEquals("News Data for section: '" + sectionName + "' and region: '" + regionName + "' not found", exception.getMessage());
+    }
+    @Test
+    void findAllNewsByCriteria_OnlySectionProvidedAndNewsNotFound() {
+        String sectionName = "kultur";
+        Integer page = 0;
+
+        PageRequest pageRequest = PageRequest.of(page, 12, Sort.by(Sort.Order.desc("id")));
+
+        // Mock the repository to return an empty page
+        Page<NewsDataEntity> emptyPage = Page.empty(pageRequest);
+        when(newsDataRepository.findBySectionName(sectionName, pageRequest)).thenReturn(emptyPage);
+
+        // Assert that a RestException is thrown
+        RestException exception = assertThrows(RestException.class, () -> findNewsDataService.findAllNewsByCriteria(sectionName, null, page));
+
+        assertEquals(HttpStatus.NOT_FOUND, exception.getStatus());
+        assertEquals("News Data for section name: '" + sectionName + "' not found", exception.getMessage());
+    }
+
+    @Test
+    void findAllNewsByCriteria_OnlyRegionProvidedAndNewsNotFound() {
+        String regionName = "Schweiz";
+        Integer page = 0;
+
+        PageRequest pageRequest = PageRequest.of(page, 12, Sort.by(Sort.Order.desc("id")));
+
+        // Mock the repository to return an empty page
+        Page<NewsDataEntity> emptyPage = Page.empty(pageRequest);
+        when(newsDataRepository.findByRegionRegionName(regionName, pageRequest)).thenReturn(emptyPage);
+
+        // Assert that a RestException is thrown
+        RestException exception = assertThrows(RestException.class, () -> findNewsDataService.findAllNewsByCriteria(null, regionName, page));
+
+        assertEquals(HttpStatus.NOT_FOUND, exception.getStatus());
+        assertEquals("News Data for region: '" + regionName + "' not found", exception.getMessage());
+    }
+
+
+/// ================= findAllNewsByCriteria() ====================================================
+@Test
+void getNewsById_Found() {
+    Long id = 1L;
+    when(newsDataRepository.findById(id)).thenReturn(Optional.of(newsDataEntity));
+
+    NewsDataEntity result = findNewsDataService.getNewsById(id);
+
+    assertEquals(newsDataEntity, result);
+}
+
+    @Test
+    void getNewsById_NotFound() {
+        Long id = 1L;
+        when(newsDataRepository.findById(id)).thenReturn(Optional.empty());
+
+        RestException exception = assertThrows(RestException.class, () -> findNewsDataService.getNewsById(id));
+
+        assertEquals(HttpStatus.NOT_FOUND, exception.getStatus());
+        assertEquals("News with ID = " + id + " not found", exception.getMessage());
+    }
+
+    @Test
+    void getNewsById_InvalidID() {
+        Long invalidId = -1L;  // Using an invalid ID value
+        when(newsDataRepository.findById(invalidId)).thenReturn(Optional.empty());
+
+        RestException exception = assertThrows(RestException.class, () -> findNewsDataService.getNewsById(invalidId));
+
+        assertEquals(HttpStatus.NOT_FOUND, exception.getStatus());
+        assertEquals("News with ID = " + invalidId + " not found", exception.getMessage());
     }
 }
