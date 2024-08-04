@@ -218,4 +218,22 @@ class FindNewsControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(content().json("{\"message\":\"Both section and region name cannot be null or empty\"}"));
     }
+
+    @Test
+    void testFindByCriteria_ExceedinglyLongSection() throws Exception {
+        // Arrange: Erstelle einen extrem langen String
+        String longSectionName = new String(new char[10000]).replace("\0", "A"); // 10.000 Zeichen langer String
+
+        when(findNewsDataService.findAllNewsByCriteria(eq(longSectionName), isNull(), anyInt()))
+                .thenReturn(ResponseEntity.ok(newsDataPageResponseDto));
+
+        // Act & Assert: Prüfe die Reaktion der API auf extrem lange Strings
+        mockMvc.perform(get("/news/findBy")
+                        .param("page", "0")
+                        .param("section", longSectionName)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json(objectMapper.writeValueAsString(newsDataPageResponseDto)));
+    }
+
 }
